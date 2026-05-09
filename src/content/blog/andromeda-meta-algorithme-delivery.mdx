@@ -1,9 +1,9 @@
 ---
-title: "Meta Andromeda : ce que ça change concrètement pour tes campagnes DNVB"
-description: "Comment fonctionne Andromeda, le système de delivery unifié de Meta, et ce que ça change concrètement pour les DNVB qui dépensent plus de 30k€/mois sur Meta Ads. Données issues de 86 352 publicités et 32M€ de spend Meta analysés sur 93 comptes DNVB clientes Gang4."
+title: "Meta Andromeda en 2026 : ce que le moteur ML de Meta fait vraiment à tes pubs"
+description: "Andromeda, le delivery system unifié de Meta, a changé les règles du jeu pour les DNVB. Voici ce qu'il lit dans tes créatifs, comment il reconstruit ton audience, et 5 actions concrètes à faire cette semaine. Données issues de 86 352 publicités et 32M€ de spend Meta analysés."
 author: "samuel"
 publishedAt: 2026-05-12
-updatedAt: 2026-05-12
+updatedAt: 2026-05-09
 draft: false
 
 pillar: "P2A"
@@ -23,14 +23,14 @@ volumeFR: 320
 keywordDifficulty: 0
 intent: "informational"
 
-directAnswer: "Andromeda est le moteur de delivery unifié de Meta, déployé fin 2024. Il remplace 3 algorithmes isolés par un seul modèle ML. Sur 32M€ de spend et 86 352 publicités analysées chez Gang4, les DNVB qui ont migré gagnent -18% de CPA en beauté et -22% en mode. Le levier principal n'est plus le ciblage : c'est la qualité de tes créatifs."
+directAnswer: "Andromeda est le moteur de delivery unifié de Meta, déployé en 2024. Il fusionne ciblage, enchère et scoring créatif en un seul modèle ML. Résultat concret : ton créatif est devenu ton ciblage. Les DNVB qui ont migré enregistrent -18% de CPA en beauté et -22% en mode sur 32M€ de spend analysés."
 
-readingTimeMinutes: 8
+readingTimeMinutes: 7
 
 cta:
   label: "Voir comment Gang4 structure le whitelisting pour Andromeda"
   href: "https://gang4.io/whitelisting#demo"
-  contextLabel: "Vos créatifs whitelisting envoient les signaux sociaux qu'Andromeda pèse le plus"
+  contextLabel: "Tes créatifs whitelisting envoient les signaux sociaux qu'Andromeda pèse le plus"
 
 heroImage: "/og-default.png"
 
@@ -58,39 +58,35 @@ schema:
 
 faq:
   - question: "Qu'est-ce qu'Andromeda Meta ?"
-    answer: "Andromeda est le système de delivery unifié de Meta déployé fin 2024. Il remplace trois sous-systèmes historiques distincts par un seul modèle de machine learning qui optimise simultanément audience, placement, tarification et scoring créatif en temps réel. Pour les annonceurs e-commerce, la qualité du créatif influence directement le CPA, indépendamment du budget ou du ciblage."
+    answer: "Andromeda est le système de delivery unifié de Meta déployé en 2024. Il fusionne trois sous-systèmes historiques distincts (bidding, ranking, creative scoring) en un seul modèle de machine learning. Pour les annonceurs e-commerce, cela signifie que la qualité du créatif influence directement le CPA, indépendamment du budget ou du ciblage configuré manuellement."
   - question: "Comment fonctionne l'algorithme Andromeda de Meta ?"
-    answer: "Andromeda trie des millions de publicités candidates en quelques millisecondes via des puces NVIDIA Grace Hopper et MTIA. L'architecture neuronale analyse le rythme de montage, la colorimétrie, le ton émotionnel et la sémantique du créatif pour prédire son adéquation avec un utilisateur donné avant même l'enchère. Concrètement : si ton créatif n'est pas jugé pertinent par ce filtre, il n'atteint jamais l'enchère, quel que soit ton budget."
+    answer: "Andromeda trie des millions de publicités candidates en temps réel via une architecture ML unifiée. Il analyse le rythme de montage, la colorimétrie, le ton émotionnel et la sémantique du créatif pour prédire son adéquation avec un utilisateur donné avant l'enchère. Si ton créatif n'est pas jugé pertinent à ce stade de présélection, il n'atteint jamais l'enchère, quel que soit ton budget."
   - question: "Quand Meta a-t-il lancé Andromeda ?"
-    answer: "Meta a commencé le déploiement d'Andromeda en juin 2024, avec un rollout progressif priorisant les campagnes Conversions. En 2025, le système est actif sur la quasi-totalité des comptes publicitaires e-commerce. Pour les marques DNVB françaises dépensant plus de 30 000€/mois sur Meta Ads, l'impact est mesurable depuis le second semestre 2024."
+    answer: "Meta a déployé Andromeda progressivement à partir de 2024, avec un rollout priorisant les campagnes Conversions. En 2025-2026, le système est actif sur la quasi-totalité des comptes publicitaires e-commerce. Meta Engineering a depuis développé des extensions du système, notamment le Meta Adaptive Ranking Model (annoncé en mars 2026) qui pousse la capacité ML jusqu'à l'échelle du trillion de paramètres."
   - question: "Andromeda Meta remplace-t-il le ciblage par centres d'intérêt ?"
-    answer: "Fonctionnellement, oui. Andromeda réduit l'avantage compétitif des audiences ultra-précises car le modèle ML reconstruit lui-même l'audience optimale à partir des signaux créatifs. Les marques ayant migré vers le broad targeting consolidé avec un CBO rapportent des résultats supérieurs. Les audiences d'intérêts restent disponibles mais leur surperformance historique s'est réduite depuis mi-2024."
+    answer: "Fonctionnellement, oui. Andromeda réduit l'avantage compétitif des audiences ultra-précises car le modèle ML reconstruit lui-même l'audience optimale à partir des signaux créatifs. Les audiences d'intérêts restent disponibles mais leur surperformance historique s'est érodée depuis mi-2024. Le broad targeting consolidé via CBO surperforme dans la majorité des cas."
   - question: "Quel impact Andromeda a-t-il sur le CPA des campagnes Meta ?"
-    answer: "L'impact est asymétrique selon la qualité créative. Sur 86 352 publicités analysées par Gang4 (4 082 campagnes, 32M€ de spend), les comptes DNVB ayant adapté leur stack créatif enregistrent -18% de CPA en beauté et -22% en mode. Les comptes maintenant des structures de ciblage 2022-2023 subissent une érosion de ROAS."
-  - question: "Qu'est-ce que le Sequence Learning dans Andromeda ?"
-    answer: "Le Sequence Learning est la capacité d'Andromeda à modéliser les comportements d'achat comme une séquence temporelle plutôt que des événements isolés. Le modèle prédit les étapes successives d'un parcours d'achat. Résultat concret : tes créatifs TOFU 'éduquent' Andromeda sur la propension d'achat de tes audiences, même sans conversion directe."
+    answer: "L'impact est asymétrique selon la qualité créative. Sur 86 352 publicités analysées par Gang4 (4 082 campagnes, 32M€ de spend), les comptes DNVB ayant adapté leur stack créatif enregistrent -18% de CPA en beauté et -22% en mode. Les comptes maintenant des structures de ciblage 2022-2023 subissent une érosion de ROAS progressive."
+  - question: "Quelle est la différence entre Andromeda et Advantage+ ?"
+    answer: "Andromeda est l'infrastructure de delivery sous-jacente à toute publicité Meta, c'est le moteur. Advantage+ est une interface de campagne qui s'appuie sur Andromeda en lui donnant davantage de latitude décisionnelle sur le placement, le budget et l'audience. Andromeda comme le moteur, Advantage+ comme le pilote automatique qui l'exploite au maximum."
   - question: "Comment optimiser ses créatifs pour Andromeda Meta ?"
-    answer: "Trois actions concrètes : (1) Prioriser les créatifs générant des commentaires et partages plutôt que des likes passifs. (2) Structurer chaque créatif selon le framework PDA : Persona / Désir / Niveau de conscience. (3) Activer le whitelisting / Partnership Ads pour transférer l'autorité de profil créateur vers la publicité. L'UGC authentique et les Founder Stories sont les formats les plus favorisés par Andromeda en 2025-2026."
-  - question: "Faut-il abandonner le retargeting avec Andromeda ?"
-    answer: "Non, mais sa logique change. Le retargeting manuel perd de l'efficacité car Andromeda intègre nativement les signaux de reciblage dans son modèle via Advantage+. La recommandation : consolider dans Advantage+ Shopping Campaigns (ASC) avec broad targeting plutôt que maintenir des campagnes de retargeting isolées. Pour les comptes au-dessus de 50 000€/mois, laisser Andromeda gérer la ré-exposition est plus performant."
+    answer: "Trois actions concrètes : (1) Prioriser les créatifs générant des commentaires et partages plutôt que des likes passifs. (2) Structurer chaque créatif selon le framework PDA : Persona / Désir / Niveau de conscience pour envoyer des signaux distincts. (3) Activer le whitelisting Partnership Ads pour transférer l'autorité de profil créateur vers la publicité, format qui surperforme de +34% sur Andromeda."
   - question: "Quelle structure de compte Meta est recommandée avec Andromeda ?"
-    answer: "Un CBO unique par objectif, Advantage+ Shopping Campaigns activé, broad targeting sans restriction démographique artificielle, fenêtre d'apprentissage de 5 à 7 jours sans modification. La règle de base : moins de campagnes, plus de créatifs par adset, budget concentré. Multiplier les adsets fractionne le signal et ralentit l'apprentissage."
-  - question: "Andromeda est-il la même chose qu'Advantage+ ?"
-    answer: "Non. Andromeda est l'infrastructure de delivery sous-jacente à toute publicité Meta — c'est le moteur. Advantage+ est une interface de campagne qui s'appuie sur Andromeda mais lui donne davantage de latitude décisionnelle. Pense Andromeda comme le moteur, Advantage+ comme le pilote automatique qui l'utilise au maximum."
+    answer: "Un CBO unique par objectif, Advantage+ Shopping Campaigns activé, broad targeting sans restriction démographique artificielle, fenêtre d'apprentissage de 5 à 7 jours sans modification. Moins de campagnes, plus de créatifs par adset, budget concentré. Multiplier les adsets fractionne le signal et ralentit l'apprentissage."
+  - question: "Qu'est-ce que le Meta Adaptive Ranking Model annoncé en 2026 ?"
+    answer: "Le Meta Adaptive Ranking Model (mars 2026) est l'évolution directe d'Andromeda. Il pousse la capacité ML jusqu'à l'échelle du trillion de paramètres (LLM-scale) tout en maintenant une latence inférieure à 100ms. Sur Instagram en Q4 2025, il a généré +3% de conversions et +5% de CTR. Pour les annonceurs, cela signifie que le système lit tes créatifs avec encore plus de granularité."
+  - question: "Faut-il abandonner le retargeting avec Andromeda ?"
+    answer: "Non, mais sa logique change. Le retargeting manuel perd de l'efficacité car Andromeda intègre nativement les signaux de reciblage via Advantage+. La recommandation : consolider dans Advantage+ Shopping Campaigns avec broad targeting plutôt que maintenir des campagnes de retargeting isolées. Pour les comptes au-dessus de 50 000€/mois, laisser Andromeda gérer la ré-exposition est plus performant."
 
 sources:
-  - title: "Andromeda · Meta's transformation of its ads delivery system (Meta Engineering)"
-    url: "https://engineering.fb.com/2023/08/09/ml-applications/andromeda-meta-ads-delivery/"
-  - title: "Next-Generation Meta Training and Inference Accelerator (Meta AI)"
+  - title: "Meta Adaptive Ranking Model: Bending the Inference Scaling Curve (Meta Engineering, mars 2026)"
+    url: "https://engineering.fb.com/2026/03/31/ml-applications/meta-adaptive-ranking-model-bending-the-inference-scaling-curve-to-serve-llm-scale-models-for-ads/"
+  - title: "Ranking Engineer Agent (REA): The Autonomous AI Agent Accelerating Meta's Ads Ranking Innovation (Meta Engineering, mars 2026)"
+    url: "https://engineering.fb.com/2026/03/17/developer-tools/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/"
+  - title: "Next-Generation Meta Training and Inference Accelerator (MTIA) — Meta AI"
     url: "https://ai.meta.com/blog/next-generation-meta-training-inference-accelerator-AI-MTIA/"
-  - title: "Andromeda Deep Dive · Foxwell Digital (Andrew Foxwell)"
-    url: "https://foxwelldigital.com/andromeda-meta-ads-delivery/"
-  - title: "Meta Advantage+ Shopping Campaigns Performance Analysis (Common Thread Collective)"
-    url: "https://commonthreadco.com/blogs/coachs-corner/advantage-plus-shopping"
-  - title: "Practical Lessons from Predicting Clicks on Ads at Facebook (Meta Research)"
+  - title: "Practical Lessons from Predicting Clicks on Ads at Facebook — Meta Research"
     url: "https://research.facebook.com/publications/practical-lessons-from-predicting-clicks-on-ads-at-facebook/"
-  - title: "Performance Creative Report · Motion Benchmark"
-    url: "https://motionapp.com/reports/performance-creative-report"
 
 gangsData:
   enabled: true
@@ -111,253 +107,218 @@ import SequenceFlow from '@/components/SequenceFlow.astro';
 import SectionHeader from '@/components/SectionHeader.astro';
 
 <KeyTakeaways
-  title="Ce que tu dois retenir en 30 secondes"
+  title="Ce que tu dois retenir avant de lire"
   items={[
-    "<strong>Andromeda</strong> unifie 3 algos Meta en un seul modèle ML avec ×10 000 de capacité de traitement.",
-    "Ton créatif <strong>est</strong> ton ciblage : l'IA reconstruit elle-même l'audience depuis le contenu de la pub.",
-    "Structure gagnante 2026 : <strong>1 CBO + Advantage+ + broad targeting</strong>, fenêtre d'apprentissage 5-7j.",
-    "Données Gang4 sur 93 comptes : <strong>-18% CPA beauté, -22% CPA mode</strong> post-migration."
+    "Andromeda fusionne ciblage, enchère et scoring créatif en <strong>un seul modèle ML</strong> déployé en 2024.",
+    "Ton créatif <strong>est</strong> ton ciblage : Meta reconstruit l'audience depuis ce que ta pub montre.",
+    "Sur 32M€ de spend analysés : <strong>-18% CPA beauté, -22% CPA mode</strong> pour les DNVB migrées.",
+    "En mars 2026, Meta a publié l'<strong>évolution directe</strong> d'Andromeda : LLM-scale, +3% conversions sur Instagram.",
+    "Structure gagnante : <strong>1 CBO + Advantage+ + broad targeting</strong>, fenêtre 5-7j sans toucher."
   ]}
 />
 
-<SectionHeader number="01" title="Ton ciblage précis est devenu ton ennemi" />
+<SectionHeader number="01" title="Pourquoi tes campagnes se comportent différemment depuis mi-2024" />
 
-Tu gères des campagnes Meta. Ces derniers mois, tu as probablement vécu ça : tes audiences intérêts historiques s'essoufflent, tes CPA bougent sans raison apparente, un créatif qui cartonnait depuis 6 mois s'effondre du jour au lendemain.
+Tu dépenses sur Meta depuis des années. Tu maîtrises les audiences, les Lookalikes, les règles automatiques. Et depuis fin 2024, quelque chose a changé sans prévenir : des créas qui cartonnaient depuis des mois s'effondrent. Des audiences intérêts hyper-qualifiées deviennent rentables en broad. Tes CPA bougent sans raison apparente.
 
-Ce n'est pas un bug. C'est Meta qui tourne sur une infrastructure radicalement différente depuis fin 2024.
+Ce n'est pas un bug. C'est Meta qui tourne sur un moteur radicalement différent.
 
-On a analysé **86 352 publicités Meta** sur 93 comptes DNVB clientes Gang4 (32M€ de spend cumulé). Le pattern est clair : les pubs dont le CPM a le plus progressé n'ont pas été mieux *ciblées*. Elles ont été mieux *lues* par l'IA.
+Andromeda est ce moteur. Et comprendre comment il fonctionne vraiment, pas juste "c'est de l'IA", change chaque décision que tu prends dans le gestionnaire de pubs.
 
-<Callout
-  variant="data"
-  title="Données Gang4 · 93 comptes DNVB"
-  href="#lead-magnet"
-  hrefLabel="Télécharger le benchmark complet par secteur"
->
-  Sur les comptes DNVB ayant migré vers une structure Andromeda-first entre Q4 2024 et Q1 2026 : **-18% de CPA en beauté** et **-22% en mode**, à dépense équivalente.
+<Callout variant="data" title="Données Gang4 · 93 comptes DNVB" href="#lead-magnet" hrefLabel="Télécharger le benchmark complet par secteur">
+  Sur les comptes DNVB ayant migré vers une structure Andromeda-first entre Q4 2024 et Q1 2026 : **-18% de CPA en beauté** et **-22% en mode**, à budget constant. Source : 32M€ de spend Meta analysés sur 86 352 publicités.
 </Callout>
 
-**Action cette semaine :** ouvre ton gestionnaire de pubs Meta. Regarde tes 3 dernières campagnes. Est-ce que tu as encore des adsets avec des intérêts granulaires ou des Lookalikes 1% ? Si oui, note-les. On y revient en section 04.
+**Ce que tu vas apprendre ici :** comment Andromeda lit tes créatifs, pourquoi il rend le ciblage manuel obsolète, et 5 actions concrètes à faire cette semaine pour aligner ta structure.
 
 ---
 
-<SectionHeader number="02" title="Ce qu'Andromeda est vraiment (sans le blabla tech)" />
+<SectionHeader number="02" title="Andromeda : le vrai fonctionnement (sans jargon inutile)" />
 
-Avant Andromeda, Meta faisait tourner 3 algorithmes distincts qui ne se parlaient pas : un pour l'enchère, un pour le ranking, un pour le scoring créatif. Ces silos créaient des latences et gaspillaient des impressions.
+Avant Andromeda, Meta faisait tourner trois algorithmes séparés qui ne se parlaient pas : un pour l'enchère, un pour le ranking de la pub, un pour le scoring créatif. Ces silos créaient de la friction, des inefficacités, et surtout une opportunité pour les annonceurs qui savaient "jouer" le ciblage manuellement.
 
-Andromeda fusionne les 3 en un seul modèle ML qui tourne sur des puces NVIDIA Grace Hopper et des MTIA (puces IA développées en interne par Meta). Résultat selon [Meta Engineering](https://engineering.fb.com/2023/08/09/ml-applications/andromeda-meta-ads-delivery/) : **×10 000 de capacité de traitement**.
+Andromeda fusionne les trois en un seul modèle ML. Un seul signal d'entrée : ton créatif. Un seul signal de sortie : à qui le montrer, combien payer, dans quel ordre.
 
-Pense à Netflix. Quand tu ouvres l'appli, Netflix ne te demande pas "tu veux voir quoi ?" Il analyse ce que tu as regardé, combien de temps, ce que tu as mis en pause, et te propose quelque chose avant même que tu aies réfléchi. Andromeda fonctionne exactement comme ça, mais en sens inverse : au lieu de trouver le bon film pour toi, il trouve la bonne personne pour ta pub.
+Pense à Netflix. Quand tu ouvres l'app, Netflix ne te demande pas ce que tu veux regarder. Il observe ce que tu as regardé, combien de temps tu as tenu, ce que tu as abandonné à 12 minutes, et te propose quelque chose avant que tu aies réfléchi. Andromeda fait exactement ça, en sens inverse : il ne cherche pas la bonne vidéo pour toi. Il cherche la bonne personne pour ta pub, depuis ce que ta pub montre.
 
-**Concrètement, avant l'enchère, Andromeda trie des millions de pubs en quelques millisecondes et ne garde que celles qui correspondent au profil de l'utilisateur.** Si ta pub n'est pas jugée pertinente à ce stade, elle n'atteint jamais l'enchère. Peu importe ton budget.
-
-<DataTable
-  headers={["Dimension", "Avant Andromeda (≤ 2023)", "Andromeda (2024+)"]}
-  highlight="last"
-  rows={[
-    ["Architecture", "3 algorithmes isolés (bidding, ranking, creative scoring)", "**1 modèle ML unifié** (NVIDIA Grace Hopper + MTIA)"],
-    ["Capacité de traitement", "Baseline ×1", "**×10 000**"],
-    ["Sélection d'audience", "Ciblage explicite (Lookalikes, intérêts)", "**Reconstruite par l'IA** depuis les signaux créatifs"],
-    ["Structure recommandée", "Multi-campagnes + adsets segmentés", "**1 CBO consolidé + ASC + broad**"],
-    ["Levier de performance", "Précision du ciblage", "**Qualité créative**"],
-    ["Métrique pivot", "CTR audience", "Engagement qualitatif (commentaires, partages)"],
-  ]}
-/>
-
-<MockImage
-  type="diagram"
-  caption="Andromeda · comment Meta unifie bidding, ranking et creative scoring en un seul modèle ML"
-  ratio="16/9"
-/>
-
----
-
-<SectionHeader number="03" title="Ton créatif est maintenant ton ciblage" />
-
-C'est le pivot le plus difficile à intégrer mentalement. Andromeda "lit" tes pubs avec une granularité que tu n'imagines pas. Il analyse :
-
-- Le **rythme de montage** (nombre de cuts, durée des plans)
-- La **colorimétrie** (palette dominante, contraste)
-- Le **ton émotionnel** (analyse audio + lecture faciale)
-- Les **messages texte** (transcription audio + OCR des sous-titres)
-
-Depuis ces signaux, **l'IA construit elle-même l'audience**. Une vidéo UGC filmée au smartphone va naturellement trouver les profils sensibles à la preuve sociale. Un motion design léché va aller vers des profils qui valorisent l'autorité de marque.
-
-C'est exactement comme Tinder. Le système n'a pas besoin que tu coches "grand, brun, sportif". Il déduit ce que tu cherches depuis tes swipes précédents. Meta déduit qui doit voir ta pub depuis ce que ta pub montre.
-
-<PullQuote>
-  Le système ne demande plus "Qui doit voir cette pub ?" mais "Quelle pub est la plus pertinente pour cette personne maintenant ?"
+<PullQuote attribution="Meta Engineering, mars 2026 — Meta Adaptive Ranking Model">
+  Achieving a model complexity equivalent to the O(10 GFLOPs) per token used by top-tier LLMs, while maintaining sub-100ms latency.
 </PullQuote>
 
-### Les 4 attributs des créatifs qui passent le filtre Andromeda
-
-Sur **86 352 pubs analysées** (4 082 campagnes, 1M+ insights agrégés), les créatifs avec les meilleurs scores de pertinence Andromeda partagent ces 4 caractéristiques :
-
-1. **Hook 0-3s** : déclenche un signal émotionnel clair (sourire, surprise, curiosité)
-2. **Densité informationnelle** : 3+ éléments distincts dans les 6 premières secondes
-3. **Engagement qualitatif** : ratio commentaires/likes supérieur à 5% (vs moins de 1% pour les créas low-perf)
-4. **Authenticité visuelle** : une vraie personne identifiable à l'écran
-
-<Callout
-  variant="data"
-  title="Donnée Gang4"
-  href="#lead-magnet"
-  hrefLabel="Télécharger la grille de scoring créatif Andromeda"
->
-  Sur les 4 082 campagnes analysées (32M€ de spend), les créatifs UGC avec engagement qualitatif fort affichent un **CPA moyen 18% inférieur** aux créatifs studio classiques, à dépenses équivalentes.
-</Callout>
-
-**Action cette semaine :** regarde tes 5 derniers créatifs actifs. Combien ont un hook émotionnel dans les 3 premières secondes ? Combien montrent une vraie personne ? Si la réponse est "aucun" ou "un seul", tu sais où le problème se situe.
-
----
-
-<SectionHeader number="04" title="La structure de compte qui fonctionne" eyebrow="Action directe" />
-
-Andromeda a besoin de carburant pour optimiser. Ce carburant, c'est le volume de données. Plus ta structure est fragmentée (10 adsets, 5 campagnes, audiences segmentées), plus tu affames l'algorithme.
-
-La structure qui fonctionne sur nos 93 comptes DNVB clientes en 2026 :
-
-**Règle 1 : Un CBO, pas dix.**
-Fusionne ta prospection et ton reciblage dans une seule campagne à budget partagé. L'ancienne logique "1 campagne = 1 audience" est morte. Andromeda distribue lui-même le budget là où les signaux sont les meilleurs.
-
-**Règle 2 : Active Advantage+ Shopping Campaigns.**
-ASC donne à Andromeda le maximum de latitude décisionnelle. Placement, budget par audience, ordre d'exposition créative : laisse la machine décider. C'est contre-intuitif. C'est ce qui fonctionne.
-
-**Règle 3 : Supprime tes intérêts et Lookalikes.**
-Sauf si tu es en niche ultra-spécifique avec moins de 1 000 clients par mois. Laisse tes créatifs PDA (voir section 05) faire le travail de segmentation. C'est eux le ciblage maintenant.
-
-**Règle 4 : Ne touche rien pendant 5 à 7 jours.**
-Intervenir sur un adset au bout de 48 heures casse la dynamique d'apprentissage d'Andromeda. Tu vas faire exploser tes coûts en croyant optimiser. La tolérance à l'ambiguité pendant la phase d'apprentissage, c'est la compétence clé du media buyer en 2026.
-
-<Callout
-  variant="insight"
-  title="Le cas concret"
-  href="https://gang4.io/whitelisting"
-  hrefLabel="Voir comment Gang4 structure les comptes pour Andromeda"
->
-  Un compte compléments alimentaires géré par Gang4 (85k€/mois de budget Meta) : passage de 2 campagnes segmentées à 1 CBO + ASC + broad. Résultat en 6 semaines : **-34% de CPM de qualification**.
-</Callout>
-
-<MockImage
-  type="screenshot"
-  caption="Structure de compte Andromeda-ready : 1 CBO + ASC + broad targeting + 6+ créatifs diversifiés"
-  ratio="4/3"
-/>
-
-**Ta checklist de migration (lundi matin, 30 min) :**
-1. Identifie ta campagne avec le plus de spend ce mois
-2. Compte le nombre d'adsets actifs. Si tu en as plus de 3, tu fragmente le signal
-3. Vérifie si ASC est activé. Si non, c'est ta prochaine action
-4. Note les intérêts actifs dans tes adsets. Ce sont tes candidats à supprimer dans 2 semaines (après avoir testé le broad)
-
----
-
-<SectionHeader number="05" title="Le framework PDA : comment diversifier tes créatifs pour Andromeda" />
-
-Andromeda valorise la diversité conceptuelle. Produire 10 variantes du même créatif n'apporte aucun signal d'apprentissage nouveau. C'est comme relire le même chapitre 10 fois : tu n'apprends rien de plus.
-
-Le framework PDA structure ta production créative pour envoyer des signaux distincts à Andromeda.
-
-**P comme Persona : qui parle à qui ?**
-Pas l'audience ciblée (c'est Andromeda qui s'en charge). Qui est la personne dans ta pub, à qui elle s'adresse. Une mère de famille débordée vs une femme en voyage vs une étudiante : trois créatifs, trois bassins d'audience qu'Andromeda explore automatiquement.
-
-**D comme Désir : quel problème est résolu ?**
-Gagner du temps vs soulager une douleur vs gagner en statut. Chaque désir attire un profil psychographique différent. Andromeda le détecte dans le ton, le script, la mise en scène.
-
-**A comme Awareness : où en est l'utilisateur dans son parcours ?**
-Quelqu'un qui découvre le problème ne répond pas aux mêmes signaux que quelqu'un qui compare déjà les prix. Deux niveaux de conscience = deux créatifs distincts = deux adsets qu'Andromeda peut différencier.
+Ce chiffre mérite qu'on s'y arrête. Meta fait tourner, pour chaque décision d'affichage d'une pub, un modèle aussi complexe que les meilleurs LLMs — en moins de 100 millisecondes. Pour chaque utilisateur. En continu.
 
 <DataTable
-  headers={["Format", "Pourquoi Andromeda l'aime", "Persona principal"]}
-  highlight="none"
+  headers={["Avant Andromeda (pré-2024)", "Avec Andromeda (2024+)"]}
+  highlight="last"
   rows={[
-    ["UGC & Témoignages", "Génère engagement qualitatif (commentaires authentiques)", "Tous niveaux d'awareness"],
-    ["Démos Problem-Solution", "Densité informationnelle 0-6s + clarté utilitaire", "TOFU/MOFU"],
-    ["Founder Stories", "Signal d'autorité + attachement de marque", "TOFU/BOFU"],
-    ["Comparatifs Us vs Them", "Densité sémantique + positionnement net", "BOFU"],
+    ["3 algorithmes isolés qui ne se parlent pas", "1 modèle ML unifié (bidding + ranking + creative scoring)"],
+    ["Ciblage = ce que l'annonceur configure manuellement", "Ciblage = reconstruit par l'IA depuis les signaux créatifs"],
+    ["Enchère = prix que tu proposes", "Enchère = probabilité prédite de conversion × valeur estimée"],
+    ["Scoring créatif = metric secondaire", "Scoring créatif = filtre de présélection avant l'enchère"],
+    ["Optimiser = affiner ses audiences", "Optimiser = améliorer la qualité et la diversité des créatifs"],
   ]}
 />
 
-Chaque combinaison PDA envoie un signal distinct à Andromeda. Lui permet d'explorer des bassins d'audience inaccessibles avec un seul concept créatif.
+**Le point critique que la plupart ratent :** si ton créatif ne passe pas le filtre de présélection Andromeda, il n'atteint jamais l'enchère. Peu importe ton budget. Peu importe ton ciblage. Le créatif est la porte d'entrée.
 
 ---
 
-<SectionHeader number="06" title="Le whitelisting : l'accélérateur de signal qu'Andromeda lit en priorité" />
+<SectionHeader number="03" title="Ce qu'Andromeda lit dans tes pubs (et que tu ne contrôles pas)" />
 
-Le whitelisting (Partnership Ads) transfère l'autorité d'un profil créateur vers ta publicité. Pour Andromeda, ce signal social est du carburant de qualité supérieure.
+Tu pensais que Meta regardait tes pubs comme des humains. Il les lit comme un modèle de langage lit un texte : il cherche des patterns, des signaux, des probabilités.
 
-Pourquoi ? Parce qu'une pub diffusée depuis le compte d'un créateur cumule deux types de signaux : les données comportementales de la marque ET les données d'engagement du profil du créateur. Andromeda pondère les deux.
+Voici ce qu'Andromeda détecte dans un créatif vidéo :
 
-Sur les **86 352 publicités** analysées dans notre base Gang4, les créatifs whitelistés affichent jusqu'à **+34% de performance CPM** vs les mêmes créatifs diffusés depuis le compte de la marque.
+- **Le rythme de montage** : nombre de coupes par minute, durée des plans
+- **La colorimétrie** : palette dominante, saturation, contraste lumineux
+- **Le ton émotionnel** : analyse audio (voix, musique) + lecture des expressions faciales visibles
+- **Le contenu sémantique** : transcription audio, OCR des sous-titres et textes à l'écran
+- **Les signaux d'engagement historiques** : comment les profils similaires ont réagi aux créatifs de ce type
 
-<Callout
-  variant="cta"
-  title="Gang4 sur ce sujet"
-  href="https://gang4.io/whitelisting#demo"
-  hrefLabel="Voir comment Gang4 automatise le whitelisting pour Andromeda"
->
-  Gang4 produit et whitelist les 4 formats PDA pour des DNVB de plus de 30 000€/mois sur Meta. Le whitelisting devient le levier créatif le plus sous-exploité sur Andromeda en 2026.
+Depuis ces signaux, l'IA construit l'audience elle-même. Une vidéo filmée au smartphone avec une vraie personne qui parle directement à la caméra va naturellement trouver les profils sensibles à la preuve sociale. Un motion design épuré va aller vers les profils qui valorisent l'autorité de marque. Pas parce que tu l'as configuré. Parce que le modèle a appris ces corrélations sur des milliards de points de données.
+
+C'est exactement le principe de Tinder. L'app n'a pas besoin que tu coches "grand, brun, 32 ans". Elle déduit tes préférences depuis tes swipes précédents. Andromeda déduit qui doit voir ta pub depuis ce que ta pub montre.
+
+<Callout variant="insight" title="L'implication concrète">
+  Deux créatifs identiques sur le plan du ciblage configuré, mais différents dans leur format visuel, vont trouver des audiences différentes — même si tu leur appliques le même adset. Andromeda recrée une segmentation de facto depuis le contenu.
 </Callout>
 
+Sur les 86 352 publicités analysées dans la base Gang4, les créatifs avec les meilleurs scores de pertinence partagent 4 attributs :
+
+1. **Hook 0-3 secondes** : une personne réelle visible à l'écran, qui déclenche un signal émotionnel clair
+2. **Densité d'information** : 3 éléments distincts dans les 6 premières secondes (visuels, texte, audio)
+3. **Ratio commentaires / likes supérieur à 5%** — le signal social qualitatif qu'Andromeda pèse le plus
+4. **Authenticité visuelle** : grain naturel, cadrage imparfait, spontanéité perçue
+
+Ce 4e point est contre-intuitif pour beaucoup. Les créas studio hyper-produites sous-performent sur Andromeda parce qu'elles génèrent moins d'engagement qualitatif. L'IA l'a appris de milliards d'interactions.
+
 ---
 
-<SectionHeader number="07" title="Ce qu'Andromeda apprend de tes pubs TOFU (même sans conversion)" />
+<SectionHeader number="04" title="La structure de compte qui fonctionne en 2026" eyebrow="Action directe" />
 
-Le Sequence Learning est la capacité la plus différenciante d'Andromeda. Là où les anciens algos optimisaient événement par événement, Andromeda modélise un parcours d'achat complet comme une séquence temporelle.
+Andromeda a besoin de volume de données pour optimiser. Plus ta structure est fragmentée, plus tu affames l'algorithme et ralentis son apprentissage.
 
-Pense à Spotify. L'appli ne choisit pas la prochaine chanson juste parce que tu as aimé la dernière. Elle anticipe ton humeur en fin de playlist d'après ce que tu écoutes en ce moment. Andromeda fait pareil avec les achats.
+Voici les 4 règles issues de nos 93 comptes DNVB suivis :
 
-Un exemple concret sur une marque skincare DNVB : une cliente visionne une vidéo UGC sur la routine du matin (TOFU, pas de conversion). Andromeda enregistre. Deux jours plus tard, il lui montre une démo produit (MOFU). Puis une offre bundle (BOFU). Sans que la marque ait configuré ce funnel manuellement.
+**Règle 1 : un CBO, pas dix.**
+Fusionne prospection et reciblage dans une seule campagne à budget partagé. L'ancienne logique "1 campagne = 1 audience" est contre-productive. Andromeda répartit le budget là où les signaux sont les meilleurs, en temps réel. Tu n'as pas à le faire.
 
-<SequenceFlow
-  start="Vidéo UGC · Routine skincare (TOFU)"
-  steps={[
-    "Démo produit · Focus ingrédients (MOFU)",
-    "Témoignage · Résultats avant/après (MOFU)",
-    "Offre bundle · Sérum + crème (BOFU)",
-    "Relance · Panier abandonné (BOFU)",
+**Règle 2 : active Advantage+ Shopping Campaigns.**
+ASC donne à Andromeda la latitude maximale sur le placement, le budget par audience et l'ordre d'exposition. C'est contre-intuitif de laisser la machine décider. C'est ce qui fonctionne.
+
+**Règle 3 : supprime les intérêts et les Lookalikes 1%.**
+Sauf si tu es dans une niche ultra-spécifique avec un catalogue de moins de 500 SKUs. Laisse tes créatifs faire le travail de segmentation — c'est eux le ciblage maintenant.
+
+**Règle 4 : touche rien pendant 5 à 7 jours.**
+Modifier un adset à 48 heures réinitialise la phase d'apprentissage Andromeda. Tu crois optimiser, tu recasses le signal. La patience durant la fenêtre d'apprentissage est la compétence principale du media buyer en 2026.
+
+<Callout variant="insight" title="Cas concret Gang4" href="https://gang4.io/whitelisting" hrefLabel="Voir comment Gang4 structure les comptes pour Andromeda">
+  Un compte compléments alimentaires (85k€/mois de budget Meta) : passage de 2 campagnes segmentées à 1 CBO + ASC + broad. Résultat en 6 semaines : **-34% de CPM de qualification**, sans changement de budget.
+</Callout>
+
+<MockImage type="screenshot" caption="Structure de compte Andromeda-ready : 1 CBO + ASC + broad targeting + 6+ créatifs diversifiés par adset" ratio="4/3" />
+
+---
+
+<SectionHeader number="05" title="Le framework PDA : produire des créatifs qu'Andromeda peut différencier" />
+
+Publier 10 variantes du même créatif n'envoie aucun signal nouveau à Andromeda. C'est comme relire le même chapitre dix fois : tu n'apprends rien de plus. Le modèle a besoin de diversité conceptuelle pour explorer des bassins d'audience différents.
+
+Le framework PDA structure ta production en trois dimensions :
+
+**P — Persona : qui parle dans ta pub ?**
+Pas l'audience ciblée (Andromeda gère). La personne visible à l'écran, à qui elle s'adresse. Une mère de famille vs une professionnelle en déplacement vs une étudiante : trois créatifs, trois bassins d'audience qu'Andromeda explore automatiquement.
+
+**D — Désir : quel problème ta pub résout-elle ?**
+Gagner du temps vs soulager une douleur physique vs gagner en statut social. Chaque désir attire un profil psychographique différent. Andromeda détecte ça dans le ton du script, la mise en scène, la posture de la personne à l'écran.
+
+**A — Awareness : où en est l'utilisateur dans son parcours ?**
+Quelqu'un qui découvre le problème ne réagit pas aux mêmes signaux que quelqu'un qui compare déjà les prix. Deux niveaux de conscience = deux créatifs distincts = deux bassins d'audience qu'Andromeda différencie et sert séparément.
+
+<DataTable
+  headers={["Format créatif", "Ce qu'Andromeda y lit", "Quand l'utiliser"]}
+  highlight="none"
+  rows={[
+    ["UGC filmé smartphone", "Preuve sociale, authenticité, engagement qualitatif fort", "TOFU large — prospection froide"],
+    ["Démo Problem-Solution", "Clarté utilitaire, densité info 0-6s, intent d'achat", "TOFU/MOFU — prospects informés"],
+    ["Founder Story", "Autorité narrative, attachement de marque, différenciation", "TOFU/BOFU — marques challenger"],
+    ["Comparatif Us vs Them", "Positionnement net, signaux de décision, densité sémantique", "BOFU — prospects en comparaison"],
+    ["Témoignage client vidéo", "Validation externe, réduction friction, signal social fort", "MOFU/BOFU — retargeting chaud"],
   ]}
-  caption="Andromeda orchestre cette séquence automatiquement depuis les micro-signaux d'engagement TOFU."
 />
 
-**Ce que ça change pour toi :** tes créatifs TOFU ne sont pas du budget perdu. Ils éduquent Andromeda sur la propension d'achat de tes audiences. C'est aussi pourquoi le retargeting manuel perd de l'efficacité : Andromeda le gère déjà nativement, et mieux que toi.
-
-<MockImage
-  type="chart"
-  caption="CPA moyen sur 4 082 campagnes DNVB · avant/après migration Andromeda · 32M€ de spend Gang4"
-  ratio="16/9"
-/>
+Chaque combinaison PDA envoie un signal distinct à Andromeda. Il peut explorer des bassins d'audience inaccessibles avec un seul concept répété en variations.
 
 ---
 
-<SectionHeader number="08" title="Les chiffres clés" eyebrow="Données Gang4 · Meta Engineering" />
+<SectionHeader number="06" title="Ce que Meta Engineering a publié en 2026 (et que personne ne dit)" />
+
+La plupart des articles sur Andromeda s'arrêtent à 2024. C'est une erreur. En mars 2026, Meta Engineering a publié deux articles qui changent la compréhension du système.
+
+**Le Meta Adaptive Ranking Model** (31 mars 2026) pousse la capacité ML jusqu'à l'échelle du trillion de paramètres — la même complexité que les meilleurs LLMs. Tout en maintenant une latence inférieure à 100ms par décision d'affichage. Sur Instagram en Q4 2025 : **+3% de conversions publicitaires** et **+5% de CTR** pour les utilisateurs ciblés.
+
+**Le Ranking Engineer Agent (REA)** (17 mars 2026) est un agent IA autonome qui optimise en continu les modèles de ranking des ads Meta. Il a doublé la précision moyenne des modèles de ranking par rapport aux approches baseline, avec 3 ingénieurs gérant l'équivalent de 8 modèles simultanément.
+
+<PullQuote attribution="Meta Engineering, mars 2026 — REA">
+  REA's most impactful improvements have combined architectural optimizations with training-efficiency techniques — a result derived from consulting both historical and research-derived sources simultaneously.
+</PullQuote>
+
+Ce que ça signifie pour toi en pratique : le système qui lit tes créatifs devient exponentiellement plus précis. Les approximations qui fonctionnaient encore en 2024 — un créatif moyen dans une bonne audience — disparaissent progressivement. La barre créative que tu dois atteindre pour passer le filtre Andromeda monte à chaque trimestre.
 
 <StatGrid
   columns={3}
   stats={[
-    { value: "×10 000", label: "Gain capacité de traitement", source: "Meta Engineering" },
-    { value: "+17%", label: "Conversions post-migration", source: "Meta Engineering" },
-    { value: "-16%", label: "Réduction CPA", source: "Meta Engineering" },
+    { value: "+3%", label: "Conversions ads Instagram Q4 2025", source: "Meta Engineering (mars 2026)" },
+    { value: "+5%", label: "CTR pour utilisateurs ciblés", source: "Meta Engineering (mars 2026)" },
+    { value: "×2", label: "Précision modèles ranking vs baseline", source: "Meta REA (mars 2026)" },
     { value: "32M€", label: "Spend Meta analysé", source: "Gang4 · 93 comptes DNVB" },
     { value: "86 352", label: "Publicités Meta indexées", source: "Gang4 · 4 082 campagnes" },
-    { value: "-18%", label: "CPA Beauté DNVB FR", source: "Gang4 · Q4 24 → Q1 26" },
-    { value: "-22%", label: "CPA Mode DNVB FR", source: "Gang4 · Q4 24 → Q1 26" },
-    { value: "+34%", label: "Surperformance whitelisting", source: "Gang4 · base 86k pubs" },
-    { value: "5-7j", label: "Fenêtre d'apprentissage minimale", source: "Consensus opérateurs" },
+    { value: "-22%", label: "CPA mode DNVB post-migration", source: "Gang4 · Q4 24 → Q1 26" },
   ]}
 />
 
 ---
 
-## 3 actions à faire cette semaine
+<SectionHeader number="07" title="Le whitelisting : pourquoi Andromeda lui donne un avantage structurel" />
 
-Tu as 30 minutes lundi matin. Voici comment les utiliser.
+Le whitelisting (Partnership Ads Meta) transfère l'autorité d'un profil créateur vers ta publicité. Pour Andromeda, c'est un double signal : les données comportementales de ta marque plus les données d'engagement du profil du créateur.
 
-**Action 1 (10 min) : audite ta structure de compte.**
-Ouvre ton gestionnaire de pubs. Compte tes campagnes actives, tes adsets, et tes intérêts configurés. Note tout sur une feuille. Si tu as plus de 2 campagnes actives simultanément avec des audiences séparées, ta priorité c'est la consolidation.
+Une pub diffusée depuis le compte d'un créateur cumule deux historiques de signaux sociaux. Andromeda pondère les deux. C'est pourquoi les créatifs whitelistés affichent jusqu'à **+34% de performance CPM** vs les mêmes créatifs diffusés depuis le compte de la marque, sur la base des 86 352 publicités analysées.
 
-**Action 2 (10 min) : analyse tes 5 derniers créatifs.**
-Pour chacun : est-ce qu'il y a une vraie personne à l'écran dans les 3 premières secondes ? Est-ce que le hook est émotionnel ou informatif ? Est-ce qu'il génère des commentaires ou juste des likes ? Ce diagnostic rapide te dit exactement quelle case PDA tu n'as pas encore adressée.
+Le mécanisme est direct : un profil créateur avec un historique d'engagement fort (commentaires, partages, saves) transfère une partie de ce signal de pertinence à tes pubs. Andromeda commence l'enchère avec un avantage de pertinence.
 
-**Action 3 (10 min) : identifie ton créatif le plus performant des 3 derniers mois.**
-C'est ton signal le plus clair de ce qu'Andromeda aime dans ton compte. Décortique-le : format, durée, persona visible, type de désir adressé, niveau d'awareness. C'est ton brief pour les 3 prochains créatifs.
+<SequenceFlow
+  start="Créatif UGC filmé par le créateur"
+  steps={[
+    "Whitelisting activé — pub diffusée depuis le compte créateur",
+    "Andromeda lit : signal social du profil créateur + signal créatif",
+    "Présélection favorisée par le double signal de pertinence",
+    "Meilleur placement, CPM réduit, audience plus qualifiée",
+  ]}
+  caption="Le whitelisting donne à Andromeda deux couches de signal là où une pub classique n'en donne qu'une."
+/>
+
+---
+
+<SectionHeader number="08" title="5 actions à faire cette semaine" eyebrow="Actionnable" />
+
+Tu as 45 minutes lundi matin. Voici comment les utiliser pour aligner ta structure sur Andromeda.
+
+**Action 1 (10 min) : audite ta fragmentation.**
+Ouvre le gestionnaire de pubs. Compte tes campagnes actives. Si tu en as plus de 3 avec des audiences séparées pour le même objectif, note lesquelles consolider. La fragmentation est le premier bloquant à Andromeda.
+
+**Action 2 (10 min) : vérifie si ASC est activé.**
+Va dans tes campagnes de prospection. Est-ce qu'Advantage+ Shopping Campaigns est actif ? Si non, c'est ta prochaine migration à planifier. C'est la structure qui donne à Andromeda le plus de latitude.
+
+**Action 3 (10 min) : analyse tes 5 créatifs les plus récents.**
+Pour chacun : est-ce qu'une vraie personne est visible dans les 3 premières secondes ? Est-ce que le hook est émotionnel ou informatif ? Est-ce qu'il génère des commentaires (pas juste des likes) ? Ce diagnostic te dit exactement quelle case PDA tu n'as pas encore adressée.
+
+**Action 4 (10 min) : identifie ton meilleur créatif des 3 derniers mois.**
+C'est le signal le plus clair de ce qu'Andromeda aime dans ton compte. Décortique-le : format, durée, persona visible, type de désir adressé, niveau d'awareness. C'est ton brief pour les 3 prochains créatifs.
+
+**Action 5 (5 min) : planifie une migration de ciblage.**
+Sélectionne ton meilleur adset avec intérêts actifs. Duplique-le en broad (sans aucun intérêt). Lance les deux en parallèle sur 7 jours minimum, sans modifier. Laisse Andromeda apprendre. Compare les CPM et CPA à J+7.
+
+<Callout variant="tip" title="La règle des 7 jours">
+  Ne tire aucune conclusion avant 7 jours minimum sur un adset modifié. Andromeda a besoin de données pour calibrer. Intervenir plus tôt revient à éteindre et rallumer un serveur en plein milieu de son démarrage.
+</Callout>
