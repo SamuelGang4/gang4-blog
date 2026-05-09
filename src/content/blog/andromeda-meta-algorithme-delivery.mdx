@@ -23,7 +23,7 @@ volumeFR: 320
 keywordDifficulty: 0
 intent: "informational"
 
-directAnswer: "Andromeda est le moteur de delivery unifié de Meta, déployé en 2024. Il fusionne ciblage, enchère et scoring créatif en un seul modèle IA. Résultat concret : ton créatif est devenu ton ciblage. Les DNVB qui ont migré enregistrent -18% de CPA en beauté et -22% en mode sur 32M€ de spend analysés."
+directAnswer: "Andromeda est le moteur de delivery unifié de Meta, déployé en 2024. Il fusionne ciblage, enchère et scoring créatif en un seul modèle IA. Résultat concret : ton créatif est devenu ton ciblage. Sur 32M€ de spend Meta analysés et 86 352 publicités indexées par Gang4, les marques qui restent sur les anciennes recettes 2022-2023 voient leur ROAS s'éroder progressivement."
 
 readingTimeMinutes: 7
 
@@ -64,7 +64,7 @@ faq:
   - question: "Andromeda Meta remplace-t-il le ciblage par centres d'intérêt ?"
     answer: "Fonctionnellement, oui. Andromeda réduit l'avantage compétitif des audiences ultra-précises car le modèle IA reconstruit lui-même l'audience optimale à partir des signaux créatifs. Les audiences d'intérêts restent disponibles mais leur surperformance historique s'est érodée depuis mi-2024. Le broad targeting consolidé via CBO surperforme dans la majorité des cas."
   - question: "Quel impact Andromeda a-t-il sur le CPA des campagnes Meta ?"
-    answer: "L'impact est asymétrique selon la qualité créative. Sur 86 352 publicités analysées par Gang4 (4 082 campagnes, 32M€ de spend), les comptes DNVB ayant adapté leur stack créatif enregistrent -18% de CPA en beauté et -22% en mode. Les comptes maintenant des structures de ciblage 2022-2023 subissent une érosion de ROAS progressive."
+    answer: "L'impact est asymétrique selon la qualité créative. Sur 86 352 publicités analysées par Gang4 (4 082 campagnes, 32M€ de spend), les comptes DNVB qui ont adapté leur stack créatif (UGC, whitelisting, broad targeting consolidé) maintiennent leurs performances. À l'inverse, les comptes restant sur les structures 2022-2023 (ciblage par intérêts fragmenté, multi-adsets) subissent une érosion progressive de leur ROAS."
   - question: "Quelle est la différence entre Andromeda et Advantage+ ?"
     answer: "Andromeda est l'infrastructure de delivery sous-jacente à toute publicité Meta, c'est le moteur. Advantage+ est une interface de campagne qui s'appuie sur Andromeda en lui donnant davantage de latitude décisionnelle sur le placement, le budget et l'audience. Andromeda comme le moteur, Advantage+ comme le pilote automatique qui l'exploite au maximum."
   - question: "Comment optimiser ses créatifs pour Andromeda Meta ?"
@@ -109,7 +109,7 @@ import SectionHeader from '@/components/SectionHeader.astro';
   items={[
     "Andromeda fusionne ciblage, enchère et scoring créatif en <strong>un seul modèle IA</strong> déployé en 2024.",
     "Ton créatif <strong>est</strong> ton ciblage : Meta reconstruit l'audience depuis ce que ta pub montre.",
-    "Sur 32M€ de spend analysés : <strong>-18% CPA beauté, -22% CPA mode</strong> pour les DNVB migrées.",
+    "Sur 32M€ de spend analysés et 86 352 publicités indexées : les DNVB qui ont migré <strong>maintiennent leur ROAS</strong>, celles qui restent sur les recettes 2022-2023 le voient <strong>s'éroder</strong>.",
     "En mars 2026, Meta a publié l'<strong>évolution directe</strong> d'Andromeda : LLM-scale, +3% conversions sur Instagram.",
     "Structure gagnante : <strong>1 CBO + Advantage+ + broad targeting</strong>, fenêtre 5-7j sans toucher."
   ]}
@@ -123,8 +123,8 @@ Ce n'est pas un bug. C'est Meta qui tourne sur un moteur radicalement différent
 
 Andromeda est ce moteur. Et comprendre comment il fonctionne vraiment, pas juste "c'est de l'IA", change chaque décision que tu prends dans le gestionnaire de pubs.
 
-<Callout variant="data" title="Données Gang4 · 93 comptes DNVB">
-  Sur les comptes DNVB ayant migré vers une structure Andromeda-first entre Q4 2024 et Q1 2026 : **-18% de CPA en beauté** et **-22% en mode**, à budget constant. Source : 32M€ de spend Meta analysés sur 86 352 publicités.
+<Callout variant="data" title="Ce qu'on observe sur 50+ comptes DNVB">
+  Sur 32M€ de spend Meta analysés sur 86 352 publicités, le pattern est clair : **les comptes qui ont migré vers une structure Andromeda-first** (1 CBO + ASC + broad + diversité créative) **maintiennent leurs performances**, ceux qui restent sur les anciennes recettes voient leur ROAS s'éroder mois après mois.
 </Callout>
 
 **Ce que tu vas apprendre ici :** comment Andromeda lit tes créatifs, pourquoi il rend le ciblage manuel obsolète, et 5 actions concrètes à faire cette semaine pour aligner ta structure.
@@ -267,9 +267,9 @@ Ce que ça signifie pour toi en pratique : le système qui lit tes créatifs dev
     { value: "+3%", label: "Conversions ads Instagram Q4 2025", source: "Meta Engineering (mars 2026)" },
     { value: "+5%", label: "CTR pour utilisateurs ciblés", source: "Meta Engineering (mars 2026)" },
     { value: "×2", label: "Précision modèles ranking vs baseline", source: "Meta REA (mars 2026)" },
-    { value: "32M€", label: "Spend Meta analysé", source: "Gang4 · 93 comptes DNVB" },
+    { value: "32M€", label: "Spend Meta analysé", source: "Gang4 · 50+ comptes DNVB" },
     { value: "86 352", label: "Publicités Meta indexées", source: "Gang4 · 4 082 campagnes" },
-    { value: "-22%", label: "CPA mode DNVB post-migration", source: "Gang4 · Q4 24 → Q1 26" },
+    { value: "1M+", label: "Insights Meta agrégés", source: "Gang4 · base data propriétaire" },
   ]}
 />
 
