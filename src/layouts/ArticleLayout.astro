@@ -8,6 +8,7 @@ import StickyCTA from '../components/StickyCTA.astro';
 import NewsletterInline from '../components/NewsletterInline.astro';
 import AuthorCard from '../components/AuthorCard.astro';
 import SidebarLeadMagnet from '../components/SidebarLeadMagnet.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 
 interface Props {
   entry: CollectionEntry<'blog'>;
@@ -143,17 +144,20 @@ if (data.schema.enableFAQPage && data.faq.length > 0) {
           <DirectAnswerBlock answer={data.directAnswer} keyword={data.keywordPrincipal} />
         )}
 
-        <!-- Lead magnet inline mobile (sidebar masquée sur mobile) -->
-        {data.leadMagnet && (
-          <div class="lg:hidden my-8">
-            <SidebarLeadMagnet leadMagnet={data.leadMagnet} />
-          </div>
-        )}
+        <!-- TOC mobile (sticky CTA et sidebar lead magnet remontés en bas pour ne pas couper le flow lecture) -->
+        <TableOfContents />
 
         <!-- Content -->
         <div class="prose prose-invert prose-lg max-w-none">
           <slot />
         </div>
+
+        <!-- Lead magnet inline mobile (placé après le contenu pour ne pas casser le flow de lecture initial) -->
+        {data.leadMagnet && (
+          <div class="lg:hidden my-8">
+            <SidebarLeadMagnet leadMagnet={data.leadMagnet} />
+          </div>
+        )}
 
         <!-- Newsletter inline (lead magnet général en fin de contenu) -->
         <NewsletterInline />

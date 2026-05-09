@@ -1,0 +1,53 @@
+---
+/**
+ * StatGrid — Mise en valeur visuelle de chiffres clés
+ *
+ * Remplace les tableaux à colonne unique de stats par un grid scannable.
+ * Idéal pour les "synthèses chiffrées" qui sinon sont noyées dans un tableau de 9 lignes.
+ *
+ * Usage MDX :
+ * <StatGrid stats={[
+ *   { value: "×10 000", label: "Gain capacité de traitement", source: "Meta Engineering" },
+ *   { value: "+17%", label: "Conversions post-migration", source: "Meta Engineering" },
+ *   { value: "-18%", label: "CPM avec >15 commentaires", source: "Données Gang4" },
+ * ]} />
+ */
+
+interface Stat {
+  value: string;
+  label: string;
+  source?: string;
+  trend?: 'up' | 'down' | 'neutral';
+}
+
+interface Props {
+  stats: Stat[];
+  columns?: 2 | 3 | 4;
+}
+
+const { stats, columns = 3 } = Astro.props;
+
+const colsClass = {
+  2: 'sm:grid-cols-2',
+  3: 'sm:grid-cols-2 lg:grid-cols-3',
+  4: 'sm:grid-cols-2 lg:grid-cols-4',
+}[columns];
+---
+
+<div class={`not-prose my-8 grid grid-cols-1 ${colsClass} gap-3 md:gap-4`}>
+  {stats.map((s) => (
+    <div class="group relative rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-gang4-vivid/30 p-4 md:p-5 transition-all">
+      <div class="text-2xl md:text-3xl font-black tracking-tight text-gang4-vivid leading-none">
+        {s.value}
+      </div>
+      <div class="mt-2 text-sm text-white/85 leading-snug font-medium">
+        {s.label}
+      </div>
+      {s.source && (
+        <div class="mt-2 text-[11px] text-white/40 uppercase tracking-wider">
+          {s.source}
+        </div>
+      )}
+    </div>
+  ))}
+</div>

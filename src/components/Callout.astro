@@ -1,0 +1,77 @@
+---
+/**
+ * Callout — Encart visuel typé pour différencier les rôles narratifs
+ *
+ * Remplace l'usage abusif de blockquote pour DATA / PRO TIP / WARNING / CTA.
+ * Réserve <blockquote> aux vraies citations (pull quotes éditoriales).
+ *
+ * Variants :
+ * - data    : statistique / donnée propriétaire (Gang4)
+ * - insight : analyse stratégique / "pourquoi ça compte"
+ * - tip     : note de gestionnaire senior, best practice
+ * - cta     : invitation à passer à l'action (lead magnet, démo)
+ *
+ * Usage MDX :
+ * <Callout variant="data" title="Donnée Gang4">
+ *   Les créatifs avec >15 commentaires affichent un CPM 18% inférieur.
+ * </Callout>
+ */
+
+interface Props {
+  variant?: 'data' | 'insight' | 'tip' | 'cta';
+  title?: string;
+  icon?: string;
+  href?: string;
+  hrefLabel?: string;
+}
+
+const { variant = 'insight', title, icon, href, hrefLabel } = Astro.props;
+
+const config = {
+  data: {
+    icon: icon || '📊',
+    label: title || 'Donnée Gang4',
+    accent: 'border-l-emerald-400/70 bg-emerald-400/[0.06]',
+    pill: 'bg-emerald-400/15 text-emerald-300 border-emerald-400/30',
+  },
+  insight: {
+    icon: icon || '💡',
+    label: title || 'Analyse stratégique',
+    accent: 'border-l-gang4-vivid bg-gang4-vivid/[0.06]',
+    pill: 'bg-gang4-vivid/15 text-gang4-vivid border-gang4-vivid/30',
+  },
+  tip: {
+    icon: icon || '🎯',
+    label: title || 'Note de gestionnaire senior',
+    accent: 'border-l-amber-400/70 bg-amber-400/[0.05]',
+    pill: 'bg-amber-400/15 text-amber-300 border-amber-400/30',
+  },
+  cta: {
+    icon: icon || '🚀',
+    label: title || 'Pour aller plus loin',
+    accent: 'border-l-gang4-glow bg-gradient-to-br from-gang4-vivid/[0.10] to-gang4-glow/[0.04]',
+    pill: 'bg-gang4-vivid/20 text-gang4-glow border-gang4-vivid/40',
+  },
+}[variant];
+---
+
+<aside class={`not-prose my-7 rounded-r-xl rounded-l-md border-l-4 ${config.accent} px-5 py-4 md:px-6 md:py-5`}>
+  <div class="flex items-center gap-2 mb-2">
+    <span class="text-base leading-none">{config.icon}</span>
+    <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${config.pill}`}>
+      {config.label}
+    </span>
+  </div>
+  <div class="text-[0.975rem] leading-relaxed text-white/85 [&>p]:m-0 [&>p+p]:mt-2 [&_strong]:text-white [&_a]:text-gang4-vivid [&_a:hover]:text-gang4-glow [&_a]:underline [&_a]:underline-offset-2">
+    <slot />
+  </div>
+  {href && hrefLabel && (
+    <a
+      href={href}
+      class="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-gang4-vivid hover:text-gang4-glow transition-colors group"
+    >
+      {hrefLabel}
+      <span class="transition-transform group-hover:translate-x-0.5">→</span>
+    </a>
+  )}
+</aside>

@@ -1,0 +1,42 @@
+---
+/**
+ * KeyTakeaways — Bloc "À retenir" pour le triager 30s
+ *
+ * Placé en haut d'article, juste après DirectAnswer.
+ * Permet à un CMO/Traffic Manager pressé de capter l'essentiel sans tout lire.
+ *
+ * Usage MDX :
+ * <KeyTakeaways items={[
+ *   "Andromeda unifie 3 algos en 1 modèle ML (×10 000 capacité)",
+ *   "Le créatif devient le ciblage : audiences reconstruites par l'IA",
+ *   "Structure gagnante : 1 CBO + ASC + broad targeting"
+ * ]} />
+ */
+
+interface Props {
+  items: string[];
+  title?: string;
+}
+
+const { items, title = 'À retenir en 30 secondes' } = Astro.props;
+---
+
+<aside class="not-prose my-8 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm overflow-hidden">
+  <div class="px-5 md:px-6 py-3 bg-white/[0.04] border-b border-white/10 flex items-center gap-2">
+    <svg class="w-4 h-4 text-gang4-vivid" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path d="M9 11l3 3L22 4" />
+      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+    </svg>
+    <span class="text-[11px] font-bold uppercase tracking-widest text-white/80">{title}</span>
+  </div>
+  <ul class="px-5 md:px-6 py-4 space-y-2.5">
+    {items.map((item, i) => (
+      <li class="flex items-start gap-3 text-[0.975rem] leading-relaxed text-white/85">
+        <span class="flex-shrink-0 inline-flex items-center justify-center w-5 h-5 mt-0.5 rounded-full bg-gang4-vivid/15 text-gang4-vivid text-[11px] font-bold">
+          {i + 1}
+        </span>
+        <span set:html={item} />
+      </li>
+    ))}
+  </ul>
+</aside>
