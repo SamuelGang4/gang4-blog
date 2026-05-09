@@ -8,6 +8,7 @@ import StickyCTA from '../components/StickyCTA.astro';
 import NewsletterInline from '../components/NewsletterInline.astro';
 import AuthorCard from '../components/AuthorCard.astro';
 import SidebarLeadMagnet from '../components/SidebarLeadMagnet.astro';
+import CopyForAI from '../components/CopyForAI.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 
 interface Props {
@@ -153,11 +154,17 @@ if (data.schema.enableFAQPage && data.faq.length > 0) {
         </div>
 
         <!-- Lead magnet inline mobile (placé après le contenu pour ne pas casser le flow de lecture initial) -->
-        {data.leadMagnet && (
-          <div class="lg:hidden my-8">
-            <SidebarLeadMagnet leadMagnet={data.leadMagnet} />
-          </div>
-        )}
+        <div class="lg:hidden my-8 space-y-5">
+          <CopyForAI
+            title={data.title}
+            url={articleUrl}
+            author={authorName}
+            publishedAt={data.publishedAt}
+            description={data.description}
+            markdown={entry.body}
+          />
+          {data.leadMagnet && <SidebarLeadMagnet leadMagnet={data.leadMagnet} />}
+        </div>
 
         <!-- Newsletter inline (lead magnet général en fin de contenu) -->
         <NewsletterInline />
@@ -215,12 +222,18 @@ if (data.schema.enableFAQPage && data.faq.length > 0) {
       </article>
 
       <!-- Sidebar sticky (desktop only) -->
-      <div class="hidden lg:block">
-        <SidebarLeadMagnet
-          leadMagnet={data.leadMagnet}
-          ctaLabel={data.cta.label}
-          ctaHref={data.cta.href}
-        />
+      <div class="hidden lg:block sticky top-[100px] self-start">
+        <aside class="space-y-5">
+          <CopyForAI
+            title={data.title}
+            url={articleUrl}
+            author={authorName}
+            publishedAt={data.publishedAt}
+            description={data.description}
+            markdown={entry.body}
+          />
+          <SidebarLeadMagnet leadMagnet={data.leadMagnet} />
+        </aside>
       </div>
 
     </div>

@@ -1,0 +1,101 @@
+---
+/**
+ * CopyForAI — Bouton qui copie l'article complet au format markdown
+ * pour le coller dans ChatGPT / Claude / autre LLM.
+ *
+ * Le contenu est encodé en base64 dans un attribut data pour éviter
+ * tout problème de string escaping dans le HTML.
+ */
+
+interface Props {
+  title: string;
+  url: string;
+  author?: string;
+  publishedAt?: Date;
+  description?: string;
+  markdown: string;
+}
+
+const { title, url, author, publishedAt, description, markdown } = Astro.props;
+
+const dateStr = publishedAt
+  ? publishedAt.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
+  : '';
+
+const formatted = [
+  `# ${title}`,
+  '',
+  description ? `> ${description}` : '',
+  '',
+  `**Source** : ${url}`,
+  author ? `**Auteur** : ${author}` : '',
+  dateStr ? `**Publié le** : ${dateStr}` : '',
+  '',
+  '---',
+  '',
+  markdown,
+].filter(Boolean).join('\n');
+
+// Base64 pour échapper proprement dans data-*
+const b64 = Buffer.from(formatted, 'utf8').toString('base64');
+---
+
+<div class="copy-for-ai card-glass p-4">
+  <div class="flex items-start gap-3 mb-3">
+    <div class="text-2xl shrink-0">🤖</div>
+    <div class="flex-1">
+      <h3 class="font-bold text-sm text-white leading-tight mb-1">
+        Demander à une IA
+      </h3>
+      <p class="text-xs text-white/60 leading-relaxed">
+        Copie l'article au format markdown pour le coller dans ChatGPT, Claude ou Perplexity.
+      </p>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="copy-btn w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white/[0.08] hover:bg-white/[0.15] border border-white/15 text-white rounded-full text-sm font-semibold transition-all"
+    data-payload={b64}
+    aria-label="Copier l'article au format markdown"
+  >
+    <svg class="copy-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+    </svg>
+    <span class="copy-label">Copier l'article (markdown)</span>
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.copy-for-ai .copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const payload = btn.getAttribute('data-payload') || '';
+      try {
+        const decoded = atob(payload);
+        // atob peut couper l'UTF-8, on reconstruit proprement
+        const bytes = Uint8Array.from(decoded, (c) => c.charCodeAt(0));
+        const text = new TextDecoder('utf-8').decode(bytes);
+        await navigator.clipboard.writeText(text);
+
+        const label = btn.querySelector('.copy-label');
+        const original = label?.textContent || '';
+        if (label) label.textContent = '✓ Copié !';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          if (label) label.textContent = original;
+          btn.classList.remove('copied');
+        }, 2000);
+      } catch (e) {
+        console.error('Copy failed', e);
+      }
+    });
+  });
+</script>
+
+<style>
+  .copy-for-ai .copy-btn.copied {
+    background: hsl(231, 100%, 74% / 0.2);
+    border-color: hsl(231, 100%, 74% / 0.5);
+    color: hsl(231, 100%, 84%);
+  }
+</style>
