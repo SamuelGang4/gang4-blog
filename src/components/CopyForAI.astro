@@ -22,6 +22,16 @@ const dateStr = publishedAt
   ? publishedAt.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
   : '';
 
+// Nettoie le MDX → markdown lisible pour IA
+const cleanedMarkdown = markdown
+  // Retire les imports en haut du fichier MDX
+  .replace(/^import\s+.+?from\s+['"].+?['"];?\s*$/gm, '')
+  // Retire les SectionHeader (composant Astro) en gardant juste le titre
+  .replace(/<SectionHeader\s+number=["'][^"']*["']\s+title=["']([^"']+)["']\s*\/>/g, '## $1')
+  // Réduit les sauts de ligne multiples (3+ → 2)
+  .replace(/\n{3,}/g, '\n\n')
+  .trim();
+
 const formatted = [
   `# ${title}`,
   '',
@@ -33,7 +43,7 @@ const formatted = [
   '',
   '---',
   '',
-  markdown,
+  cleanedMarkdown,
 ].filter(Boolean).join('\n');
 
 // Base64 pour échapper proprement dans data-*
