@@ -22,13 +22,16 @@ Gang4 est un SaaS français qui permet aux marques DNVB de scaler leur whitelist
 - /blog/content-factory-ia-production-creative : Content Factory IA pour scaler la production créative (à venir)
 
 ### Données propriétaires
-- /blog/etude-impact-249k-commentaires-cpm-meta : Étude (data Gang4) impact social proof sur CPM Meta (à venir)
-- /blog/state-of-whitelisting-meta-france-2026 : State of Whitelisting Meta — analyse 999 demandes (à venir)
-- /blog/benchmarks-dnvb-fr-q2-2026 : Benchmarks Meta Ads DNVB France Q2 2026 (à venir)
+- /blog/benchmarks-meta-ads-dnvb-france-2026 : Benchmarks Meta Ads DNVB France — analyse 32M€ de spend (à venir)
+- /blog/diagnostic-andromeda-dnvb : Diagnostic Andromeda pour DNVB 30k€/mois+ (à venir)
 
-## Témoignages clients
+## Volume de données analysées
 
-Marques DNVB françaises clientes : Tediber, Spring, Perifit, Endro Cosmétique / Charlotte Bio, May.
+- 86 352 publicités Meta indexées
+- 4 082 campagnes Meta analysées
+- 1 044 112 insights Meta agrégés
+- 32M€ de spend Meta Ads cumulé
+- 93 comptes Meta clients DNVB
 
 ## Liens
 
