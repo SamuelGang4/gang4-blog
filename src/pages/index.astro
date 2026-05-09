@@ -50,8 +50,7 @@ const pillarLabels: Record<string, string> = {
           Par <strong class="text-white">Samuel Balthazard</strong>, ex-Head of Growth Perifit avec
           <strong class="text-gang4-vivid">50M€+ investis sur Meta Ads dans 15+ pays</strong> sur 8 ans.
           Études propriétaires basées sur <strong class="text-white">249k+ commentaires</strong> analysés
-          et <strong class="text-white">999+ campagnes whitelisting</strong> menées chez nos clients DNVB
-          (Tediber, Spring, Perifit, Endro, May…).
+          et <strong class="text-white">999+ campagnes whitelisting</strong> menées chez nos clients DNVB.
         </p>
 
         <div class="flex flex-wrap gap-4 mt-8">
@@ -168,37 +167,36 @@ const pillarLabels: Record<string, string> = {
     </section>
   )}
 
-  <!-- BANDEAU AUTEUR + TÉMOIGNAGES -->
+  <!-- BANDEAU AUTEUR -->
   {author && (
     <section class="container-wide py-16 mt-12">
       <div class="card-glass p-8 md:p-12">
-        <div class="grid md:grid-cols-3 gap-8 items-center">
-          <div class="md:col-span-2">
-            <div class="pill pill-muted mb-4">Auteur du blog</div>
-            <h2 class="text-2xl md:text-3xl font-black mb-3">{author.data.name}</h2>
-            <p class="text-white/60 mb-4">{author.data.title}</p>
-            <p class="text-white/70 leading-relaxed mb-6">
-              {author.data.bio}
-            </p>
+        <div class="pill pill-muted mb-4">Auteur du blog</div>
+        <h2 class="text-2xl md:text-3xl font-black mb-3">{author.data.name}</h2>
+        <p class="text-white/60 mb-4">{author.data.title}</p>
+        <p class="text-white/75 leading-relaxed mb-6 max-w-3xl">
+          {author.data.bio}
+        </p>
 
-            <div class="flex flex-wrap gap-2">
-              {author.data.expertise.slice(0, 5).map((exp) => (
-                <span class="pill pill-muted text-[10px]">{exp}</span>
-              ))}
-            </div>
-          </div>
-
-          <div class="text-center md:text-left">
-            <div class="text-sm text-white/50 mb-2">Marques DNVB clientes</div>
-            <div class="text-lg font-bold leading-relaxed text-white/80">
-              Tediber<br />
-              Spring<br />
-              Perifit<br />
-              Endro / Charlotte Bio<br />
-              May
-            </div>
-          </div>
+        <div class="flex flex-wrap gap-2">
+          {author.data.expertise.slice(0, 6).map((exp) => (
+            <span class="pill pill-muted text-[10px]">{exp}</span>
+          ))}
         </div>
+
+        {author.data.linkedin && (
+          <a
+            href={author.data.linkedin}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 mt-6 text-sm text-gang4-vivid hover:text-gang4-glow transition-colors"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            Voir LinkedIn de Samuel
+          </a>
+        )}
       </div>
     </section>
   )}

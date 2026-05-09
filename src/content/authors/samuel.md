@@ -1,7 +1,7 @@
 ---
 name: "Samuel Balthazard"
 title: "Co-founder Gang4 · 50M€+ investis sur Meta Ads dans 15+ pays"
-bio: "Co-founder de Gang4 et expert Meta Ads spécialisé dans la croissance des DNVB e-commerce. Depuis plus de 8 ans, j'accompagne des marques en France et à l'international avec **plus de 50M€ investis sur Meta Ads dans plus de 15 pays**. Ayant construit ma carrière directement chez l'annonceur (Brentt, Koober, World Wide Wine, Perifit), j'ai une vision très opérationnelle des enjeux e-commerce : scaling, rentabilité, production créative et pilotage du ROI. Aujourd'hui, avec Gang4, nous accompagnons plus de 50 marques sur leurs enjeux de performance créative, de social proof et de diffusion publicitaire sur Meta."
+bio: "Co-founder de Gang4 et expert Meta Ads spécialisé dans la croissance des DNVB e-commerce. Depuis plus de 8 ans, j'accompagne des marques en France et à l'international avec plus de 50M€ investis sur Meta Ads dans plus de 15 pays. Ayant construit ma carrière directement chez l'annonceur (Brentt, Koober, World Wide Wine, Perifit), j'ai une vision très opérationnelle des enjeux e-commerce : scaling, rentabilité, production créative et pilotage du ROI. Aujourd'hui, avec Gang4, nous accompagnons plus de 50 marques sur leurs enjeux de performance créative, de social proof et de diffusion publicitaire sur Meta."
 avatar: "/authors/samuel.jpg"
 linkedin: "https://www.linkedin.com/in/samuel-balthazard-a01072106/"
 expertise:
