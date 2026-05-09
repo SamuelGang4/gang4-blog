@@ -177,9 +177,9 @@
   color: hsl(0, 0%, 100%) !important;
   letter-spacing: -0.02em !important;
   line-height: 1.2 !important;
-  margin-top: 4rem !important;
-  margin-bottom: 1.25rem !important;
-  padding-bottom: 0.875rem !important;
+  margin-top: 4.5rem !important;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 1rem !important;
   border-bottom: 1px solid hsla(0, 0%, 100%, 0.08) !important;
   scroll-margin-top: 6rem !important;
 }
@@ -189,9 +189,33 @@
   font-size: 1.375rem !important;
   font-weight: 700 !important;
   color: hsl(0, 0%, 100%) !important;
-  margin-top: 2.5rem !important;
-  margin-bottom: 0.875rem !important;
+  margin-top: 3rem !important;
+  margin-bottom: 1.125rem !important;
   scroll-margin-top: 6rem !important;
+}
+
+/* Paragraphes — respiration généreuse pour confort lecture longue */
+.prose-invert p {
+  margin-top: 1.75rem !important;
+  margin-bottom: 1.75rem !important;
+  line-height: 1.8 !important;
+}
+
+/* Premier paragraphe après un H2/H3 : marge top réduite (sinon trop d'air) */
+.prose-invert h2 + p,
+.prose-invert h3 + p {
+  margin-top: 1rem !important;
+}
+
+/* Marges harmonisées avec les composants Astro (les .my-X custom restent prioritaires) */
+.prose-invert p + ul,
+.prose-invert p + ol {
+  margin-top: 1rem !important;
+}
+
+.prose-invert ul + p,
+.prose-invert ol + p {
+  margin-top: 1.75rem !important;
 }
 
 /* Blockquote markdown natif : fond vivid + border-left épais */
