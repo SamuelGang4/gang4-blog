@@ -23,7 +23,7 @@ volumeFR: 320
 keywordDifficulty: 0
 intent: "informational"
 
-directAnswer: "Andromeda, le système de delivery unifié de Meta déployé fin 2024, a été analysé sur 32M€ de spend publicitaire et 86 352 créations indexées par Gang4 (4 082 campagnes, 1M+ insights). Résultat : les comptes DNVB ayant migré vers une structure Andromeda-first enregistrent -18% de CPA en beauté et -22% en mode. Le levier n'est plus le ciblage — c'est la qualité du signal créatif."
+directAnswer: "Andromeda, le système de delivery unifié de Meta déployé fin 2024, a été analysé sur 32M€ de spend publicitaire et 86 352 créations indexées par Gang4 (4 082 campagnes, 1M+ insights). Résultat : les comptes DNVB ayant migré vers une structure Andromeda-first enregistrent -18% de CPA en beauté et -22% en mode. Le levier n'est plus le ciblage. C'est la qualité du signal créatif."
 
 readingTimeMinutes: 14
 
@@ -40,7 +40,7 @@ leadMagnet:
   title: "Le diagnostic Andromeda pour DNVB 30k€/mois+"
   description: "8 pages de données terrain issues de 32M€ de spend Meta analysé sur 4 082 campagnes. Ce que l'article ne peut pas vous donner : vos chiffres vs le marché."
   bullets:
-    - "Benchmark CPM par secteur e-commerce (mode, beauté, santé, maison) — avant/après Andromeda"
+    - "Benchmark CPM par secteur e-commerce (mode, beauté, santé, maison), avant/après Andromeda"
     - "Les 3 types de créatifs whitelisting qui surperforment de 34% sur Andromeda"
     - "Grille d'auto-diagnostic : vos campagnes sont-elles Andromeda-ready ? (12 critères)"
     - "Structure de compte recommandée selon votre budget mensuel Meta (30k / 50k / 100k+)"
@@ -58,7 +58,7 @@ schema:
 
 faq:
   - question: "Qu'est-ce qu'Andromeda Meta ?"
-    answer: "Andromeda est le système de delivery unifié de Meta déployé fin 2024. Il remplace trois sous-systèmes historiques distincts — algorithme d'enchères, algorithme de ranking, système de scoring créatif — par un seul modèle de machine learning. Ce modèle optimise simultanément la sélection d'audience, le placement, la tarification et le scoring créatif en temps réel. Pour les annonceurs e-commerce, cela signifie que la qualité du contenu créatif influence directement le CPA, indépendamment du budget ou du ciblage."
+    answer: "Andromeda est le système de delivery unifié de Meta déployé fin 2024. Il remplace trois sous-systèmes historiques distincts (algorithme d'enchères, algorithme de ranking, système de scoring créatif) par un seul modèle de machine learning. Ce modèle optimise simultanément la sélection d'audience, le placement, la tarification et le scoring créatif en temps réel. Pour les annonceurs e-commerce, cela signifie que la qualité du contenu créatif influence directement le CPA, indépendamment du budget ou du ciblage."
   - question: "Comment fonctionne l'algorithme Andromeda de Meta ?"
     answer: "Andromeda fonctionne comme un 'bouncer' à l'entrée du système d'enchères : il trie des millions de publicités candidates en quelques millisecondes via des puces NVIDIA Grace Hopper et MTIA (Meta Training and Inference Accelerator). L'architecture neuronale analyse le rythme de montage, la colorimétrie, le ton émotionnel et la sémantique du créatif pour prédire son adéquation avec un utilisateur donné avant même l'enchère. Le modèle utilise des fonctions de perte autorégressives pour anticiper les comportements d'achat en séquence."
   - question: "Quand Meta a-t-il lancé Andromeda ?"
@@ -70,26 +70,26 @@ faq:
   - question: "Qu'est-ce que le Sequence Learning dans Andromeda ?"
     answer: "Le Sequence Learning est la capacité d'Andromeda à modéliser les comportements d'achat comme une narrative temporelle plutôt que comme des événements isolés. Via des fonctions de perte autorégressives, le modèle prédit les étapes successives d'un parcours d'achat. Exemple : un utilisateur consultant des destinations alpines verra une séquence vol → équipement montagne → forfait ski → assurance voyage. L'algorithme orchestre l'exposition publicitaire en anticipant l'étape suivante du funnel."
   - question: "Comment optimiser ses créatifs pour Andromeda Meta ?"
-    answer: "Trois leviers actionnables : (1) Prioriser les formats générant de l'engagement qualitatif — commentaires, partages, sauvegardes — plutôt que des likes. (2) Adopter le framework PDA (Persona / Désir / Niveau de conscience) pour structurer chaque créatif. (3) Intégrer du whitelisting / Partnership Ads pour transférer l'autorité de profil créateur vers la publicité. L'UGC authentique et les Founder Stories sont les formats les plus favorisés par le scoring Andromeda en 2025-2026."
+    answer: "Trois leviers actionnables : (1) Prioriser les formats générant de l'engagement qualitatif (commentaires, partages, sauvegardes) plutôt que des likes. (2) Adopter le framework PDA (Persona / Désir / Niveau de conscience) pour structurer chaque créatif. (3) Intégrer du whitelisting / Partnership Ads pour transférer l'autorité de profil créateur vers la publicité. L'UGC authentique et les Founder Stories sont les formats les plus favorisés par le scoring Andromeda en 2025-2026."
   - question: "Faut-il abandonner le retargeting avec Andromeda ?"
     answer: "Non, mais sa logique change. Le retargeting manuel (audiences Custom basées sur visiteurs site) perd de l'efficacité car Andromeda intègre nativement les signaux de reciblage dans son modèle unifié via Advantage+. La recommandation opérationnelle : consolider dans Advantage+ Shopping Campaigns (ASC) avec broad targeting plutôt que de maintenir des campagnes de retargeting isolées. Laisser Andromeda gérer la ré-exposition est plus performant pour les comptes au-dessus de 50 000€/mois."
   - question: "Quelle structure de compte Meta est recommandée avec Andromeda ?"
     answer: "La structure recommandée est : un CBO unique par objectif, Advantage+ Shopping Campaigns activé, broad targeting sans restriction démographique artificielle, et une fenêtre d'apprentissage de 5 à 7 jours sans modification. Cette consolidation maximise le volume de données que le modèle Andromeda peut ingérer pour optimiser. Multiplier les adsets ou les campagnes fractionne le signal et ralentit l'apprentissage. La règle de base : moins de campagnes, plus de créatifs par adset, budget concentré."
   - question: "Andromeda est-il la même chose qu'Advantage+ ?"
-    answer: "Non. Andromeda est l'infrastructure de delivery sous-jacente à toute publicité Meta — c'est le moteur. Advantage+ est une interface de campagne qui s'appuie sur Andromeda mais lui donne accès à davantage de latitude décisionnelle. Andromeda tourne sur tous les types de campagnes (manuelles incluses), mais Advantage+ Shopping Campaigns lui fournit le plus de liberté d'optimisation. Penser Andromeda comme le moteur, Advantage+ comme le pilote automatique qui l'utilise au maximum."
+    answer: "Non. Andromeda est l'infrastructure de delivery sous-jacente à toute publicité Meta. C'est le moteur. Advantage+ est une interface de campagne qui s'appuie sur Andromeda mais lui donne accès à davantage de latitude décisionnelle. Andromeda tourne sur tous les types de campagnes (manuelles incluses), mais Advantage+ Shopping Campaigns lui fournit le plus de liberté d'optimisation. Penser Andromeda comme le moteur, Advantage+ comme le pilote automatique qui l'utilise au maximum."
 
 sources:
-  - title: "Andromeda — Meta's transformation of its ads delivery system (Meta Engineering)"
+  - title: "Andromeda · Meta's transformation of its ads delivery system (Meta Engineering)"
     url: "https://engineering.fb.com/2023/08/09/ml-applications/andromeda-meta-ads-delivery/"
   - title: "Next-Generation Meta Training and Inference Accelerator (Meta AI)"
     url: "https://ai.meta.com/blog/next-generation-meta-training-inference-accelerator-AI-MTIA/"
-  - title: "Andromeda Deep Dive — Foxwell Digital (Andrew Foxwell)"
+  - title: "Andromeda Deep Dive · Foxwell Digital (Andrew Foxwell)"
     url: "https://foxwelldigital.com/andromeda-meta-ads-delivery/"
   - title: "Meta Advantage+ Shopping Campaigns Performance Analysis (Common Thread Collective)"
     url: "https://commonthreadco.com/blogs/coachs-corner/advantage-plus-shopping"
   - title: "Practical Lessons from Predicting Clicks on Ads at Facebook (Meta Research)"
     url: "https://research.facebook.com/publications/practical-lessons-from-predicting-clicks-on-ads-at-facebook/"
-  - title: "Performance Creative Report — Motion Benchmark"
+  - title: "Performance Creative Report · Motion Benchmark"
     url: "https://motionapp.com/reports/performance-creative-report"
 
 gangsData:
@@ -125,13 +125,13 @@ Si vous pilotez des campagnes Meta en ce moment, vous avez sans doute remarqué 
 
 **Ce n'est pas une anomalie de marché.** C'est le signal que vous essayez de naviguer dans une infrastructure qui n'existe plus.
 
-En analysant **plus de 86 352 publicités Meta** indexées dans les portefeuilles clients Gang4 (32M€ de spend cumulé sur 93 comptes DNVB), nous avons identifié un pattern clair : les publicités dont le CPM a le plus progressé partagent toutes une caractéristique commune — elles n'ont pas été *ciblées*, elles ont été *lues* par l'IA.
+En analysant **plus de 86 352 publicités Meta** indexées dans les portefeuilles clients Gang4 (32M€ de spend cumulé sur 93 comptes DNVB), nous avons identifié un pattern clair : les publicités dont le CPM a le plus progressé partagent toutes une caractéristique commune. Elles n'ont pas été *ciblées*, elles ont été *lues* par l'IA.
 
 Nous avons quitté l'ère du piratage d'audience pour entrer dans celle de **Meta Andromeda**. Lancé fin 2024 et désormais au cœur de la performance pour 2026, ce système de delivery unifié change radicalement la donne.
 
 Les premiers retours terrain confirment la tendance : selon le rapport [Meta Engineering](https://engineering.fb.com/2023/08/09/ml-applications/andromeda-meta-ads-delivery/), les comptes restructurés autour d'Andromeda enregistrent **+17% de conversions** pour un coût **inférieur de 16%**, avec une **qualité publicitaire améliorée de 8%**.
 
-Le message est clair : **si vous gérez encore vos publicités comme en 2024, vous n'optimisez pas — vous subissez.**
+Le message est clair : **si vous gérez encore vos publicités comme en 2024, vous n'optimisez pas. Vous subissez.**
 
 <Callout
   variant="data"
@@ -150,13 +150,13 @@ Pendant une décennie, l'infrastructure publicitaire de Meta reposait sur des mo
 
 Andromeda repose sur deux puces spécialisées : les GPU **NVIDIA Grace Hopper Superchip** et les **MTIA (Meta Training and Inference Accelerator)** développés en interne. Ensemble, ils permettent un gain de capacité de traitement de l'ordre de **10 000x** par rapport aux systèmes précédents [selon Meta Engineering](https://engineering.fb.com/2023/08/09/ml-applications/andromeda-meta-ads-delivery/).
 
-Concrètement, **Andromeda agit comme un "bouncer" à l'entrée du système d'enchères publicitaires** : avant que l'enchère ne commence, le modèle trie plusieurs millions d'annonces candidates en quelques millisecondes pour ne retenir que les plus pertinentes pour chaque utilisateur. Ce tri préalable — appelé *retrieval* — utilise des embeddings vectoriels pour mesurer la proximité sémantique entre le créatif publicitaire et le profil comportemental de l'utilisateur.
+Concrètement, **Andromeda agit comme un "bouncer" à l'entrée du système d'enchères publicitaires** : avant que l'enchère ne commence, le modèle trie plusieurs millions d'annonces candidates en quelques millisecondes pour ne retenir que les plus pertinentes pour chaque utilisateur. Ce tri préalable (appelé *retrieval*) utilise des embeddings vectoriels pour mesurer la proximité sémantique entre le créatif publicitaire et le profil comportemental de l'utilisateur.
 
 C'est pourquoi la **qualité narrative et visuelle d'une publicité influence désormais directement son éligibilité à l'enchère**, avant même que le budget ou l'enchère ne jouent.
 
 <MockImage
   type="diagram"
-  caption="Schéma de fonctionnement d'Andromeda — comment Meta unifie bidding, ranking et creative scoring en un seul modèle ML"
+  caption="Schéma de fonctionnement d'Andromeda · comment Meta unifie bidding, ranking et creative scoring en un seul modèle ML"
   ratio="16/9"
 />
 
@@ -226,7 +226,7 @@ Le media buying n'est plus une question de réglage de curseurs, mais de **Signa
 
 Le **Sequence Learning** est la capacité différenciante d'Andromeda par rapport aux systèmes publicitaires antérieurs.
 
-Là où les anciens algorithmes optimisaient événement par événement (un clic, une vue, une conversion), Andromeda modélise le comportement d'achat **comme une séquence temporelle cohérente**. Via des fonctions de perte autorégressives — la même architecture que les modèles de langage comme GPT — il prédit l'**étape suivante** d'un parcours consommateur plutôt que l'intention présente.
+Là où les anciens algorithmes optimisaient événement par événement (un clic, une vue, une conversion), Andromeda modélise le comportement d'achat **comme une séquence temporelle cohérente**. Via des fonctions de perte autorégressives (la même architecture que les modèles de langage comme GPT). Il prédit l'**étape suivante** d'un parcours consommateur plutôt que l'intention présente.
 
 ### Exemple documenté : le voyageur des Alpes
 
@@ -249,7 +249,7 @@ C'est aussi pourquoi le retargeting manuel perd massivement de l'efficacité : A
 
 <MockImage
   type="chart"
-  caption="Évolution du CPA moyen sur 4 082 campagnes DNVB clientes Gang4 — 32M€ de spend analysé (avant/après Andromeda)"
+  caption="Évolution du CPA moyen sur 4 082 campagnes DNVB clientes Gang4 · 32M€ de spend analysé (avant/après Andromeda)"
   ratio="16/9"
 />
 
@@ -344,7 +344,7 @@ Le whitelisting (Partnership Ads) transfère l'**autorité de profil créateur**
 
 ---
 
-## Chiffres clés Andromeda — synthèse
+## Chiffres clés Andromeda
 
 <StatGrid
   columns={3}
