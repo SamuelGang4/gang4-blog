@@ -1,27 +1,49 @@
 ---
 /**
- * Navbar — cohérence avec gang4-landing (à enrichir avec le vrai design Lovable plus tard)
+ * Navbar — DA cohérent avec gang4-landing (Lovable)
  */
+const currentPath = Astro.url.pathname;
 ---
 
-<header class="border-b border-white/10 bg-gang4-deep/95 backdrop-blur-sm sticky top-0 z-50">
-  <nav class="container-wide flex items-center justify-between py-4">
-    <a href="https://gang4.io" class="flex items-center gap-2 text-xl font-bold">
-      <span>Gang4</span>
-      <span class="text-xs text-white/50 font-normal">Blog</span>
+<header class="border-b border-white/[0.08] bg-gang4-deep/80 backdrop-blur-xl sticky top-0 z-50">
+  <nav class="container-wide flex items-center justify-between py-5">
+    <a href="/" class="flex items-center gap-3 group">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-gang4-vivid to-gang4-glow flex items-center justify-center font-black text-white text-sm shadow-glow-sm group-hover:shadow-glow transition-all">
+        G4
+      </div>
+      <div class="flex flex-col leading-tight">
+        <span class="text-base font-black">Gang4</span>
+        <span class="text-[10px] text-white/50 font-semibold uppercase tracking-widest">Blog</span>
+      </div>
     </a>
 
-    <div class="flex items-center gap-6 text-sm">
-      <a href="/blog" class="text-white/70 hover:text-white transition-colors">Articles</a>
-      <a href="https://gang4.io/whitelisting" class="text-white/70 hover:text-white transition-colors">
-        Whitelisting
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a
+        href="/"
+        class={`transition-colors ${currentPath === '/' ? 'text-white' : 'text-white/60 hover:text-white'}`}
+      >
+        Accueil
       </a>
       <a
-        href="https://gang4.io/whitelisting#demo"
-        class="px-4 py-2 bg-white text-gang4-deep rounded-lg font-medium hover:bg-white/90 transition-colors"
+        href="/blog"
+        class={`transition-colors ${currentPath.startsWith('/blog') ? 'text-white' : 'text-white/60 hover:text-white'}`}
       >
-        Réserver une démo
+        Articles
+      </a>
+      <a
+        href="https://gang4.io/whitelisting"
+        class="text-white/60 hover:text-white transition-colors"
+      >
+        Solution
       </a>
     </div>
+
+    <a
+      href="https://gang4.io/whitelisting#demo"
+      class="inline-flex items-center gap-2 px-5 py-2.5 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full text-sm font-semibold glow-button"
+    >
+      Réserver une démo
+      <span class="text-xs">→</span>
+    </a>
   </nav>
 </header>

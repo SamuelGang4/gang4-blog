@@ -2,35 +2,49 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-white/10 mt-24 py-12">
-  <div class="container-wide grid grid-cols-1 md:grid-cols-3 gap-8">
-    <div>
-      <a href="https://gang4.io" class="text-xl font-bold">Gang4</a>
-      <p class="text-sm text-white/50 mt-2">
-        Scalez votre whitelisting Meta en un clic.<br />
-        Pour les DNVB françaises qui dépassent 30k€/mois sur Meta.
+<footer class="relative mt-32 border-t border-white/[0.08] py-16 overflow-hidden">
+  <!-- Glow orb subtle -->
+  <div class="glow-orb glow-orb-vivid w-[500px] h-[500px] -top-1/2 left-1/2 -translate-x-1/2 opacity-30"></div>
+
+  <div class="container-wide relative z-10 grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div class="md:col-span-2">
+      <a href="https://gang4.io" class="inline-flex items-center gap-3 mb-4">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-gang4-vivid to-gang4-glow flex items-center justify-center font-black text-white text-sm">
+          G4
+        </div>
+        <span class="text-lg font-black">Gang4</span>
+      </a>
+      <p class="text-sm text-white/60 max-w-md leading-relaxed">
+        <strong class="text-white">Scalez votre whitelisting Meta en un clic.</strong><br />
+        Pour les DNVB françaises qui dépassent <span class="text-gang4-vivid">30k€/mois</span> sur Meta Ads.
       </p>
     </div>
 
     <div>
-      <h3 class="font-semibold mb-3">Navigation</h3>
-      <ul class="space-y-2 text-sm text-white/70">
-        <li><a href="/blog" class="hover:text-white">Tous les articles</a></li>
-        <li><a href="https://gang4.io/whitelisting" class="hover:text-white">Solution Whitelisting</a></li>
-        <li><a href="https://gang4.io/" class="hover:text-white">Site principal</a></li>
+      <h3 class="font-bold mb-4 text-sm uppercase tracking-wider text-white/80">Navigation</h3>
+      <ul class="space-y-3 text-sm text-white/60">
+        <li><a href="/" class="hover:text-white transition-colors">Accueil</a></li>
+        <li><a href="/blog" class="hover:text-white transition-colors">Tous les articles</a></li>
+        <li><a href="https://gang4.io/whitelisting" class="hover:text-white transition-colors">Solution Whitelisting</a></li>
+        <li><a href="https://gang4.io/" class="hover:text-white transition-colors">Site principal →</a></li>
       </ul>
     </div>
 
     <div>
-      <h3 class="font-semibold mb-3">Légal</h3>
-      <ul class="space-y-2 text-sm text-white/70">
-        <li><a href="https://gang4.io/mentions-legales" class="hover:text-white">Mentions légales</a></li>
-        <li><a href="https://gang4.io/cgv" class="hover:text-white">CGV</a></li>
+      <h3 class="font-bold mb-4 text-sm uppercase tracking-wider text-white/80">Légal</h3>
+      <ul class="space-y-3 text-sm text-white/60">
+        <li><a href="https://gang4.io/mentions-legales" class="hover:text-white transition-colors">Mentions légales</a></li>
+        <li><a href="https://gang4.io/cgv" class="hover:text-white transition-colors">CGV</a></li>
       </ul>
     </div>
   </div>
 
-  <div class="container-wide mt-12 pt-8 border-t border-white/10 text-xs text-white/40">
-    © {year} Gang4. Tous droits réservés.
+  <div class="container-wide relative z-10 mt-16 pt-8 border-t border-white/[0.08] flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="text-xs text-white/40">
+      © {year} Gang4 SAS · Tous droits réservés
+    </div>
+    <div class="text-xs text-white/40">
+      Édité depuis Paris, propulsé par <a href="https://gang4.io" class="text-white/60 hover:text-white">Gang4</a>
+    </div>
   </div>
 </footer>

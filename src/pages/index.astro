@@ -1,53 +1,203 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+
+const featuredPost = posts[0];
+const otherPosts = posts.slice(1);
+
+const author = await getEntry('authors', 'samuel');
+
+// Pillar labels lisibles
+const pillarLabels: Record<string, string> = {
+  'P1': 'Whitelisting',
+  'P2A': 'Expertise Meta',
+  'P2B': 'Scaling',
+  'P2B-CMO': 'CMO Insights',
+  'P2C': 'International',
+  'P3A': 'Tactiques créa',
+  'P3B': 'Outils',
+  'P3C': 'Inspiration',
+  'BOFU': 'Solutions',
+};
 ---
 
 <BaseLayout
   title="Gang4 Blog — Expertise Meta Ads pour DNVB françaises"
-  description="Le hub éditorial Gang4 : whitelisting, Andromeda, Partnership Ads, scaling DNVB sur Meta. Études propriétaires basées sur 249k+ commentaires et 999+ campagnes whitelisting analysées."
+  description="Études propriétaires, frameworks éprouvés et analyses techniques pour les marques DNVB qui scalent au-delà de 30k€/mois sur Meta Ads. Par Samuel Balthazard, ex-Head of Growth Perifit (€15M → €25M)."
 >
-  <section class="container-blog py-16 md:py-24">
-    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-      L'expertise Meta Ads<br />
-      pour les <span class="text-gang4-primary">DNVB françaises</span>
-    </h1>
-    <p class="text-xl text-white/70 mb-12 max-w-2xl">
-      Études propriétaires, frameworks éprouvés et analyses techniques pour les marques qui scalent au-delà de 30k€/mois sur Meta.
-    </p>
+  <!-- HERO blog (style Lovable : glow orbs + text gradient) -->
+  <section class="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-28">
+    <!-- Glow orbs -->
+    <div class="glow-orb glow-orb-vivid w-[600px] h-[600px] -top-40 -left-40 opacity-40"></div>
+    <div class="glow-orb glow-orb-glow w-[500px] h-[500px] top-20 -right-40 opacity-30"></div>
 
-    {posts.length === 0 ? (
-      <div class="p-8 bg-white/5 border border-white/10 rounded-lg text-center text-white/70">
-        <p class="text-lg">📝 Le 1er article arrive bientôt.</p>
-        <p class="text-sm mt-2">
-          On bosse sur l'étude signature : <strong class="text-white">"Impact de la social proof sur le CPM Meta — analyse de 249k commentaires DNVB"</strong>.
+    <div class="container-wide relative z-10">
+      <div class="max-w-3xl">
+        <div class="pill pill-vivid mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-gang4-vivid mr-2 animate-pulse"></span>
+          Le hub éditorial Meta Ads pour DNVB FR
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-6 tracking-tight">
+          L'expertise <span class="text-gradient">Meta Ads</span><br />
+          pour les <span class="text-gradient">DNVB françaises</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
+          Études propriétaires basées sur <strong class="text-white">249k+ commentaires</strong> analysés et
+          <strong class="text-white">999+ campagnes whitelisting</strong> menées chez nos clients DNVB
+          (Tediber, Spring, Perifit, Endro, May…).
         </p>
-      </div>
-    ) : (
-      <div class="space-y-8">
-        {posts.map((post) => (
+
+        <div class="flex flex-wrap gap-4 mt-8">
           <a
-            href={`/blog/${post.slug}/`}
-            class="block p-6 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:border-white/20 transition-all"
+            href="/blog"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full font-semibold glow-button"
           >
-            <div class="text-xs text-gang4-primary uppercase tracking-wider mb-2">
-              {post.data.pillar} · {post.data.persona}
+            Lire les articles
+            <span>→</span>
+          </a>
+          <a
+            href="https://gang4.io/whitelisting"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 text-white rounded-full font-semibold transition-all"
+          >
+            Découvrir Gang4
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE FEATURED (1er article si dispo) -->
+  {featuredPost && (
+    <section class="container-wide py-12">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-sm font-bold uppercase tracking-widest text-white/60">À la une</h2>
+        <a href="/blog" class="text-sm text-gang4-vivid hover:text-gang4-glow font-semibold">
+          Tous les articles →
+        </a>
+      </div>
+
+      <a
+        href={`/blog/${featuredPost.slug}/`}
+        class="card-glass block p-8 md:p-12 group"
+      >
+        <div class="flex items-center gap-3 mb-4">
+          <span class="pill pill-vivid">{pillarLabels[featuredPost.data.pillar] || featuredPost.data.pillar}</span>
+          {featuredPost.data.gangsData?.enabled && (
+            <span class="pill pill-muted">📊 Data propriétaire</span>
+          )}
+        </div>
+
+        <h3 class="text-2xl md:text-4xl font-black leading-tight mb-4 group-hover:text-gradient transition-all">
+          {featuredPost.data.title}
+        </h3>
+
+        <p class="text-lg text-white/70 leading-relaxed mb-6 max-w-3xl">
+          {featuredPost.data.description}
+        </p>
+
+        <div class="flex items-center gap-3 text-sm text-white/50">
+          <span>Par <strong class="text-white/80">{author?.data.name || 'Gang4'}</strong></span>
+          <span>·</span>
+          <time datetime={featuredPost.data.publishedAt.toISOString()}>
+            {featuredPost.data.publishedAt.toLocaleDateString('fr-FR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
+        </div>
+      </a>
+    </section>
+  )}
+
+  <!-- LISTE ARTICLES (les autres) -->
+  {otherPosts.length > 0 && (
+    <section class="container-wide py-12">
+      <h2 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-8">Tous les articles</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {otherPosts.map((post) => (
+          <a href={`/blog/${post.slug}/`} class="card-glass p-6 group flex flex-col">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="pill pill-vivid text-[10px]">{pillarLabels[post.data.pillar] || post.data.pillar}</span>
             </div>
-            <h2 class="text-2xl font-bold mb-2">{post.data.title}</h2>
-            <p class="text-white/70 mb-3">{post.data.description}</p>
-            <div class="text-sm text-white/50">
+            <h3 class="text-xl font-bold leading-snug mb-2 group-hover:text-gradient transition-all">
+              {post.data.title}
+            </h3>
+            <p class="text-sm text-white/60 leading-relaxed mb-4 flex-1">
+              {post.data.description}
+            </p>
+            <div class="text-xs text-white/40">
               {post.data.publishedAt.toLocaleDateString('fr-FR', {
                 year: 'numeric',
-                month: 'long',
+                month: 'short',
                 day: 'numeric',
               })}
             </div>
           </a>
         ))}
       </div>
-    )}
-  </section>
+    </section>
+  )}
+
+  <!-- État vide si rien de publié -->
+  {posts.length === 0 && (
+    <section class="container-wide py-12">
+      <div class="card-glass p-12 text-center max-w-2xl mx-auto">
+        <div class="text-5xl mb-4">📝</div>
+        <h2 class="text-2xl font-bold mb-3">Le 1er article arrive bientôt</h2>
+        <p class="text-white/60 leading-relaxed">
+          On bosse sur l'étude signature :<br />
+          <strong class="text-white">"Impact de la social proof sur le CPM Meta — analyse de 249k commentaires DNVB"</strong>
+        </p>
+        <a
+          href="https://gang4.io/whitelisting"
+          class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full font-semibold glow-button"
+        >
+          En attendant, découvrir Gang4
+          <span>→</span>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- BANDEAU AUTEUR + TÉMOIGNAGES -->
+  {author && (
+    <section class="container-wide py-16 mt-12">
+      <div class="card-glass p-8 md:p-12">
+        <div class="grid md:grid-cols-3 gap-8 items-center">
+          <div class="md:col-span-2">
+            <div class="pill pill-muted mb-4">Auteur du blog</div>
+            <h2 class="text-2xl md:text-3xl font-black mb-3">{author.data.name}</h2>
+            <p class="text-white/60 mb-4">{author.data.title}</p>
+            <p class="text-white/70 leading-relaxed mb-6">
+              {author.data.bio}
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              {author.data.expertise.slice(0, 5).map((exp) => (
+                <span class="pill pill-muted text-[10px]">{exp}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="text-center md:text-left">
+            <div class="text-sm text-white/50 mb-2">Marques DNVB clientes</div>
+            <div class="text-lg font-bold leading-relaxed text-white/80">
+              Tediber<br />
+              Spring<br />
+              Perifit<br />
+              Endro / Charlotte Bio<br />
+              May
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 </BaseLayout>

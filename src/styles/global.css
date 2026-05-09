@@ -4,18 +4,20 @@
 
 @layer base {
   body {
-    @apply bg-gang4-deep text-white antialiased;
+    @apply bg-gang4-deep text-white antialiased min-h-screen;
     font-family: 'Lato', system-ui, -apple-system, sans-serif;
+    background:
+      radial-gradient(ellipse at top, hsla(231, 100%, 74%, 0.08), transparent 60%),
+      radial-gradient(ellipse at bottom right, hsla(231, 100%, 74%, 0.05), transparent 60%),
+      hsl(231, 60%, 11%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight;
   }
 
-  /* Smooth scroll for anchor links */
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 }
 
 @layer components {
@@ -25,5 +27,59 @@
 
   .container-wide {
     @apply mx-auto max-w-6xl px-4 md:px-8;
+  }
+
+  /* Text gradient (Lovable signature) */
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(231, 100%, 74%) 0%, hsl(231, 100%, 88%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow button (Lovable signature) */
+  .glow-button {
+    box-shadow: 0 0 30px hsla(231, 100%, 74%, 0.5), 0 0 60px hsla(231, 100%, 74%, 0.3);
+    transition: all 0.3s ease;
+  }
+  .glow-button:hover {
+    box-shadow: 0 0 40px hsla(231, 100%, 74%, 0.7), 0 0 80px hsla(231, 100%, 74%, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Glow orbs en background (Lovable signature) */
+  .glow-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glow-orb-vivid {
+    background: hsla(231, 100%, 74%, 0.2);
+  }
+  .glow-orb-glow {
+    background: hsla(231, 100%, 78%, 0.15);
+  }
+
+  /* Card style cohérent avec Lovable */
+  .card-glass {
+    @apply bg-white/[0.04] border border-white/10 rounded-2xl backdrop-blur-sm;
+    transition: all 0.3s ease;
+  }
+  .card-glass:hover {
+    @apply bg-white/[0.08] border-white/20;
+    transform: translateY(-2px);
+  }
+
+  /* Pill / Badge */
+  .pill {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+  }
+  .pill-vivid {
+    @apply bg-gang4-vivid/15 text-gang4-vivid border border-gang4-vivid/30;
+  }
+  .pill-muted {
+    @apply bg-white/5 text-white/60 border border-white/10;
   }
 }
