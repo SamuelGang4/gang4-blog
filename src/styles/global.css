@@ -207,6 +207,22 @@
   margin-top: 1rem !important;
 }
 
+/* Liens dans le contenu prose — soulignés + couleur Gang4 vivid pour visibilité */
+.prose-invert a {
+  color: hsl(231, 100%, 74%) !important;
+  text-decoration: underline !important;
+  text-decoration-color: hsl(231, 100%, 74% / 0.4) !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 3px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.prose-invert a:hover {
+  color: hsl(231, 100%, 84%) !important;
+  text-decoration-color: hsl(231, 100%, 84%) !important;
+}
+
 /* Marges harmonisées avec les composants Astro (les .my-X custom restent prioritaires) */
 .prose-invert p + ul,
 .prose-invert p + ol {
