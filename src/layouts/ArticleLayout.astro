@@ -7,6 +7,7 @@ import ArticleMeta from '../components/ArticleMeta.astro';
 import StickyCTA from '../components/StickyCTA.astro';
 import NewsletterInline from '../components/NewsletterInline.astro';
 import AuthorCard from '../components/AuthorCard.astro';
+import SidebarLeadMagnet from '../components/SidebarLeadMagnet.astro';
 
 interface Props {
   entry: CollectionEntry<'blog'>;
@@ -62,44 +63,24 @@ const articleSchema: any = {
       ...(data.heroImage && { image: new URL(data.heroImage, Astro.site).href }),
       ...(data.keywordPrincipal && { keywords: [data.keywordPrincipal, ...data.keywordsSecondaires].join(', ') }),
     },
-    // BreadcrumbList (reco audit seo-geo)
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Accueil',
-          item: new URL('/', Astro.site).href,
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Blog',
-          item: new URL('/blog/', Astro.site).href,
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: data.title,
-          item: articleUrl,
-        },
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: new URL('/', Astro.site).href },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: new URL('/blog/', Astro.site).href },
+        { '@type': 'ListItem', position: 3, name: data.title, item: articleUrl },
       ],
     },
   ],
 };
 
-// Ajout FAQPage schema si activé
 if (data.schema.enableFAQPage && data.faq.length > 0) {
   articleSchema['@graph'].push({
     '@type': 'FAQPage',
     mainEntity: data.faq.map((q) => ({
       '@type': 'Question',
       name: q.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: q.answer,
-      },
+      acceptedAnswer: { '@type': 'Answer', text: q.answer },
     })),
   });
 }
@@ -115,8 +96,9 @@ if (data.schema.enableFAQPage && data.faq.length > 0) {
   author={authorName}
   schemaJsonLd={articleSchema}
 >
-  <article class="container-article py-8 md:py-10">
-    <!-- Breadcrumb -->
+  <!-- Layout 2 colonnes : article (large) + sidebar sticky (droite) -->
+  <div class="mx-auto max-w-7xl px-4 md:px-6 py-8 md:py-10">
+    <!-- Breadcrumb (sur toute la largeur) -->
     <nav class="text-sm text-white/50 mb-6" aria-label="Breadcrumb">
       <a href="/" class="hover:text-white">Accueil</a>
       <span class="mx-2">/</span>
@@ -125,118 +107,123 @@ if (data.schema.enableFAQPage && data.faq.length > 0) {
       <span class="text-white/70 truncate inline-block max-w-md align-bottom">{data.title}</span>
     </nav>
 
-    <!-- Header -->
-    <header class="mb-6">
-      <h1 class="text-4xl md:text-5xl font-black mb-4 leading-tight">{data.title}</h1>
-      <p class="text-xl text-white/70 mb-6 leading-relaxed">{data.description}</p>
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-8 lg:gap-12">
 
-      <ArticleMeta
-        authorName={authorName}
-        authorTitle={authorTitle}
-        authorHref={`/blog/auteur/${data.author}/`}
-        publishedAt={data.publishedAt}
-        updatedAt={data.updatedAt}
-        readingTimeMinutes={data.readingTimeMinutes || readingTimeMinutes}
-        pillarLabel={pillarLabels[data.pillar] || data.pillar}
-      />
+      <!-- Colonne principale : article -->
+      <article class="min-w-0">
+        <!-- Header -->
+        <header class="mb-6">
+          <h1 class="text-4xl md:text-5xl font-black mb-4 leading-tight">{data.title}</h1>
+          <p class="text-xl text-white/70 mb-6 leading-relaxed">{data.description}</p>
 
-      {data.gangsData.enabled && (
-        <div class="mt-6 p-4 bg-gang4-vivid/10 border border-gang4-vivid/30 rounded-lg text-sm">
-          📊 <strong>Données propriétaires Gang4</strong> — {data.gangsData.description}
+          <ArticleMeta
+            authorName={authorName}
+            authorTitle={authorTitle}
+            authorHref={`/blog/auteur/${data.author}/`}
+            publishedAt={data.publishedAt}
+            updatedAt={data.updatedAt}
+            readingTimeMinutes={data.readingTimeMinutes || readingTimeMinutes}
+            pillarLabel={pillarLabels[data.pillar] || data.pillar}
+          />
+
+          {data.gangsData.enabled && (
+            <div class="mt-6 p-4 bg-gang4-vivid/10 border border-gang4-vivid/30 rounded-lg text-sm">
+              📊 <strong>Données propriétaires Gang4</strong> — {data.gangsData.description}
+            </div>
+          )}
+        </header>
+
+        <!-- Hero image (optionnelle) -->
+        {data.heroImage && (
+          <img src={data.heroImage} alt={data.title} class="w-full rounded-2xl mb-10" loading="eager" />
+        )}
+
+        <!-- 🎯 Bloc "Réponse directe" GEO-friendly -->
+        {data.directAnswer && (
+          <DirectAnswerBlock answer={data.directAnswer} keyword={data.keywordPrincipal} />
+        )}
+
+        <!-- Lead magnet inline mobile (sidebar masquée sur mobile) -->
+        {data.leadMagnet && (
+          <div class="lg:hidden my-8">
+            <SidebarLeadMagnet leadMagnet={data.leadMagnet} />
+          </div>
+        )}
+
+        <!-- Content -->
+        <div class="prose prose-invert prose-lg max-w-none">
+          <slot />
         </div>
-      )}
-    </header>
 
-    <!-- Hero image (optionnelle) -->
-    {data.heroImage && (
-      <img
-        src={data.heroImage}
-        alt={data.title}
-        class="w-full rounded-2xl mb-10"
-        loading="eager"
-      />
-    )}
+        <!-- Newsletter inline (lead magnet général en fin de contenu) -->
+        <NewsletterInline />
 
-    <!-- 🎯 Bloc "Réponse directe" GEO-friendly (si fourni) -->
-    {data.directAnswer && (
-      <DirectAnswerBlock answer={data.directAnswer} keyword={data.keywordPrincipal} />
-    )}
+        <!-- Sources -->
+        {data.sources.length > 0 && (
+          <section class="mt-12 pt-6 border-t border-white/10">
+            <h2 class="text-2xl font-bold mb-4">Sources</h2>
+            <ul class="space-y-2 text-white/70">
+              {data.sources.map((source) => (
+                <li>
+                  <a href={source.url} target="_blank" rel="noopener" class="hover:text-white underline">
+                    {source.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
-    <!-- Content -->
-    <div class="prose prose-invert prose-lg max-w-none">
-      <slot />
+        <!-- FAQ visible -->
+        {data.schema.enableFAQPage && data.faq.length > 0 && (
+          <section class="mt-12 pt-6 border-t border-white/10">
+            <h2 class="text-2xl font-bold mb-6">Questions fréquentes</h2>
+            <div class="space-y-3">
+              {data.faq.map((q) => (
+                <details class="card-glass p-4 group">
+                  <summary class="cursor-pointer font-semibold text-white flex items-start justify-between gap-4 list-none">
+                    <span>{q.question}</span>
+                    <span class="text-gang4-vivid text-xl group-open:rotate-45 transition-transform flex-shrink-0">+</span>
+                  </summary>
+                  <p class="mt-3 text-white/70 leading-relaxed">{q.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- AuthorCard complète en bas -->
+        {author && <AuthorCard author={author} />}
+
+        <!-- Démo CTA final -->
+        <section class="mt-12 p-8 card-glass text-center">
+          <h3 class="text-xl font-bold mb-3">Envie de scaler votre whitelisting Meta ?</h3>
+          <p class="text-white/70 mb-4">
+            Réservez une démo de 30 minutes avec notre équipe.
+          </p>
+          <a
+            href={data.cta.href}
+            class="inline-flex items-center gap-2 px-6 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full font-semibold glow-button"
+          >
+            {data.cta.label} →
+          </a>
+        </section>
+      </article>
+
+      <!-- Sidebar sticky (desktop only) -->
+      <div class="hidden lg:block">
+        <SidebarLeadMagnet
+          leadMagnet={data.leadMagnet}
+          author={author}
+          ctaLabel={data.cta.label}
+          ctaHref={data.cta.href}
+        />
+      </div>
+
     </div>
+  </div>
 
-    <!-- 📬 Newsletter inline (lead magnet) -->
-    <NewsletterInline />
-
-    <!-- Sources -->
-    {data.sources.length > 0 && (
-      <section class="mt-12 pt-6 border-t border-white/10">
-        <h2 class="text-2xl font-bold mb-4">Sources</h2>
-        <ul class="space-y-2 text-white/70">
-          {data.sources.map((source) => (
-            <li>
-              <a href={source.url} target="_blank" rel="noopener" class="hover:text-white underline">
-                {source.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )}
-
-    <!-- FAQ visible (en plus du schema) -->
-    {data.schema.enableFAQPage && data.faq.length > 0 && (
-      <section class="mt-12 pt-6 border-t border-white/10">
-        <h2 class="text-2xl font-bold mb-6">Questions fréquentes</h2>
-        <div class="space-y-3">
-          {data.faq.map((q, i) => (
-            <details class="card-glass p-4 group">
-              <summary class="cursor-pointer font-semibold text-white flex items-start justify-between gap-4 list-none">
-                <span>{q.question}</span>
-                <span class="text-gang4-vivid text-xl group-open:rotate-45 transition-transform flex-shrink-0">+</span>
-              </summary>
-              <p class="mt-3 text-white/70 leading-relaxed">{q.answer}</p>
-            </details>
-          ))}
-        </div>
-      </section>
-    )}
-
-    <!-- Lead magnet CTA spécifique (si défini) -->
-    {data.leadMagnet && (
-      <section class="mt-12 p-8 bg-gradient-to-br from-gang4-vivid/15 to-gang4-glow/5 border border-gang4-vivid/30 rounded-2xl text-center">
-        <h3 class="text-2xl font-bold mb-3">📥 {data.leadMagnet.title}</h3>
-        <a
-          href={data.leadMagnet.url}
-          class="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full font-semibold glow-button"
-        >
-          Télécharger gratuitement
-          <span>→</span>
-        </a>
-      </section>
-    )}
-
-    <!-- 👤 Card auteur (E-E-A-T) -->
-    {author && <AuthorCard author={author} />}
-
-    <!-- Démo CTA -->
-    <section class="mt-12 p-8 card-glass text-center">
-      <h3 class="text-xl font-bold mb-3">Envie de scaler votre whitelisting Meta ?</h3>
-      <p class="text-white/70 mb-4">
-        Réservez une démo de 30 minutes avec notre équipe.
-      </p>
-      <a
-        href={data.cta.href}
-        class="inline-flex items-center gap-2 px-6 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full font-semibold glow-button"
-      >
-        {data.cta.label} →
-      </a>
-    </section>
-  </article>
-
-  <!-- 🎯 Sticky CTA (apparaît au scroll) -->
+  <!-- Sticky CTA bottom (apparaît au scroll) -->
   <StickyCTA
     label={data.cta.label}
     href={data.cta.href}

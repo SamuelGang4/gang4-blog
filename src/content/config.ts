@@ -58,12 +58,17 @@ const blogCollection = defineCollection({
     heroImage: z.string().optional(),
     ogImage: z.string().optional(),
 
-    // Lead magnet associé (cf. pages-ideas.md)
+    // Lead magnet associé (cf. pages-ideas.md) — enrichi pour sidebar sticky
     leadMagnet: z
       .object({
-        type: z.enum(['pdf-gated', 'tool', 'newsletter', 'template', 'database']),
+        type: z.enum(['pdf-gated', 'tool', 'newsletter', 'template', 'database', 'audit', 'webinar']),
         title: z.string(),
+        description: z.string().optional(),
+        bullets: z.array(z.string()).default([]),
+        ctaLabel: z.string().default('Télécharger gratuitement'),
         url: z.string(),
+        image: z.string().optional(), // Preview cover
+        eyebrow: z.string().optional(), // Petit label au-dessus, ex: "Cheat sheet exclusive"
       })
       .optional(),
 
