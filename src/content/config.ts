@@ -38,6 +38,22 @@ const blogCollection = defineCollection({
     keywordDifficulty: z.number().optional(),
     intent: z.enum(['informational', 'commercial', 'transactional', 'navigational']),
 
+    // GEO — Bloc "Réponse directe" obligatoire en ouverture (40-60 mots optimal pour AI Overviews)
+    // Reco audit seo-geo : doit répondre à la question du titre + contenir le KW principal
+    directAnswer: z.string().min(40, 'directAnswer doit faire au moins 40 caractères').max(500, 'directAnswer doit faire moins de 500 caractères').optional(),
+
+    // Reading time (auto-calculable mais peut être surchargé)
+    readingTimeMinutes: z.number().optional(),
+
+    // CTA contextuel BOFU (recommandation seo-sxo : libellé spécifique à l'angle de l'article)
+    cta: z
+      .object({
+        label: z.string().default('Réserver une démo'),
+        href: z.string().default('https://gang4.io/whitelisting#demo'),
+        contextLabel: z.string().optional(), // Ex: "Voir comment Gang4 gère votre whitelisting"
+      })
+      .default({}),
+
     // Visuels
     heroImage: z.string().optional(),
     ogImage: z.string().optional(),

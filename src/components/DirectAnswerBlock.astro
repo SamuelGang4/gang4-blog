@@ -1,0 +1,38 @@
+---
+/**
+ * DirectAnswerBlock — Bloc "Réponse directe" optimisé pour AI Overviews + LLM citations
+ *
+ * Reco audit seo-geo (2026-05-09) :
+ * - 40-60 mots idéal (max 350 chars)
+ * - Doit répondre à la question du titre
+ * - Doit contenir le keyword principal
+ * - Format extractable par GPTBot/ClaudeBot/PerplexityBot
+ */
+
+interface Props {
+  answer: string;
+  keyword?: string;
+}
+
+const { answer, keyword } = Astro.props;
+---
+
+<aside
+  id="reponse-directe"
+  class="my-8 p-6 md:p-8 rounded-2xl bg-gang4-vivid/[0.07] border-l-4 border-gang4-vivid"
+  aria-label="Réponse directe"
+>
+  <div class="flex items-start gap-3">
+    <div class="flex-shrink-0 mt-0.5">
+      <span class="pill pill-vivid text-[10px]">⚡ Réponse directe</span>
+    </div>
+  </div>
+  <p class="mt-3 text-base md:text-lg text-white/90 leading-relaxed font-medium">
+    {answer}
+  </p>
+  {keyword && (
+    <div class="mt-2 text-xs text-white/40">
+      <span class="font-mono">Keyword principal :</span> <strong class="text-white/60">{keyword}</strong>
+    </div>
+  )}
+</aside>

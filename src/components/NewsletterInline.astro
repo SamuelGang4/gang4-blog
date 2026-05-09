@@ -1,0 +1,71 @@
+---
+/**
+ * NewsletterInline — Capture email en fin d'article (lead magnet)
+ *
+ * Reco audit seo-sxo (2026-05-09) :
+ * - Promesse métier précise (pas générique)
+ * - Pas de landing intermédiaire
+ * - Driver lead magnet >3-5%
+ *
+ * Note : le formulaire est mockup (action="#"). À connecter à un vrai endpoint :
+ * - ConvertKit / Mailchimp / Resend / Brevo / Loops / etc.
+ * - Ou via Netlify Forms (gratuit, configurable directement)
+ */
+
+interface Props {
+  title?: string;
+  description?: string;
+  buttonLabel?: string;
+}
+
+const {
+  title = 'Recevez chaque vendredi nos meilleures analyses Meta Ads pour DNVB',
+  description = '1 analyse propriétaire + 1 benchmark chiffré + 1 cas DNVB décortiqué. Pas de spam, pas de promo, désabonnement en 1 clic.',
+  buttonLabel = 'Je m\'abonne (gratuit)',
+} = Astro.props;
+---
+
+<section class="my-12 p-6 md:p-10 rounded-3xl bg-gradient-to-br from-gang4-vivid/15 to-gang4-glow/5 border border-gang4-vivid/30">
+  <div class="max-w-2xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 mb-4">
+      <span class="text-2xl">📬</span>
+      <span class="pill pill-vivid text-[10px]">Newsletter Gang4</span>
+    </div>
+
+    <h3 class="text-xl md:text-2xl font-bold mb-3 leading-tight">
+      {title}
+    </h3>
+
+    <p class="text-sm md:text-base text-white/70 leading-relaxed mb-6">
+      {description}
+    </p>
+
+    <form
+      action="#"
+      method="POST"
+      class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+      data-newsletter-form
+      name="newsletter"
+      data-netlify="true"
+    >
+      <input type="hidden" name="form-name" value="newsletter" />
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="ton@email.pro"
+        class="flex-1 px-4 py-3 rounded-full bg-white/[0.08] border border-white/15 text-white placeholder:text-white/40 focus:outline-none focus:border-gang4-vivid focus:bg-white/[0.12] transition-all text-sm"
+      />
+      <button
+        type="submit"
+        class="px-6 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full font-semibold glow-button text-sm whitespace-nowrap"
+      >
+        {buttonLabel}
+      </button>
+    </form>
+
+    <p class="text-xs text-white/40 mt-4">
+      🔒 Tes données restent privées. Pas de revente, pas de spam.
+    </p>
+  </div>
+</section>

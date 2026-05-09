@@ -1,0 +1,74 @@
+---
+/**
+ * AuthorCard — Card auteur visible en bas d'article (renforcement E-E-A-T)
+ *
+ * Reco audit seo-geo (2026-05-09) :
+ * - Le schema Person est déjà dans ArticleLayout
+ * - Ce composant assure la version HTML visible (signal LLM + utilisateur)
+ */
+
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  author: CollectionEntry<'authors'>;
+}
+
+const { author } = Astro.props;
+const data = author.data;
+---
+
+<aside class="my-12 p-6 md:p-8 rounded-2xl card-glass">
+  <div class="flex flex-col md:flex-row gap-6 items-start">
+    {data.avatar && (
+      <img
+        src={data.avatar}
+        alt={data.name}
+        class="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover border-2 border-white/10"
+        loading="lazy"
+      />
+    )}
+    {!data.avatar && (
+      <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br from-gang4-vivid to-gang4-glow flex items-center justify-center text-white font-black text-2xl flex-shrink-0">
+        {data.name.charAt(0)}
+      </div>
+    )}
+
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="pill pill-muted text-[10px]">À propos de l'auteur</span>
+      </div>
+
+      <h3 class="text-xl font-bold mb-1">{data.name}</h3>
+      <p class="text-sm text-white/60 mb-3">{data.title}</p>
+      <p class="text-sm text-white/70 leading-relaxed mb-4">{data.bio}</p>
+
+      <div class="flex flex-wrap gap-2 mb-4">
+        {data.expertise.slice(0, 4).map((exp) => (
+          <span class="pill pill-muted text-[10px]">{exp}</span>
+        ))}
+      </div>
+
+      <div class="flex items-center gap-4 text-sm">
+        {data.linkedin && (
+          <a
+            href={data.linkedin}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-1.5 text-gang4-vivid hover:text-gang4-glow transition-colors"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            LinkedIn
+          </a>
+        )}
+        <a
+          href={`/blog/auteur/${author.slug}/`}
+          class="inline-flex items-center gap-1.5 text-white/60 hover:text-white transition-colors"
+        >
+          Voir tous ses articles →
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
