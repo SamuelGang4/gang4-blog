@@ -1,0 +1,104 @@
+---
+/**
+ * MockImage — Placeholder visuel pour articles en cours de rédaction
+ *
+ * Usage dans MDX :
+ * <MockImage type="screenshot" caption="Screenshot du Meta Ads Manager montrant un compte sous Andromeda" />
+ *
+ * Types disponibles :
+ * - screenshot : style screenshot d'app (browser bar)
+ * - chart : style graphique de data viz
+ * - diagram : style schéma technique
+ * - photo : style photo réelle (avec icône utilisateur)
+ * - dashboard : style dashboard SaaS
+ */
+
+interface Props {
+  type?: 'screenshot' | 'chart' | 'diagram' | 'photo' | 'dashboard';
+  caption?: string;
+  ratio?: '16/9' | '4/3' | '1/1' | '21/9';
+}
+
+const { type = 'screenshot', caption, ratio = '16/9' } = Astro.props;
+
+const ratioClass = {
+  '16/9': 'aspect-video',
+  '4/3': 'aspect-[4/3]',
+  '1/1': 'aspect-square',
+  '21/9': 'aspect-[21/9]',
+}[ratio];
+
+const typeConfig = {
+  screenshot: {
+    icon: '🖥️',
+    label: 'Screenshot',
+    gradient: 'from-blue-500/20 via-purple-500/20 to-gang4-vivid/20',
+  },
+  chart: {
+    icon: '📊',
+    label: 'Graphique',
+    gradient: 'from-green-500/20 via-emerald-500/20 to-teal-500/20',
+  },
+  diagram: {
+    icon: '🔀',
+    label: 'Schéma',
+    gradient: 'from-orange-500/20 via-pink-500/20 to-red-500/20',
+  },
+  photo: {
+    icon: '📸',
+    label: 'Photo',
+    gradient: 'from-amber-500/20 via-yellow-500/20 to-orange-500/20',
+  },
+  dashboard: {
+    icon: '📈',
+    label: 'Dashboard',
+    gradient: 'from-gang4-vivid/30 via-gang4-glow/20 to-blue-500/20',
+  },
+}[type];
+---
+
+<figure class="my-8">
+  <div class={`relative ${ratioClass} rounded-xl overflow-hidden border border-white/10 bg-gradient-to-br ${typeConfig.gradient}`}>
+    <!-- Pattern de fond style "blueprint" -->
+    <div
+      class="absolute inset-0 opacity-30"
+      style="background-image: radial-gradient(circle at 1px 1px, hsla(0,0%,100%,0.15) 1px, transparent 0); background-size: 20px 20px;"
+    ></div>
+
+    {type === 'screenshot' || type === 'dashboard' ? (
+      <!-- Style browser/app -->
+      <div class="absolute top-0 left-0 right-0 bg-gang4-deep/80 backdrop-blur-sm border-b border-white/10 px-4 py-2 flex items-center gap-2">
+        <div class="flex gap-1.5">
+          <div class="w-2.5 h-2.5 rounded-full bg-red-400/60"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-yellow-400/60"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-green-400/60"></div>
+        </div>
+        <div class="flex-1 mx-3 px-3 py-1 rounded-md bg-white/5 text-xs text-white/40 font-mono truncate">
+          {type === 'dashboard' ? 'gang4.io/dashboard' : 'business.facebook.com/adsmanager'}
+        </div>
+      </div>
+    ) : null}
+
+    <!-- Centre : icône + label -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+      <div class="text-6xl mb-3 opacity-80">{typeConfig.icon}</div>
+      <div class="pill pill-vivid mb-2">Mockup · {typeConfig.label}</div>
+      {caption && (
+        <p class="text-sm text-white/60 max-w-md leading-snug mt-2">
+          {caption}
+        </p>
+      )}
+    </div>
+
+    <!-- Coin "Image à venir" -->
+    <div class="absolute bottom-3 right-3">
+      <span class="pill pill-muted text-[9px]">À remplacer</span>
+    </div>
+  </div>
+
+  {caption && (
+    <figcaption class="text-center text-sm text-white/50 italic mt-3">
+      {caption}
+    </figcaption>
+  )}
+</figure>

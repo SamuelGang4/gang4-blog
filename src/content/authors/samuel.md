@@ -1,7 +1,7 @@
 ---
 name: "Samuel Balthazard"
-title: "Co-founder Gang4 · Ex-Head of Growth Perifit"
-bio: "Co-founder de Gang4, expert Meta Ads pour les DNVB e-commerce. 8 ans d'expérience growth en passant par Brentt, Koober, World Wide Wine, puis Perifit où j'ai scalé le revenue de €15M à €25M en gérant un budget Meta de €300K+/mois et en produisant 2 500+ pubs avec un studio créatif interne."
+title: "Co-founder Gang4 · 15M€+ dépensés sur Meta Ads"
+bio: "Co-founder Gang4 et expert Meta Ads pour les DNVB e-commerce. **15M€+ cumulés dépensés sur Meta** sur 8 ans en pilotant la growth de Brentt, Koober, World Wide Wine, puis Perifit. Chez Perifit (mai 2023 → juil 2025) : revenue scalé de €15M à €25M, budget Meta de €300K+/mois, 2 500+ pubs produites via un studio créatif interne (4 personnes recrutées), expansion dans 15+ pays."
 avatar: "/authors/samuel.jpg"
 linkedin: "https://www.linkedin.com/in/samuelbalthazard/"
 expertise:
@@ -92,10 +92,11 @@ Co-founder du SaaS qui permet aux marques DNVB de scaler leur whitelisting Meta 
 
 ## Pourquoi Samuel parle de Meta Ads
 
-Avec **8 ans d'expérience growth**, dont 2+ ans à scaler le compte Meta de Perifit (€300K+/mois) et désormais en train de construire Gang4, je connais intimement les défis qu'affrontent les Traffic Managers et CMO de DNVB françaises qui veulent dépasser le plateau des 30k€/mois.
+Avec **15M€+ cumulés dépensés sur Meta sur 8 ans**, dont 2+ ans à scaler le compte Meta de Perifit (€300K+/mois) et désormais en train de construire Gang4, je connais intimement les défis qu'affrontent les Traffic Managers et CMO de DNVB françaises qui veulent dépasser le plateau des 30k€/mois.
 
 Le contenu publié sur ce blog est basé sur :
-- 🧠 Mon expérience opérationnelle (de Brentt à Perifit)
-- 📊 La data réelle des clients Gang4 (249k+ commentaires analysés, 999+ campagnes whitelisting)
-- 🌍 Une perspective européenne (15+ pays gérés)
-- 🎨 La compréhension du rôle créatif (2 500+ pubs produites)
+- 💰 **15M€+ de spend Meta** géré opérationnellement (Brentt → Koober → Perifit → Gang4)
+- 📊 La data réelle des clients Gang4 (249k+ commentaires analysés, 999+ campagnes whitelisting, 86k+ pubs Meta indexées)
+- 🌍 Une perspective européenne (15+ pays gérés chez Perifit)
+- 🎨 La compréhension du rôle créatif (2 500+ pubs produites avec un studio créatif interne)
+- 🚀 Le positionnement vendor-side (en construisant Gang4, je vois les pain points des 100+ DNVB clientes)
