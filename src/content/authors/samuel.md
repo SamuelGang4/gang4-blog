@@ -3,7 +3,7 @@ name: "Samuel Balthazard"
 title: "Co-founder Gang4 · 15M€+ dépensés sur Meta Ads"
 bio: "Co-founder Gang4 et expert Meta Ads pour les DNVB e-commerce. **15M€+ cumulés dépensés sur Meta** sur 8 ans en pilotant la growth de Brentt, Koober, World Wide Wine, puis Perifit. Chez Perifit (mai 2023 → juil 2025) : revenue scalé de €15M à €25M, budget Meta de €300K+/mois, 2 500+ pubs produites via un studio créatif interne (4 personnes recrutées), expansion dans 15+ pays."
 avatar: "/authors/samuel.jpg"
-linkedin: "https://www.linkedin.com/in/samuelbalthazard/"
+linkedin: "https://www.linkedin.com/in/samuel-balthazard-a01072106/"
 expertise:
   - "Meta Ads scaling DNVB"
   - "Whitelisting & Partnership Ads"
