@@ -8,13 +8,13 @@ const currentPath = Astro.url.pathname;
 <header class="border-b border-white/[0.08] bg-gang4-deep/80 backdrop-blur-xl sticky top-0 z-50">
   <nav class="container-wide flex items-center justify-between py-5">
     <a href="/" class="flex items-center gap-3 group">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-gang4-vivid to-gang4-glow flex items-center justify-center font-black text-white text-sm shadow-glow-sm group-hover:shadow-glow transition-all">
-        G4
-      </div>
-      <div class="flex flex-col leading-tight">
-        <span class="text-base font-black">Gang4</span>
-        <span class="text-[10px] text-white/50 font-semibold uppercase tracking-widest">Blog</span>
-      </div>
+      <img
+        src="/logo-gang4.svg"
+        alt="Gang4"
+        class="h-8 w-auto group-hover:opacity-90 transition-opacity"
+        loading="eager"
+      />
+      <span class="text-[10px] text-white/50 font-semibold uppercase tracking-widest border-l border-white/15 pl-3">Blog</span>
     </a>
 
     <div class="hidden md:flex items-center gap-8 text-sm font-medium">
