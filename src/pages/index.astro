@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+
+<BaseLayout
+  title="Gang4 Blog — Expertise Meta Ads pour DNVB françaises"
+  description="Le hub éditorial Gang4 : whitelisting, Andromeda, Partnership Ads, scaling DNVB sur Meta. Études propriétaires basées sur 249k+ commentaires et 999+ campagnes whitelisting analysées."
+>
+  <section class="container-blog py-16 md:py-24">
+    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+      L'expertise Meta Ads<br />
+      pour les <span class="text-gang4-primary">DNVB françaises</span>
+    </h1>
+    <p class="text-xl text-white/70 mb-12 max-w-2xl">
+      Études propriétaires, frameworks éprouvés et analyses techniques pour les marques qui scalent au-delà de 30k€/mois sur Meta.
+    </p>
+
+    {posts.length === 0 ? (
+      <div class="p-8 bg-white/5 border border-white/10 rounded-lg text-center text-white/70">
+        <p class="text-lg">📝 Le 1er article arrive bientôt.</p>
+        <p class="text-sm mt-2">
+          On bosse sur l'étude signature : <strong class="text-white">"Impact de la social proof sur le CPM Meta — analyse de 249k commentaires DNVB"</strong>.
+        </p>
+      </div>
+    ) : (
+      <div class="space-y-8">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.slug}/`}
+            class="block p-6 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:border-white/20 transition-all"
+          >
+            <div class="text-xs text-gang4-primary uppercase tracking-wider mb-2">
+              {post.data.pillar} · {post.data.persona}
+            </div>
+            <h2 class="text-2xl font-bold mb-2">{post.data.title}</h2>
+            <p class="text-white/70 mb-3">{post.data.description}</p>
+            <div class="text-sm text-white/50">
+              {post.data.publishedAt.toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>

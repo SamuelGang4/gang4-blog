@@ -1,0 +1,39 @@
+# Gang4
+
+Gang4 est un SaaS français qui permet aux marques DNVB de scaler leur whitelisting Meta Ads en un clic. Génération de centaines de créas UGC IA + diffusion automatique sur des profils whitelistés (vraies personnes), pricing performance-based.
+
+**Cible :** DNVB e-commerce françaises qui dépensent plus de 30 000 €/mois sur Meta Ads.
+
+**Promesse mesurable (sources Meta + eMarketer) :**
+- CPA -19% vs formats classiques
+- CTR +13% vs formats classiques
+- Pricing à la performance : pas de spend → pas de frais (au-delà de 1 000 € par profil)
+
+## Articles principaux
+
+### Whitelisting & Partnership Ads
+- /blog/whitelisting-meta-guide-complet : Le guide complet du whitelisting Meta pour DNVB (à venir)
+- /blog/partnership-ads-meta-setup : Setup technique des Partnership Ads Meta (à venir)
+- /blog/roi-whitelisting-benchmarks : ROI du whitelisting — benchmarks chiffrés pour CMO (à venir)
+
+### Expertise Meta Ads
+- /blog/andromeda-meta-algorithme-delivery : Andromeda — le nouvel algorithme de delivery Meta (à venir)
+- /blog/funnel-meta-ads-tofu-mofu-bofu-dnvb : Funnel Meta Ads pour DNVB (TOFU/MOFU/BOFU) (à venir)
+- /blog/content-factory-ia-production-creative : Content Factory IA pour scaler la production créative (à venir)
+
+### Données propriétaires
+- /blog/etude-impact-249k-commentaires-cpm-meta : Étude (data Gang4) impact social proof sur CPM Meta (à venir)
+- /blog/state-of-whitelisting-meta-france-2026 : State of Whitelisting Meta — analyse 999 demandes (à venir)
+- /blog/benchmarks-dnvb-fr-q2-2026 : Benchmarks Meta Ads DNVB France Q2 2026 (à venir)
+
+## Témoignages clients
+
+Marques DNVB françaises clientes : Tediber, Spring, Perifit, Endro Cosmétique / Charlotte Bio, May.
+
+## Liens
+
+- Site principal : https://gang4.io
+- Solution Whitelisting : https://gang4.io/whitelisting
+- Blog : https://blog.gang4.io
+
+# License: RSL 1.0

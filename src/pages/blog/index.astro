@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+
+<BaseLayout
+  title="Tous les articles — Gang4 Blog"
+  description="Liste complète des articles Gang4 sur Meta Ads, whitelisting, Andromeda, scaling DNVB."
+>
+  <section class="container-blog py-16">
+    <h1 class="text-4xl md:text-5xl font-bold mb-12">Tous les articles</h1>
+
+    {posts.length === 0 ? (
+      <p class="text-white/70">Aucun article publié pour le moment.</p>
+    ) : (
+      <div class="space-y-8">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.slug}/`}
+            class="block p-6 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all"
+          >
+            <div class="text-xs text-gang4-primary uppercase tracking-wider mb-2">
+              {post.data.pillar}
+            </div>
+            <h2 class="text-2xl font-bold mb-2">{post.data.title}</h2>
+            <p class="text-white/70 mb-3">{post.data.description}</p>
+            <div class="text-sm text-white/50">
+              {post.data.publishedAt.toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>

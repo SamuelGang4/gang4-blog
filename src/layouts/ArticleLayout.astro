@@ -1,0 +1,178 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'blog'>;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+
+// Récupère l'auteur
+const author = await getEntry('authors', data.author);
+const authorName = author?.data.name || 'Gang4 Team';
+const authorTitle = author?.data.title || '';
+
+// Construction du Schema.org Article + FAQ + Person
+const articleSchema: any = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': data.schema.type,
+      headline: data.title,
+      description: data.description,
+      datePublished: data.publishedAt.toISOString(),
+      dateModified: (data.updatedAt || data.publishedAt).toISOString(),
+      author: {
+        '@type': 'Person',
+        name: authorName,
+        ...(author?.data.linkedin && { sameAs: [author.data.linkedin] }),
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Gang4',
+        url: 'https://gang4.io',
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': new URL(Astro.url.pathname, Astro.site).href,
+      },
+      ...(data.heroImage && { image: new URL(data.heroImage, Astro.site).href }),
+    },
+  ],
+};
+
+// Ajout FAQPage schema si activé
+if (data.schema.enableFAQPage && data.faq.length > 0) {
+  articleSchema['@graph'].push({
+    '@type': 'FAQPage',
+    mainEntity: data.faq.map((q) => ({
+      '@type': 'Question',
+      name: q.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: q.answer,
+      },
+    })),
+  });
+}
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  ogImage={data.ogImage || data.heroImage}
+  ogType="article"
+  publishedAt={data.publishedAt}
+  updatedAt={data.updatedAt}
+  author={authorName}
+  schemaJsonLd={articleSchema}
+>
+  <article class="container-blog py-12 md:py-16">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-white/50 mb-8" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-white">Accueil</a>
+      <span class="mx-2">/</span>
+      <a href="/blog" class="hover:text-white">Blog</a>
+      <span class="mx-2">/</span>
+      <span class="text-white/70">{data.title}</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">{data.title}</h1>
+      <p class="text-xl text-white/70 mb-6">{data.description}</p>
+
+      <div class="flex items-center gap-3 text-sm text-white/60">
+        <span>Par <strong class="text-white">{authorName}</strong></span>
+        {authorTitle && <span>· {authorTitle}</span>}
+        <span>·</span>
+        <time datetime={data.publishedAt.toISOString()}>
+          Publié le {data.publishedAt.toLocaleDateString('fr-FR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </time>
+        {data.updatedAt && (
+          <>
+            <span>·</span>
+            <time datetime={data.updatedAt.toISOString()} class="italic">
+              Mis à jour le {data.updatedAt.toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+          </>
+        )}
+      </div>
+
+      {data.gangsData.enabled && (
+        <div class="mt-6 p-4 bg-gang4-primary/10 border border-gang4-primary/30 rounded-lg text-sm">
+          📊 <strong>Données propriétaires Gang4</strong> — {data.gangsData.description}
+        </div>
+      )}
+    </header>
+
+    <!-- Hero image (optionnelle) -->
+    {data.heroImage && (
+      <img
+        src={data.heroImage}
+        alt={data.title}
+        class="w-full rounded-lg mb-12"
+        loading="eager"
+      />
+    )}
+
+    <!-- Content -->
+    <div class="prose prose-invert prose-lg max-w-none">
+      <slot />
+    </div>
+
+    <!-- Sources -->
+    {data.sources.length > 0 && (
+      <section class="mt-16 pt-8 border-t border-white/10">
+        <h2 class="text-2xl font-bold mb-4">Sources</h2>
+        <ul class="space-y-2 text-white/70">
+          {data.sources.map((source) => (
+            <li>
+              <a href={source.url} target="_blank" rel="noopener" class="hover:text-white underline">
+                {source.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- Lead magnet CTA -->
+    {data.leadMagnet && (
+      <section class="mt-16 p-8 bg-gang4-primary/10 border border-gang4-primary/30 rounded-lg text-center">
+        <h3 class="text-2xl font-bold mb-3">{data.leadMagnet.title}</h3>
+        <a
+          href={data.leadMagnet.url}
+          class="inline-block mt-4 px-6 py-3 bg-white text-gang4-deep rounded-lg font-medium hover:bg-white/90 transition-colors"
+        >
+          Télécharger gratuitement
+        </a>
+      </section>
+    )}
+
+    <!-- Démo CTA -->
+    <section class="mt-12 p-8 bg-white/5 border border-white/10 rounded-lg text-center">
+      <h3 class="text-xl font-bold mb-3">Envie de scaler votre whitelisting Meta ?</h3>
+      <p class="text-white/70 mb-4">
+        Réservez une démo de 30 minutes avec notre équipe.
+      </p>
+      <a
+        href="https://gang4.io/whitelisting#demo"
+        class="inline-block px-6 py-3 bg-white text-gang4-deep rounded-lg font-medium hover:bg-white/90 transition-colors"
+      >
+        Réserver une démo →
+      </a>
+    </section>
+  </article>
+</BaseLayout>
