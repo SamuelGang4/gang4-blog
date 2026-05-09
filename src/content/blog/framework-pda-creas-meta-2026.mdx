@@ -78,10 +78,10 @@ sources:
     url: "https://engineering.fb.com/2026/03/31/ml-applications/meta-adaptive-ranking-model-bending-the-inference-scaling-curve-to-serve-llm-scale-models-for-ads/"
   - title: "Breakthrough Advertising — Eugene Schwartz (1966, réédition 2004)"
     url: "https://www.amazon.fr/Breakthrough-Advertising-Eugene-M-Schwartz/dp/0887232981"
-  - title: "Foxwell Digital — Creative Strategy 2026"
-    url: "https://www.foxwelldigital.com"
-  - title: "Motion — Creative Performance Benchmarks"
-    url: "https://www.motionapp.com"
+  - title: "Motion Creative Benchmarks 2026 : 8 Key Takeaways — Foxwell Digital (mars 2026)"
+    url: "https://www.foxwelldigital.com/blog/motion-creative-benchmarks-2026-8-key-takeaways"
+  - title: "Motion Creative Benchmarks 2026 — Motion (Thumbstop Pulse)"
+    url: "https://motionapp.com/thumbstop-pulse/creative-benchmarks-2026"
   - title: "Barry Hott — Performance Creative Methodology"
     url: "https://www.hottgrowth.com"
 
@@ -127,6 +127,8 @@ C'est le piège du volume sans diversité conceptuelle. Et c'est la raison princ
   Sur 86 352 publicités Meta analysées (4 082 campagnes, 32 M€ de spend cumulé), le pattern est systématique : les comptes qui saturent malgré un volume de créas correct concentrent leur spend sur 2 à 4 créas conceptuellement identiques. Andromeda explore le même bassin d'audience en boucle, le sature, et le CPM monte sans augmentation de reach qualifié.
 </Callout>
 
+C'est exactement ce que j'ai vécu chez Perifit. On testait 30 créas par mois. Je me souviens d'un audit qu'on a fait en interne : on a posé toutes les créas du trimestre sur une table (au sens littéral, des screenshots imprimés). Résultat : on avait 6 concepts distincts, répétés en 28 exécutions différentes. Andromeda recevait 6 signaux, pas 30. Le CPA stagnait depuis 8 semaines. C'est là que le framework PDA a commencé à prendre forme.
+
 Le volume est une condition nécessaire, pas suffisante. Motion, qui analyse plus de 550 000 publicités dans sa base, documente que la majorité du spend se concentre sur une fraction des créas testées. Ça ne veut pas dire qu'il faut produire moins. Ça veut dire que la diversité conceptuelle des créas que tu testes détermine la taille de l'espace que tu explores.
 
 Andromeda reconstruit l'audience depuis les signaux du créatif. Si tous tes créatifs envoient le même signal, l'espace exploré est le même. Diversifier le concept, pas juste le visuel, c'est agrandir l'espace.
@@ -156,6 +158,8 @@ Le Persona PDA, c'est la personne visible à l'écran. Pas un profil démographi
 Pourquoi ça compte pour Andromeda ? Parce que le modèle a appris, sur des milliards d'interactions, quels types de personnes à l'écran résonnent avec quels profils d'utilisateurs. Une mère de famille qui parle de son organisation quotidienne trouve naturellement les profils sensibles à ce récit. Un professionnel de 35 ans qui parle d'efficacité trouve les siens. Pas parce que tu as ciblé "parent" ou "cadre". Parce que le créatif porte ces signaux et qu'Andromeda les lit.
 
 Pour construire 3 à 5 archétypes de personas par marque, l'exercice le plus efficace que je connaisse : lis 200 commentaires non sollicités sur les publicités existantes de la marque et de ses concurrents directs. Les personas émergent du langage réel des clients, pas d'une persona marketing fabriquée en salle de réunion.
+
+J'ai fait cette erreur tôt dans ma carrière, sur un compte e-commerce mode. On avait brieffé les créas par tranche d'âge : "femme 25-35", "femme 35-50". On croyait couvrir des personas distincts. En réalité, le signal à l'écran était identique. Même tonalité, même style de produit, même désir sous-jacent. Andromeda voyait un seul concept. On n'a compris le problème qu'en allant lire les commentaires organiques de la marque, où deux profils de clientes très différents s'exprimaient dans un langage radicalement distinct.
 
 <DataTable
   headers={["Archétype Persona", "Signal visible à l'écran", "Ce qu'Andromeda en déduit"]}
@@ -343,6 +347,8 @@ L'erreur inverse est moins intuitive mais tout aussi coûteuse : une créa Unawa
 C'est le piège du "testing". Tu identifies une créa qui fonctionne. Tu produis 10 variations : même script, même structure, même persona, même désir, même niveau d'awareness. Seuls changent les 3 premières secondes visuelles. Tu appelles ça du testing créatif.
 
 Ce n'est pas du testing conceptuel. C'est de l'optimisation d'une seule case PDA. Andromeda explore toujours le même bassin. Tu peux optimiser la performance de cette case, mais tu n'explores pas de nouveau territoire d'audience.
+
+J'ai passé 3 mois dans cette boucle sur un compte wellness. On avait une créa qui performait. On en a fait 14 variations : hook différent, musique différente, sous-titres d'une autre couleur. Toutes couvraient le même Persona, le même Désir, le même niveau d'Awareness. Le spend se concentrait sur les 2-3 premières. Les 11 autres mouraient à 20€ chacune. On n'avait pas exploré de territoire. On avait juste optimisé le même bout de plage.
 
 Pour tester conceptuellement, il faut changer au moins une dimension PDA : autre persona, autre désir, ou autre niveau d'awareness. Pas juste le visuel d'ouverture.
 

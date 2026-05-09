@@ -51,17 +51,29 @@ const articleSchema: any = {
       author: {
         '@type': 'Person',
         name: authorName,
+        ...(authorTitle && { jobTitle: authorTitle }),
         ...(author?.data.linkedin && { sameAs: [author.data.linkedin] }),
+        worksFor: {
+          '@type': 'Organization',
+          name: 'Gang4',
+          url: 'https://gang4.io',
+        },
       },
       publisher: {
         '@type': 'Organization',
         name: 'Gang4',
         url: 'https://gang4.io',
+        logo: {
+          '@type': 'ImageObject',
+          url: new URL('/logo-gang4.svg', Astro.site).href,
+        },
       },
       mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': articleUrl,
       },
+      inLanguage: 'fr-FR',
+      articleSection: pillarLabels[data.pillar] || data.pillar,
       ...(data.heroImage && { image: new URL(data.heroImage, Astro.site).href }),
       ...(data.keywordPrincipal && { keywords: [data.keywordPrincipal, ...data.keywordsSecondaires].join(', ') }),
     },
@@ -128,11 +140,6 @@ if (data.schema.enableFAQPage && data.faq.length > 0) {
             pillarLabel={pillarLabels[data.pillar] || data.pillar}
           />
 
-          {data.gangsData.enabled && (
-            <div class="mt-6 p-4 bg-gang4-vivid/10 border border-gang4-vivid/30 rounded-lg text-sm">
-              📊 <strong>Données propriétaires Gang4</strong> — {data.gangsData.description}
-            </div>
-          )}
         </header>
 
         <!-- Hero image (optionnelle) -->
