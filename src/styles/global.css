@@ -194,11 +194,33 @@
   scroll-margin-top: 6rem !important;
 }
 
-/* Paragraphes — respiration généreuse pour confort lecture longue */
+/* Paragraphes — taille plus généreuse pour confort lecture longue */
 .prose-invert p {
   margin-top: 1.75rem !important;
   margin-bottom: 1.75rem !important;
-  line-height: 1.8 !important;
+  line-height: 1.75 !important;
+  font-size: 1.1875rem !important; /* ~19px desktop */
+}
+
+@media (min-width: 768px) {
+  .prose-invert p {
+    font-size: 1.25rem !important; /* ~20px desktop large */
+    line-height: 1.7 !important;
+  }
+}
+
+/* Listes : alignées sur la même taille que les paragraphes */
+.prose-invert ul > li,
+.prose-invert ol > li {
+  font-size: 1.1875rem !important;
+  line-height: 1.7 !important;
+}
+
+@media (min-width: 768px) {
+  .prose-invert ul > li,
+  .prose-invert ol > li {
+    font-size: 1.25rem !important;
+  }
 }
 
 /* Premier paragraphe après un H2/H3 : marge top réduite (sinon trop d'air) */
