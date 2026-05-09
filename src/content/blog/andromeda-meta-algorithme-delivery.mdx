@@ -107,6 +107,7 @@ import KeyTakeaways from '@/components/KeyTakeaways.astro';
 import StatGrid from '@/components/StatGrid.astro';
 import DataTable from '@/components/DataTable.astro';
 import PullQuote from '@/components/PullQuote.astro';
+import SequenceFlow from '@/components/SequenceFlow.astro';
 
 <KeyTakeaways
   title="À retenir en 30 secondes"
@@ -231,14 +232,16 @@ Là où les anciens algorithmes optimisaient événement par événement (un cli
 
 Un utilisateur ayant consulté des contenus sur les Alpes sera exposé séquentiellement à des publicités :
 
-```
-Achat du vol → Besoin d'équipement (vestes, gants)
-            → Besoin d'un forfait de ski
-            → Besoin d'assurance voyage
-            → Réservation hébergement
-```
-
-Dans cet ordre, sur plusieurs jours.
+<SequenceFlow
+  start="Achat du vol"
+  steps={[
+    "Besoin d'équipement (vestes, gants)",
+    "Besoin d'un forfait de ski",
+    "Besoin d'assurance voyage",
+    "Réservation hébergement",
+  ]}
+  caption="Sur plusieurs jours, Andromeda orchestre l'exposition publicitaire selon cette séquence prédictive."
+/>
 
 **Pour les marques DNVB e-commerce, cela signifie que vos créatifs de funnel supérieur "éduquent" Andromeda sur la propension d'achat de vos audiences**, même sans conversion directe. Les micro-signaux d'engagement en haut de funnel influencent directement l'efficacité des campagnes de conversion en bas de funnel.
 

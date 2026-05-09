@@ -1,0 +1,93 @@
+---
+/**
+ * SequenceFlow — Flux narratif visuel (étapes liées par flèches)
+ *
+ * Remplace les code blocks ASCII type :
+ *   Achat du vol → Besoin d'équipement
+ *               → Besoin d'un forfait
+ *
+ * Usage MDX :
+ * <SequenceFlow
+ *   start="Achat du vol"
+ *   steps={[
+ *     "Besoin d'équipement (vestes, gants)",
+ *     "Besoin d'un forfait de ski",
+ *     "Besoin d'assurance voyage",
+ *     "Réservation hébergement",
+ *   ]}
+ *   caption="Sur plusieurs jours, Andromeda orchestre l'exposition publicitaire selon cette séquence prédictive."
+ * />
+ *
+ * Variantes :
+ * - direction : "vertical" (default) | "horizontal"
+ * - numbered : true (1, 2, 3...) | false (default)
+ */
+
+interface Props {
+  start: string;
+  steps: string[];
+  caption?: string;
+  direction?: 'vertical' | 'horizontal';
+  numbered?: boolean;
+}
+
+const { start, steps, caption, direction = 'vertical', numbered = false } = Astro.props;
+
+const allSteps = [start, ...steps];
+---
+
+<figure class="my-8">
+  {direction === 'vertical' ? (
+    <ol class="relative space-y-2 list-none p-0 m-0">
+      {allSteps.map((step, i) => (
+        <li class="relative flex items-start gap-4 group">
+          <!-- Connecteur vertical (sauf dernier) -->
+          {i < allSteps.length - 1 && (
+            <span class="absolute left-[15px] top-9 bottom-0 w-px bg-gradient-to-b from-gang4-vivid/40 to-gang4-vivid/10" aria-hidden="true"></span>
+          )}
+
+          <!-- Numéro / dot -->
+          <span class:list={[
+            'relative z-10 flex-shrink-0 flex items-center justify-center',
+            'w-8 h-8 rounded-full bg-gang4-vivid/15 border border-gang4-vivid/40',
+            'text-gang4-vivid font-bold text-sm tabular-nums',
+          ]}>
+            {numbered ? i + 1 : (i === 0 ? '◉' : '→')}
+          </span>
+
+          <!-- Texte étape -->
+          <div class:list={[
+            'flex-1 pt-1 pb-3 leading-snug',
+            i === 0 ? 'text-white font-semibold text-lg' : 'text-white/85',
+          ]}>
+            {step}
+          </div>
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <!-- Horizontal flow (pour mobile : auto-vertical) -->
+    <div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-2 overflow-x-auto pb-2">
+      {allSteps.map((step, i) => (
+        <>
+          <div class="flex-shrink-0 px-4 py-3 rounded-xl bg-gang4-vivid/10 border border-gang4-vivid/30 text-sm font-semibold text-white whitespace-nowrap">
+            {numbered && <span class="text-gang4-vivid mr-2">{i + 1}.</span>}
+            {step}
+          </div>
+          {i < allSteps.length - 1 && (
+            <span class="text-gang4-vivid text-xl self-center hidden md:inline" aria-hidden="true">→</span>
+          )}
+          {i < allSteps.length - 1 && (
+            <span class="text-gang4-vivid text-xl text-center md:hidden" aria-hidden="true">↓</span>
+          )}
+        </>
+      ))}
+    </div>
+  )}
+
+  {caption && (
+    <figcaption class="text-sm text-white/50 italic mt-4 text-center">
+      {caption}
+    </figcaption>
+  )}
+</figure>
