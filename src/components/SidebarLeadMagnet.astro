@@ -47,23 +47,13 @@ const typeIcons: Record<string, string> = {
           </div>
         )}
 
-        {leadMagnet.image ? (
+        {leadMagnet.image && (
           <img
             src={leadMagnet.image}
             alt={leadMagnet.title}
             class="w-full rounded-lg mb-4 border border-white/10"
             loading="lazy"
           />
-        ) : (
-          <!-- Mockup placeholder si pas d'image -->
-          <div class="aspect-[4/5] rounded-lg mb-4 border border-white/10 bg-gradient-to-br from-gang4-vivid/30 via-gang4-glow/20 to-gang4-deep relative overflow-hidden">
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-              <div class="text-4xl mb-2">{typeIcons[leadMagnet.type] || '📄'}</div>
-              <div class="text-xs font-semibold text-white/70 uppercase tracking-wider">{leadMagnet.type}</div>
-              <div class="text-sm font-bold text-white mt-2 leading-tight">{leadMagnet.title}</div>
-            </div>
-            <div class="absolute bottom-2 right-2 pill pill-muted text-[8px]">Preview</div>
-          </div>
         )}
 
         <h3 class="font-bold text-base leading-tight mb-2">{leadMagnet.title}</h3>
@@ -83,12 +73,31 @@ const typeIcons: Record<string, string> = {
           </ul>
         )}
 
-        <a
-          href={leadMagnet.url}
-          class="block w-full text-center px-4 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full text-sm font-bold glow-button transition-all"
+        <form
+          action={leadMagnet.url}
+          method="POST"
+          name="lead-magnet-sidebar"
+          data-netlify="true"
+          class="space-y-2"
         >
-          {leadMagnet.ctaLabel}
-        </a>
+          <input type="hidden" name="form-name" value="lead-magnet-sidebar" />
+          <input type="hidden" name="lead_magnet" value={leadMagnet.title} />
+
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="ton@email.pro"
+            class="w-full px-4 py-2.5 rounded-full bg-white/[0.08] border border-white/15 text-white placeholder:text-white/40 focus:outline-none focus:border-gang4-vivid focus:bg-white/[0.12] transition-all text-sm"
+          />
+
+          <button
+            type="submit"
+            class="block w-full text-center px-4 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full text-sm font-bold glow-button transition-all"
+          >
+            {leadMagnet.ctaLabel}
+          </button>
+        </form>
 
         <p class="text-[10px] text-white/40 text-center mt-2">
           🔒 100% gratuit · Pas de spam
