@@ -1,0 +1,47 @@
+---
+/**
+ * PullQuote — Citation marquante visuellement (différent de blockquote standard)
+ *
+ * Usage MDX :
+ * <PullQuote>
+ *   Le système ne demande plus "Qui doit voir cette publicité ?",
+ *   mais "Quelle publicité est la plus pertinente pour cette personne ?"
+ * </PullQuote>
+ *
+ * Avec attribution :
+ * <PullQuote attribution="Andrew Foxwell, Foxwell Founders">
+ *   ...
+ * </PullQuote>
+ */
+
+interface Props {
+  attribution?: string;
+  size?: 'md' | 'lg';
+}
+
+const { attribution, size = 'md' } = Astro.props;
+
+const sizeClasses = {
+  md: 'text-xl md:text-2xl',
+  lg: 'text-2xl md:text-3xl',
+}[size];
+---
+
+<aside class="my-10 md:my-12 relative">
+  <!-- Gros guillemet décoratif -->
+  <div class="absolute -top-4 -left-2 md:-left-6 text-7xl md:text-8xl font-black text-gang4-vivid/20 leading-none select-none pointer-events-none">
+    "
+  </div>
+
+  <blockquote class="relative pl-6 md:pl-12 border-l-2 border-gang4-vivid/40">
+    <p class:list={[sizeClasses, 'font-semibold text-white leading-snug tracking-tight']}>
+      <slot />
+    </p>
+
+    {attribution && (
+      <footer class="mt-4 text-sm text-white/50">
+        — <cite class="not-italic font-medium text-white/70">{attribution}</cite>
+      </footer>
+    )}
+  </blockquote>
+</aside>

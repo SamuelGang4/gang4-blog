@@ -1,0 +1,57 @@
+---
+/**
+ * SectionHeader — H2 visuellement marquant pour structurer la lecture
+ *
+ * Pattern Stripe / Linear : numérotation visible + ligne décorative + slug ID auto.
+ *
+ * Usage MDX :
+ * <SectionHeader number="01" title="Le mystère des performances fluctuantes" />
+ * <SectionHeader number="02" title='Le virage technologique : du système fragmenté au "Bouncer"' />
+ *
+ * Variantes :
+ * - eyebrow : petit label au-dessus du titre (ex: "Section technique")
+ * - id : slug custom pour ancrage TOC (sinon auto-généré)
+ */
+
+interface Props {
+  number?: string;
+  title: string;
+  eyebrow?: string;
+  id?: string;
+}
+
+const { number, title, eyebrow, id } = Astro.props;
+
+// Auto-slug si pas d'ID fourni (kebab-case ASCII safe)
+const autoSlug = title
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(/[̀-ͯ]/g, '')
+  .replace(/[^a-z0-9\s-]/g, '')
+  .trim()
+  .replace(/\s+/g, '-')
+  .substring(0, 60);
+
+const slug = id || autoSlug;
+---
+
+<header class="mt-16 mb-6 scroll-mt-24" id={slug}>
+  {eyebrow && (
+    <div class="text-[11px] font-bold uppercase tracking-widest text-gang4-vivid mb-2">
+      {eyebrow}
+    </div>
+  )}
+
+  <div class="flex items-baseline gap-4 mb-3">
+    {number && (
+      <span class="text-3xl md:text-4xl font-black text-gang4-vivid tracking-tight tabular-nums leading-none">
+        {number}
+      </span>
+    )}
+    <h2 class="text-2xl md:text-3xl font-black text-white leading-tight tracking-tight">
+      {title}
+    </h2>
+  </div>
+
+  <div class="h-px bg-gradient-to-r from-gang4-vivid/40 via-white/10 to-transparent"></div>
+</header>

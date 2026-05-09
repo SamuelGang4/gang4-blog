@@ -106,6 +106,8 @@ import MockImage from '@/components/MockImage.astro';
 import Callout from '@/components/Callout.astro';
 import KeyTakeaways from '@/components/KeyTakeaways.astro';
 import StatGrid from '@/components/StatGrid.astro';
+import DataTable from '@/components/DataTable.astro';
+import PullQuote from '@/components/PullQuote.astro';
 
 <KeyTakeaways
   title="À retenir en 30 secondes"
@@ -158,14 +160,18 @@ C'est pourquoi la **qualité narrative et visuelle d'une publicité influence d�
   ratio="16/9"
 />
 
-| Dimension | Système pré-Andromeda (≤ 2023) | Système Andromeda (2024+) |
-|---|---|---|
-| **Architecture** | 3 algorithmes isolés (bidding, ranking, creative scoring) | 1 modèle ML unifié (NVIDIA Grace Hopper + MTIA) |
-| **Capacité de traitement** | ×1 baseline | **×10 000** |
-| **Sélection d'audience** | Ciblage explicite (Lookalikes, intérêts) | Reconstruite par l'IA depuis les signaux créatifs |
-| **Structure recommandée** | Multi-campagnes + adsets segmentés | **1 CBO consolidé + ASC + broad** |
-| **Levier principal de performance** | Précision du ciblage | **Qualité créative** |
-| **Métrique pivot** | Audience CTR | Engagement qualitatif (commentaires, partages, sauvegardes) |
+<DataTable
+  headers={["Dimension", "Pré-Andromeda (≤ 2023)", "Andromeda (2024+)"]}
+  highlight="last"
+  rows={[
+    ["Architecture", "3 algorithmes isolés (bidding, ranking, creative scoring)", "**1 modèle ML unifié** (NVIDIA Grace Hopper + MTIA)"],
+    ["Capacité de traitement", "×1 baseline", "**×10 000**"],
+    ["Sélection d'audience", "Ciblage explicite (Lookalikes, intérêts)", "**Reconstruite par l'IA** depuis les signaux créatifs"],
+    ["Structure recommandée", "Multi-campagnes + adsets segmentés", "**1 CBO consolidé + ASC + broad**"],
+    ["Levier de performance", "Précision du ciblage", "**Qualité créative**"],
+    ["Métrique pivot", "Audience CTR", "Engagement qualitatif (commentaires, partages, sauvegardes)"],
+  ]}
+/>
 
 <Callout
   variant="insight"
@@ -182,7 +188,9 @@ C'est pourquoi la **qualité narrative et visuelle d'une publicité influence d�
 
 Le pivot central de 2026 est le passage du **ciblage comportemental** (ce que l'utilisateur a fait hier) au **ciblage contextuel par l'IA** (ce que le contenu promet aujourd'hui).
 
-> Le système ne demande plus *"Qui doit voir cette publicité ?"*, mais *"Quelle publicité est la plus pertinente pour cette personne à cet instant précis ?"*
+<PullQuote>
+  Le système ne demande plus *"Qui doit voir cette publicité ?"*, mais *"Quelle publicité est la plus pertinente pour cette personne à cet instant précis ?"*
+</PullQuote>
 
 Andromeda "lit" vos publicités avec une granularité chirurgicale. Elle analyse :
 - Le **rythme de montage** (cuts par seconde, durée moyenne d'un plan)
@@ -272,12 +280,16 @@ Quel est le niveau de conscience du problème ?
 
 Andromeda valorise massivement la **diversité conceptuelle**. Multiplier les créatifs *similaires* n'apporte aucun signal d'apprentissage nouveau. Les 4 formats à prioriser :
 
-| Format | Pourquoi Andromeda l'aime | Persona principal |
-|---|---|---|
-| **UGC & Témoignages** | Génère engagement qualitatif (commentaires authentiques) | Tous (résonance émotionnelle) |
-| **Démos "Problem-Solution"** | Densité informationnelle 3-6s + clarté utilitaire | TOFU/MOFU |
-| **Founder Stories** | Signal d'autorité + attachement de marque | TOFU/BOFU |
-| **Comparatifs "Us vs Them"** | Densité sémantique + positionnement clair | BOFU |
+<DataTable
+  headers={["Format", "Pourquoi Andromeda l'aime", "Persona principal"]}
+  highlight="none"
+  rows={[
+    ["UGC & Témoignages", "Génère engagement qualitatif (commentaires authentiques)", "Tous (résonance émotionnelle)"],
+    ['Démos "Problem-Solution"', "Densité informationnelle 3-6s + clarté utilitaire", "TOFU/MOFU"],
+    ["Founder Stories", "Signal d'autorité + attachement de marque", "TOFU/BOFU"],
+    ['Comparatifs "Us vs Them"', "Densité sémantique + positionnement clair", "BOFU"],
+  ]}
+/>
 
 Chaque combinaison du framework PDA envoie un **signal distinct** à Andromeda, lui permettant d'explorer de nouveaux bassins d'audience inaccessibles via un seul concept créatif.
 

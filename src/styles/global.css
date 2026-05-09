@@ -102,3 +102,113 @@
     overflow: hidden;
   }
 }
+
+/* ─────────────────────────────────────────────
+ * FORCED PROSE OVERRIDES
+ * Tailwind Typography ne s'applique pas toujours
+ * sur les éléments générés depuis MDX en SSG.
+ * On force le style des tables + h2 + blockquote.
+ * ───────────────────────────────────────────── */
+
+.prose-invert table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 1rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  background: hsla(0, 0%, 100%, 0.02);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.prose-invert table thead {
+  background: hsla(231, 100%, 74%, 0.08);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+}
+
+.prose-invert table thead th {
+  color: hsl(0, 0%, 100%);
+  font-weight: 700;
+  padding: 0.875rem 1.25rem;
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.prose-invert table tbody tr {
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.05);
+  transition: background 0.2s;
+}
+
+.prose-invert table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.prose-invert table tbody tr:hover {
+  background: hsla(0, 0%, 100%, 0.03);
+}
+
+.prose-invert table tbody td {
+  padding: 0.875rem 1.25rem;
+  color: hsla(0, 0%, 100%, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.prose-invert table tbody tr td:first-child {
+  font-weight: 600;
+  color: hsl(0, 0%, 100%);
+}
+
+.prose-invert table tbody tr td:last-child {
+  background: hsla(231, 100%, 74%, 0.04);
+}
+
+/* H2 plus marquants : background subtle + lettering plus large */
+.prose-invert h2 {
+  position: relative;
+  font-size: 1.875rem !important;
+  font-weight: 800 !important;
+  color: hsl(0, 0%, 100%) !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.2 !important;
+  margin-top: 4rem !important;
+  margin-bottom: 1.25rem !important;
+  padding-bottom: 0.875rem !important;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.08) !important;
+  scroll-margin-top: 6rem !important;
+}
+
+/* H3 visibles aussi */
+.prose-invert h3 {
+  font-size: 1.375rem !important;
+  font-weight: 700 !important;
+  color: hsl(0, 0%, 100%) !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 0.875rem !important;
+  scroll-margin-top: 6rem !important;
+}
+
+/* Blockquote markdown natif : fond vivid + border-left épais */
+.prose-invert blockquote {
+  font-style: normal !important;
+  font-weight: 500 !important;
+  color: hsl(0, 0%, 100%) !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.65 !important;
+  border-left: 4px solid hsl(231, 100%, 74%) !important;
+  background: hsla(231, 100%, 74%, 0.05) !important;
+  padding: 1rem 1.25rem !important;
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+  margin: 1.75rem 0 !important;
+  quotes: none !important;
+}
+
+.prose-invert blockquote p:first-of-type::before { content: none !important; }
+.prose-invert blockquote p:last-of-type::after { content: none !important; }
+
