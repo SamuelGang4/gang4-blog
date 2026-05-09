@@ -3,10 +3,8 @@
   publish = "dist"
 
 [build.environment]
-  NPM_FLAGS = "--version"  # Force pnpm
-
-[build.environment]
   NODE_VERSION = "20"
+  NPM_FLAGS = "--version"  # Force pnpm (au lieu de npm)
 
 # Headers de sécurité + perf
 [[headers]]
