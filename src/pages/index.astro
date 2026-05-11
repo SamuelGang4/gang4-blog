@@ -1,36 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection, getEntry } from 'astro:content';
+import { BLOG_THEMES, PILLAR_LABEL } from '../lib/themes';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 
 const featuredPost = posts[0];
-const otherPosts = posts.slice(1);
 
 const author = await getEntry('authors', 'samuel');
 
-// Pillar labels lisibles
-const pillarLabels: Record<string, string> = {
-  'P1': 'Whitelisting',
-  'P2A': 'Expertise Meta',
-  'P2B': 'Scaling',
-  'P2B-CMO': 'CMO Insights',
-  'P2C': 'International',
-  'P3A': 'Tactiques créa',
-  'P3B': 'Outils',
-  'P3C': 'Inspiration',
-  'BOFU': 'Solutions',
-};
+// Groupe les articles non-featured par thème, dans l'ordre défini
+const themedSections = BLOG_THEMES.map((theme) => ({
+  ...theme,
+  posts: posts.filter((p) => p.data.pillar === theme.pillar && p.slug !== featuredPost?.slug),
+})).filter((section) => section.posts.length > 0);
 ---
 
 <BaseLayout
   title="Gang4 Blog — Expertise Meta Ads pour DNVB"
   description="Études propriétaires, frameworks éprouvés et analyses techniques pour les marques DNVB qui scalent au-delà de 30k€/mois sur Meta Ads. Par Samuel Balthazard, ex-Head of Growth Perifit (€15M → €25M)."
 >
-  <!-- HERO blog (style Lovable : glow orbs + text gradient) -->
+  <!-- HERO blog -->
   <section class="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-28">
-    <!-- Glow orbs -->
     <div class="glow-orb glow-orb-vivid w-[600px] h-[600px] -top-40 -left-40 opacity-40"></div>
     <div class="glow-orb glow-orb-glow w-[500px] h-[500px] top-20 -right-40 opacity-30"></div>
 
@@ -75,10 +67,10 @@ const pillarLabels: Record<string, string> = {
     </div>
   </section>
 
-  <!-- ARTICLE FEATURED (1er article si dispo) -->
+  <!-- ARTICLE FEATURED (le plus récent) -->
   {featuredPost && (
     <section class="container-wide py-12">
-      <div class="flex items-center justify-between mb-8">
+      <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
         <h2 class="text-sm font-bold uppercase tracking-widest text-white/60">À la une</h2>
         <a href="/blog" class="text-sm text-gang4-vivid hover:text-gang4-glow font-semibold">
           Tous les articles →
@@ -90,10 +82,9 @@ const pillarLabels: Record<string, string> = {
         class="card-glass block p-8 md:p-12 group"
       >
         <div class="flex items-center gap-3 mb-4">
-          <span class="pill pill-vivid">{pillarLabels[featuredPost.data.pillar] || featuredPost.data.pillar}</span>
-          {featuredPost.data.gangsData?.enabled && (
-            <span class="pill pill-muted">📊 Data propriétaire</span>
-          )}
+          <span class="pill pill-vivid">
+            {PILLAR_LABEL[featuredPost.data.pillar] || featuredPost.data.pillar}
+          </span>
         </div>
 
         <h3 class="text-2xl md:text-4xl font-black leading-tight mb-4 group-hover:text-gradient transition-all">
@@ -119,35 +110,49 @@ const pillarLabels: Record<string, string> = {
     </section>
   )}
 
-  <!-- LISTE ARTICLES (les autres) -->
-  {otherPosts.length > 0 && (
-    <section class="container-wide py-12">
-      <h2 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-8">Tous les articles</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {otherPosts.map((post) => (
-          <a href={`/blog/${post.slug}/`} class="card-glass p-6 group flex flex-col">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="pill pill-vivid text-[10px]">{pillarLabels[post.data.pillar] || post.data.pillar}</span>
-            </div>
-            <h3 class="text-xl font-bold leading-snug mb-2 group-hover:text-gradient transition-all">
-              {post.data.title}
-            </h3>
-            <p class="text-sm text-white/60 leading-relaxed mb-4 flex-1">
-              {post.data.description}
-            </p>
-            <div class="text-xs text-white/40">
-              {post.data.publishedAt.toLocaleDateString('fr-FR', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              })}
-            </div>
+  <!-- SECTIONS THÉMATIQUES (le reste, rangé par thème) -->
+  {themedSections.length > 0 && themedSections.map((section) => (
+    <section class="container-wide py-10 md:py-12">
+      <div class="border-t border-white/5 pt-10">
+        <div class="flex items-baseline justify-between gap-4 mb-2 flex-wrap">
+          <h2 class="text-2xl md:text-3xl font-black">{section.sectionTitle}</h2>
+          <a
+            href={`/blog#${section.pillar.toLowerCase()}`}
+            class="text-sm text-gang4-vivid hover:text-gang4-glow font-semibold"
+          >
+            Voir tout →
           </a>
-        ))}
+        </div>
+
+        <p class="text-white/60 leading-relaxed max-w-3xl mb-8">
+          {section.sectionDescription}
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {section.posts.slice(0, 4).map((post) => (
+            <a href={`/blog/${post.slug}/`} class="card-glass p-6 group flex flex-col">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="pill pill-vivid text-[10px]">{section.label}</span>
+              </div>
+              <h3 class="text-xl font-bold leading-snug mb-2 group-hover:text-gradient transition-all">
+                {post.data.title}
+              </h3>
+              <p class="text-sm text-white/60 leading-relaxed mb-4 flex-1">
+                {post.data.description}
+              </p>
+              <div class="text-xs text-white/40">
+                {post.data.publishedAt.toLocaleDateString('fr-FR', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
-  )}
+  ))}
 
   <!-- État vide si rien de publié -->
   {posts.length === 0 && (
@@ -181,25 +186,35 @@ const pillarLabels: Record<string, string> = {
           {author.data.bio}
         </p>
 
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap gap-2 mb-6">
           {author.data.expertise.slice(0, 6).map((exp) => (
             <span class="pill pill-muted text-[10px]">{exp}</span>
           ))}
         </div>
 
-        {author.data.linkedin && (
+        <div class="flex flex-wrap items-center gap-5 text-sm">
           <a
-            href={author.data.linkedin}
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center gap-2 mt-6 text-sm text-gang4-vivid hover:text-gang4-glow transition-colors"
+            href={`/blog/auteur/${author.slug}/`}
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/[0.08] hover:bg-white/[0.15] border border-white/15 text-white rounded-full font-semibold transition-all"
           >
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-            </svg>
-            Voir LinkedIn de Samuel
+            Voir le profil complet
+            <span>→</span>
           </a>
-        )}
+
+          {author.data.linkedin && (
+            <a
+              href={author.data.linkedin}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 text-gang4-vivid hover:text-gang4-glow transition-colors"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              LinkedIn
+            </a>
+          )}
+        </div>
       </div>
     </section>
   )}

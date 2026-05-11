@@ -1,0 +1,156 @@
+---
+/**
+ * Page auteur — listing des articles d'un auteur + bio détaillée
+ *
+ * Routes générées dynamiquement depuis la collection `authors`.
+ * Liée depuis ArticleMeta (header d'article) et AuthorCard (fin d'article).
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { PILLAR_LABEL } from '../../../lib/themes';
+
+export async function getStaticPaths() {
+  const authors = await getCollection('authors');
+  return authors.map((author) => ({
+    params: { slug: author.slug },
+    props: { author },
+  }));
+}
+
+const { author } = Astro.props;
+const data = author.data;
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const authorPosts = allPosts
+  .filter((p) => p.data.author === author.slug)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+
+const { Content } = await render(author);
+
+// Schema.org Person + ItemList
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: data.name,
+  jobTitle: data.title,
+  description: data.bio,
+  image: data.avatar ? `https://blog.gang4.io${data.avatar}` : undefined,
+  url: `https://blog.gang4.io/blog/auteur/${author.slug}/`,
+  sameAs: data.linkedin ? [data.linkedin] : [],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Gang4',
+    url: 'https://gang4.io',
+  },
+  knowsAbout: data.expertise,
+};
+---
+
+<BaseLayout
+  title={`${data.name} — Auteur · Gang4 Blog`}
+  description={data.bio}
+  ogType="website"
+  schemaJsonLd={personSchema}
+>
+  <!-- HERO auteur -->
+  <section class="relative overflow-hidden pt-14 pb-12 md:pt-20 md:pb-16">
+    <div class="glow-orb glow-orb-vivid w-[500px] h-[500px] -top-32 -left-32 opacity-30"></div>
+
+    <div class="container-wide relative z-10">
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors mb-8"
+      >
+        <span>←</span> Tous les articles
+      </a>
+
+      <div class="flex flex-col md:flex-row gap-8 items-start">
+        {data.avatar ? (
+          <img
+            src={data.avatar}
+            alt={data.name}
+            class="w-24 h-24 md:w-32 md:h-32 rounded-3xl object-cover border-2 border-white/10 flex-shrink-0"
+            loading="eager"
+          />
+        ) : (
+          <div class="w-24 h-24 md:w-32 md:h-32 rounded-3xl bg-gradient-to-br from-gang4-vivid to-gang4-glow flex items-center justify-center text-white font-black text-4xl flex-shrink-0">
+            {data.name.charAt(0)}
+          </div>
+        )}
+
+        <div class="flex-1 min-w-0">
+          <div class="pill pill-muted mb-3">Auteur · Gang4</div>
+          <h1 class="text-3xl md:text-5xl font-black leading-tight mb-3">{data.name}</h1>
+          <p class="text-base md:text-lg text-gang4-vivid font-semibold mb-4">{data.title}</p>
+          <p class="text-white/75 leading-relaxed max-w-3xl mb-5">{data.bio}</p>
+
+          <div class="flex flex-wrap gap-2 mb-5">
+            {data.expertise.map((exp) => (
+              <span class="pill pill-muted text-[11px]">{exp}</span>
+            ))}
+          </div>
+
+          {data.linkedin && (
+            <a
+              href={data.linkedin}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 text-sm text-gang4-vivid hover:text-gang4-glow transition-colors"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              Voir le profil LinkedIn
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES de l'auteur -->
+  <section class="container-wide py-12">
+    <div class="flex items-baseline justify-between mb-8">
+      <h2 class="text-sm font-bold uppercase tracking-widest text-white/60">
+        {authorPosts.length} {authorPosts.length > 1 ? 'articles publiés' : 'article publié'}
+      </h2>
+    </div>
+
+    {authorPosts.length === 0 ? (
+      <p class="text-white/60">Aucun article publié pour le moment.</p>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {authorPosts.map((post) => (
+          <a href={`/blog/${post.slug}/`} class="card-glass p-6 group flex flex-col">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="pill pill-vivid text-[10px]">
+                {PILLAR_LABEL[post.data.pillar] || post.data.pillar}
+              </span>
+            </div>
+            <h3 class="text-xl font-bold leading-snug mb-2 group-hover:text-gradient transition-all">
+              {post.data.title}
+            </h3>
+            <p class="text-sm text-white/60 leading-relaxed mb-4 flex-1">
+              {post.data.description}
+            </p>
+            <div class="text-xs text-white/40">
+              {post.data.publishedAt.toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <!-- PARCOURS détaillé (markdown du fichier auteur) -->
+  <section class="container-blog py-12 border-t border-white/5">
+    <div class="prose prose-invert prose-lg max-w-none">
+      <Content />
+    </div>
+  </section>
+</BaseLayout>

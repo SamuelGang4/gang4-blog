@@ -1,49 +1,153 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { BLOG_THEMES, PILLAR_LABEL } from '../../lib/themes';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 
-const pillarLabels: Record<string, string> = {
-  'P1': 'Whitelisting',
-  'P2A': 'Andromeda',
-  'P2B': 'Scaling',
-  'P2B-CMO': 'CMO Insights',
-};
+// Article le plus récent → mis en avant
+const featuredPost = posts[0];
+
+// Groupage par thème, dans l'ordre défini dans themes.ts
+const themedSections = BLOG_THEMES.map((theme) => ({
+  ...theme,
+  posts: posts.filter((p) => p.data.pillar === theme.pillar),
+})).filter((section) => section.posts.length > 0);
+
+// Total + nombre de thèmes actifs pour le header
+const totalPosts = posts.length;
+const activeThemes = themedSections.length;
 ---
 
 <BaseLayout
   title="Tous les articles — Gang4 Blog"
-  description="Liste complète des articles Gang4 sur Meta Ads, whitelisting, Andromeda, scaling DNVB."
+  description="Tous les articles Gang4 sur les Meta Ads pour DNVB : Whitelisting, Andromeda, scaling, frameworks créatifs."
 >
-  <section class="container-blog py-16">
-    <h1 class="text-4xl md:text-5xl font-bold mb-12">Tous les articles</h1>
+  <!-- HEADER -->
+  <section class="relative overflow-hidden pt-14 pb-10 md:pt-20 md:pb-14">
+    <div class="glow-orb glow-orb-vivid w-[500px] h-[500px] -top-32 -left-32 opacity-25"></div>
 
-    {posts.length === 0 ? (
-      <p class="text-white/70">Aucun article publié pour le moment.</p>
-    ) : (
-      <div class="space-y-8">
-        {posts.map((post) => (
-          <a
-            href={`/blog/${post.slug}/`}
-            class="block p-6 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all"
-          >
-            <div class="text-xs text-gang4-primary uppercase tracking-wider mb-2">
-              {pillarLabels[post.data.pillar] || post.data.pillar}
-            </div>
-            <h2 class="text-2xl font-bold mb-2">{post.data.title}</h2>
-            <p class="text-white/70 mb-3">{post.data.description}</p>
-            <div class="text-sm text-white/50">
-              {post.data.publishedAt.toLocaleDateString('fr-FR', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </div>
-          </a>
-        ))}
+    <div class="container-wide relative z-10">
+      <div class="pill pill-vivid mb-5">
+        <span class="w-1.5 h-1.5 rounded-full bg-gang4-vivid mr-2 animate-pulse"></span>
+        Le hub éditorial Meta Ads pour DNVB
       </div>
-    )}
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-5 tracking-tight">
+        Tous les articles
+      </h1>
+
+      <p class="text-lg text-white/70 max-w-2xl leading-relaxed">
+        {totalPosts} {totalPosts > 1 ? 'articles' : 'article'} publiés, rangés par thématique.
+        Whitelisting, expertise Meta, scaling — tout ce qu'on construit pour les opérateurs growth DNVB.
+      </p>
+
+      {activeThemes > 1 && (
+        <nav class="flex flex-wrap gap-2 mt-8" aria-label="Naviguer vers une thématique">
+          {themedSections.map((section) => (
+            <a
+              href={`#${section.pillar.toLowerCase()}`}
+              class="pill pill-muted hover:bg-white/15 transition-colors text-xs"
+            >
+              {section.sectionTitle} <span class="text-white/40 ml-1">{section.posts.length}</span>
+            </a>
+          ))}
+        </nav>
+      )}
+    </div>
   </section>
+
+  <!-- À LA UNE (l'article le plus récent, peu importe le thème) -->
+  {featuredPost && (
+    <section class="container-wide py-8 md:py-10">
+      <div class="flex items-center gap-2 mb-5">
+        <span class="text-sm font-bold uppercase tracking-widest text-white/60">À la une</span>
+        <span class="text-white/30">·</span>
+        <span class="text-sm text-white/40">Le plus récent</span>
+      </div>
+
+      <a
+        href={`/blog/${featuredPost.slug}/`}
+        class="card-glass block p-7 md:p-10 group"
+      >
+        <div class="flex items-center gap-3 mb-4">
+          <span class="pill pill-vivid">
+            {PILLAR_LABEL[featuredPost.data.pillar] || featuredPost.data.pillar}
+          </span>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-black leading-tight mb-4 group-hover:text-gradient transition-all">
+          {featuredPost.data.title}
+        </h2>
+
+        <p class="text-base md:text-lg text-white/70 leading-relaxed mb-5 max-w-3xl">
+          {featuredPost.data.description}
+        </p>
+
+        <div class="flex items-center gap-3 text-sm text-white/50">
+          <time datetime={featuredPost.data.publishedAt.toISOString()}>
+            {featuredPost.data.publishedAt.toLocaleDateString('fr-FR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
+          {featuredPost.data.readingTimeMinutes && (
+            <>
+              <span>·</span>
+              <span>{featuredPost.data.readingTimeMinutes} min de lecture</span>
+            </>
+          )}
+        </div>
+      </a>
+    </section>
+  )}
+
+  <!-- SECTIONS THÉMATIQUES -->
+  {themedSections.length === 0 ? (
+    <section class="container-wide py-12">
+      <p class="text-white/60">Aucun article publié pour le moment.</p>
+    </section>
+  ) : (
+    themedSections.map((section) => (
+      <section id={section.pillar.toLowerCase()} class="container-wide py-10 md:py-12 scroll-mt-24">
+        <div class="border-t border-white/5 pt-10 md:pt-12">
+          <div class="flex items-baseline justify-between gap-4 mb-2 flex-wrap">
+            <h2 class="text-2xl md:text-3xl font-black">{section.sectionTitle}</h2>
+            <span class="text-sm text-white/40">
+              {section.posts.length} {section.posts.length > 1 ? 'articles' : 'article'}
+            </span>
+          </div>
+
+          <p class="text-white/60 leading-relaxed max-w-3xl mb-8">
+            {section.sectionDescription}
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {section.posts.map((post) => (
+              <a href={`/blog/${post.slug}/`} class="card-glass p-6 group flex flex-col">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="pill pill-vivid text-[10px]">{section.label}</span>
+                </div>
+                <h3 class="text-xl font-bold leading-snug mb-2 group-hover:text-gradient transition-all">
+                  {post.data.title}
+                </h3>
+                <p class="text-sm text-white/60 leading-relaxed mb-4 flex-1">
+                  {post.data.description}
+                </p>
+                <div class="text-xs text-white/40">
+                  {post.data.publishedAt.toLocaleDateString('fr-FR', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  )}
 </BaseLayout>
