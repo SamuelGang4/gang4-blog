@@ -17,6 +17,7 @@ Gang4 est un SaaS qui permet aux marques DNVB de scaler leur whitelisting Meta A
 - https://blog.gang4.io/blog/contrat-creator-partnership-ads-meta-template/ : Contrat creator Partnership Ads, template + 8 clauses obligatoires + erreurs à éviter + cadre légal FR.
 
 ### Expertise Meta Ads (P2A)
+- https://blog.gang4.io/blog/meta-ads-mcp-piloter-campagnes-claude-chatgpt/ : Meta Ads MCP, le guide complet pour piloter tes campagnes Meta depuis Claude ou ChatGPT. Décrypte l'annonce du 29 avril 2026 (open beta des Meta Ads AI Connectors), les 4 capacités officielles, le setup en 5 minutes, cas d'usage DNVB, garde-fou learning phase. Sources : annonce officielle Meta Business, Digiday, PPC Land.
 - https://blog.gang4.io/blog/andromeda-meta-algorithme-delivery/ : Meta Andromeda en 2026, ce que le moteur IA de Meta fait vraiment à tes pubs. Décrypte le fonctionnement d'Andromeda (présélection, Learning Window, broad targeting), 5 actions concrètes. Sources : Meta Engineering mars 2026.
 - https://blog.gang4.io/blog/framework-pda-creas-meta-2026/ : Framework PDA pour créas Meta 2026, la méthode complète pour nourrir Andromeda. Matrice 27 cases (Persona × Désir × Awareness Schwartz), process batch shooting, 5 erreurs qui cassent le framework.
 
