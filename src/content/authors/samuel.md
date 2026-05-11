@@ -85,8 +85,8 @@ Co-founder du SaaS qui permet aux marques DNVB de scaler leur whitelisting Meta 
 ## Formation
 
 🎓 **Grenoble École de Management**
-*Grande École Programme — Spécialisation Marketing*
-*2017 — 2020*
+*Grande École Programme · Spécialisation Marketing*
+*2017 · 2020*
 
 ---
 

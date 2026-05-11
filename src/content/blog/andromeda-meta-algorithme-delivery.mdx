@@ -81,9 +81,9 @@ sources:
     url: "https://engineering.fb.com/2026/03/31/ml-applications/meta-adaptive-ranking-model-bending-the-inference-scaling-curve-to-serve-llm-scale-models-for-ads/"
   - title: "Ranking Engineer Agent (REA): The Autonomous AI Agent Accelerating Meta's Ads Ranking Innovation (Meta Engineering, mars 2026)"
     url: "https://engineering.fb.com/2026/03/17/developer-tools/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/"
-  - title: "Next-Generation Meta Training and Inference Accelerator (MTIA) — Meta AI"
+  - title: "Next-Generation Meta Training and Inference Accelerator (MTIA). Meta AI"
     url: "https://ai.meta.com/blog/next-generation-meta-training-inference-accelerator-AI-MTIA/"
-  - title: "Practical Lessons from Predicting Clicks on Ads at Facebook — Meta Research"
+  - title: "Practical Lessons from Predicting Clicks on Ads at Facebook. Meta Research"
     url: "https://research.facebook.com/publications/practical-lessons-from-predicting-clicks-on-ads-at-facebook/"
 
 ---
@@ -132,11 +132,11 @@ Andromeda fusionne les trois en un seul modèle IA. Un seul signal d'entrée : t
 
 Pense à Netflix. Quand tu ouvres l'app, Netflix ne te demande pas ce que tu veux regarder. Il observe ce que tu as regardé, combien de temps tu as tenu, ce que tu as abandonné à 12 minutes, et te propose quelque chose avant que tu aies réfléchi. Andromeda fait exactement ça, en sens inverse : il ne cherche pas la bonne vidéo pour toi. Il cherche la bonne personne pour ta pub, depuis ce que ta pub montre.
 
-<PullQuote attribution="Meta Engineering, mars 2026 — Meta Adaptive Ranking Model">
+<PullQuote attribution="Meta Engineering, mars 2026. Meta Adaptive Ranking Model">
   Achieving a model complexity equivalent to the O(10 GFLOPs) per token used by top-tier LLMs, while maintaining sub-100ms latency.
 </PullQuote>
 
-Ce chiffre mérite qu'on s'y arrête. Meta fait tourner, pour chaque décision d'affichage d'une pub, un modèle aussi complexe que les meilleurs LLMs — en moins de 100 millisecondes. Pour chaque utilisateur. En continu.
+Ce chiffre mérite qu'on s'y arrête. Meta fait tourner, pour chaque décision d'affichage d'une pub, un modèle aussi complexe que les meilleurs LLMs. En moins de 100 millisecondes. Pour chaque utilisateur. En continu.
 
 <DataTable
   headers={["Avant Andromeda (pré-2024)", "Avec Andromeda (2024+)"]}
@@ -171,14 +171,14 @@ Depuis ces signaux, l'IA construit l'audience elle-même. Une vidéo filmée au 
 C'est exactement le principe de Tinder. L'app n'a pas besoin que tu coches "grand, brun, 32 ans". Elle déduit tes préférences depuis tes swipes précédents. Andromeda déduit qui doit voir ta pub depuis ce que ta pub montre.
 
 <Callout variant="insight" title="L'implication concrète">
-  Deux créatifs identiques sur le plan du ciblage configuré, mais différents dans leur format visuel, vont trouver des audiences différentes — même si tu leur appliques le même adset. Andromeda recrée une segmentation de facto depuis le contenu.
+  Deux créatifs identiques sur le plan du ciblage configuré, mais différents dans leur format visuel, vont trouver des audiences différentes. Même si tu leur appliques le même adset. Andromeda recrée une segmentation de facto depuis le contenu.
 </Callout>
 
 Sur le terrain, les créatifs qui passent le mieux le filtre de présélection partagent 4 attributs récurrents :
 
 1. **Hook 0-3 secondes** : une personne réelle visible à l'écran, qui déclenche un signal émotionnel clair
 2. **Densité d'information** : 3 éléments distincts dans les 6 premières secondes (visuels, texte, audio)
-3. **Ratio commentaires / likes supérieur à 5%** — le signal social qualitatif qu'Andromeda pèse le plus
+3. **Ratio commentaires / likes supérieur à 5%**. Le signal social qualitatif qu'Andromeda pèse le plus
 4. **Authenticité visuelle** : grain naturel, cadrage imparfait, spontanéité perçue
 
 Ce 4e point est contre-intuitif pour beaucoup. Les créas studio hyper-produites sous-performent sur Andromeda parce qu'elles génèrent moins d'engagement qualitatif. L'IA l'a appris de milliards d'interactions.
@@ -198,7 +198,7 @@ Fusionne prospection et reciblage dans une seule campagne à budget partagé. L'
 ASC donne à Andromeda la latitude maximale sur le placement, le budget par audience et l'ordre d'exposition. C'est contre-intuitif de laisser la machine décider. C'est ce qui fonctionne.
 
 **Règle 3 : supprime les intérêts et les Lookalikes 1%.**
-Sauf si tu es dans une niche ultra-spécifique avec un catalogue de moins de 500 SKUs. Laisse tes créatifs faire le travail de segmentation — c'est eux le ciblage maintenant.
+Sauf si tu es dans une niche ultra-spécifique avec un catalogue de moins de 500 SKUs. Laisse tes créatifs faire le travail de segmentation. C'est eux le ciblage maintenant.
 
 **Règle 4 : touche rien pendant 5 à 7 jours.**
 Modifier un adset à 48 heures réinitialise la phase d'apprentissage Andromeda. Tu crois optimiser, tu recasses le signal. La patience durant la fenêtre d'apprentissage est la compétence principale du media buyer en 2026.
@@ -211,24 +211,24 @@ Publier 10 variantes du même créatif n'envoie aucun signal nouveau à Andromed
 
 Le framework PDA structure ta production en trois dimensions :
 
-**P — Persona : qui parle dans ta pub ?**
+**P. Persona : qui parle dans ta pub ?**
 Pas l'audience ciblée (Andromeda gère). La personne visible à l'écran, à qui elle s'adresse. Une mère de famille vs une professionnelle en déplacement vs une étudiante : trois créatifs, trois bassins d'audience qu'Andromeda explore automatiquement.
 
-**D — Désir : quel problème ta pub résout-elle ?**
+**D. Désir : quel problème ta pub résout-elle ?**
 Gagner du temps vs soulager une douleur physique vs gagner en statut social. Chaque désir attire un profil psychographique différent. Andromeda détecte ça dans le ton du script, la mise en scène, la posture de la personne à l'écran.
 
-**A — Awareness : où en est l'utilisateur dans son parcours ?**
+**A. Awareness : où en est l'utilisateur dans son parcours ?**
 Quelqu'un qui découvre le problème ne réagit pas aux mêmes signaux que quelqu'un qui compare déjà les prix. Deux niveaux de conscience = deux créatifs distincts = deux bassins d'audience qu'Andromeda différencie et sert séparément.
 
 <DataTable
   headers={["Format créatif", "Ce qu'Andromeda y lit", "Quand l'utiliser"]}
   highlight="none"
   rows={[
-    ["UGC filmé smartphone", "Preuve sociale, authenticité, engagement qualitatif fort", "TOFU large — prospection froide"],
-    ["Démo Problem-Solution", "Clarté utilitaire, densité info 0-6s, intent d'achat", "TOFU/MOFU — prospects informés"],
-    ["Founder Story", "Autorité narrative, attachement de marque, différenciation", "TOFU/BOFU — marques challenger"],
-    ["Comparatif Us vs Them", "Positionnement net, signaux de décision, densité sémantique", "BOFU — prospects en comparaison"],
-    ["Témoignage client vidéo", "Validation externe, réduction friction, signal social fort", "MOFU/BOFU — retargeting chaud"],
+    ["UGC filmé smartphone", "Preuve sociale, authenticité, engagement qualitatif fort", "TOFU large. Prospection froide"],
+    ["Démo Problem-Solution", "Clarté utilitaire, densité info 0-6s, intent d'achat", "TOFU/MOFU. Prospects informés"],
+    ["Founder Story", "Autorité narrative, attachement de marque, différenciation", "TOFU/BOFU. Marques challenger"],
+    ["Comparatif Us vs Them", "Positionnement net, signaux de décision, densité sémantique", "BOFU. Prospects en comparaison"],
+    ["Témoignage client vidéo", "Validation externe, réduction friction, signal social fort", "MOFU/BOFU. Retargeting chaud"],
   ]}
 />
 
@@ -240,15 +240,15 @@ Chaque combinaison PDA envoie un signal distinct à Andromeda. Il peut explorer 
 
 La plupart des articles sur Andromeda s'arrêtent à 2024. C'est une erreur. En mars 2026, Meta Engineering a publié deux articles qui changent la compréhension du système.
 
-**Le Meta Adaptive Ranking Model** (31 mars 2026) pousse la capacité IA jusqu'à l'échelle du trillion de paramètres — la même complexité que les meilleurs LLMs. Tout en maintenant une latence inférieure à 100ms par décision d'affichage. Sur Instagram en Q4 2025 : **+3% de conversions publicitaires** et **+5% de CTR** pour les utilisateurs ciblés.
+**Le Meta Adaptive Ranking Model** (31 mars 2026) pousse la capacité IA jusqu'à l'échelle du trillion de paramètres. La même complexité que les meilleurs LLMs. Tout en maintenant une latence inférieure à 100ms par décision d'affichage. Sur Instagram en Q4 2025 : **+3% de conversions publicitaires** et **+5% de CTR** pour les utilisateurs ciblés.
 
 **Le Ranking Engineer Agent (REA)** (17 mars 2026) est un agent IA autonome qui optimise en continu les modèles de ranking des ads Meta. Il a doublé la précision moyenne des modèles de ranking par rapport aux approches baseline, avec 3 ingénieurs gérant l'équivalent de 8 modèles simultanément.
 
-<PullQuote attribution="Meta Engineering, mars 2026 — REA">
-  REA's most impactful improvements have combined architectural optimizations with training-efficiency techniques — a result derived from consulting both historical and research-derived sources simultaneously.
+<PullQuote attribution="Meta Engineering, mars 2026. REA">
+  REA's most impactful improvements have combined architectural optimizations with training-efficiency techniques. A result derived from consulting both historical and research-derived sources simultaneously.
 </PullQuote>
 
-Ce que ça signifie pour toi en pratique : le système qui lit tes créatifs devient exponentiellement plus précis. Les approximations qui fonctionnaient encore en 2024 — un créatif moyen dans une bonne audience — disparaissent progressivement. La barre créative que tu dois atteindre pour passer le filtre Andromeda monte à chaque trimestre.
+Ce que ça signifie pour toi en pratique : le système qui lit tes créatifs devient exponentiellement plus précis. Les approximations qui fonctionnaient encore en 2024. Un créatif moyen dans une bonne audience. Disparaissent progressivement. La barre créative que tu dois atteindre pour passer le filtre Andromeda monte à chaque trimestre.
 
 <StatGrid
   columns={3}
@@ -272,7 +272,7 @@ Le mécanisme est direct : un profil créateur avec un historique d'engagement f
 <SequenceFlow
   start="Créatif UGC filmé par le créateur"
   steps={[
-    "Whitelisting activé — pub diffusée depuis le compte créateur",
+    "Whitelisting activé. Pub diffusée depuis le compte créateur",
     "Andromeda lit : signal social du profil créateur + signal créatif",
     "Présélection favorisée par le double signal de pertinence",
     "Meilleur placement, CPM réduit, audience plus qualifiée",
