@@ -1,0 +1,382 @@
+---
+title: "Claude Code pour Meta Ads : system prompts et garde-fous pour piloter sans te faire bannir"
+description: "Claude Code peut piloter ton compte Meta Ads via MCP. Mais sans garde-fous, il peut casser ta learning phase ou pire, faire bannir ton compte. System prompts opérationnels, workflow safe et 6 garde-fous critiques pour utiliser Claude Code en production DNVB."
+author: "samuel"
+publishedAt: 2026-05-12
+updatedAt: 2026-05-12
+draft: false
+
+pillar: "P2A"
+persona: "traffic-manager"
+
+keywordPrincipal: "claude code"
+keywordsSecondaires:
+  - "claude code meta ads"
+  - "claude meta ads"
+  - "system prompt claude"
+  - "agent ia meta ads"
+  - "claude code marketing"
+  - "claude code prompt"
+  - "claude desktop meta ads"
+  - "anthropic claude meta"
+volumeFR: 60500
+keywordDifficulty: 27
+intent: "informational"
+
+directAnswer: "Claude Code d'Anthropic est devenu un standard de fait pour piloter Meta Ads via MCP. Le volume FR a explosé de plus de 1200% en glissement annuel. Le risque concret : plusieurs opérateurs ont rapporté des bans de compte Meta liés à des automatisations Claude trop agressives. La règle pour utiliser Claude Code en production : un system prompt structuré, séparation des permissions lecture/écriture, respect de la learning phase Meta, vérification humaine de chaque output avant action."
+
+readingTimeMinutes: 12
+
+cta:
+  label: "Voir comment Gang4 alimente ton compte Meta en créas UGC"
+  href: "https://gang4.io/whitelisting#demo"
+  contextLabel: "Claude Code automatise le pilotage. Gang4 produit les créas qui font scaler. Les deux sont complémentaires."
+
+leadMagnet:
+  type: "template"
+  eyebrow: "Offert · 20 créas UGC gratuites"
+  title: "Reçois 20 créas UGC gratuites prêtes à uploader via Claude Code ou directement dans Ads Manager"
+  description: "Claude Code automatise le reporting et le pilotage. Il ne produit pas de créatifs. Gang4 oui. 20 créas UGC personnalisées par notre IA, prêtes à charger via le MCP Meta ou Ads Manager."
+  bullets:
+    - "20 créas UGC personnalisées pour ta verticale DNVB"
+    - "Formats pensés pour Andromeda (hook 0-3s, signal d'engagement qualitatif)"
+    - "Prêtes à uploader via Claude Code (MCP) ou Ads Manager"
+    - "Zéro coût de production, zéro délai de validation créateur"
+  ctaLabel: "Recevoir mes 20 créas UGC"
+  url: "https://gang4.io/whitelisting#demo"
+
+relatedPosts:
+  - "meta-ads-mcp-piloter-campagnes-claude-chatgpt"
+  - "comparatif-mcp-servers-meta-google-amazon-ads-2026"
+  - "manus-ai-meta-ads-manager-guide-dnvb-2026"
+  - "andromeda-meta-algorithme-delivery"
+
+schema:
+  type: "Article"
+  enableFAQPage: true
+
+faq:
+  - question: "C'est quoi Claude Code ?"
+    answer: "Claude Code est un outil terminal d'Anthropic qui permet à Claude d'écrire et d'exécuter du code dans ton environnement de développement. Tu décris en langage naturel ce que tu veux faire, Claude génère le code, l'exécute, debugue les erreurs. Avec le MCP (Model Context Protocol), Claude Code peut se brancher à des API externes comme Meta Marketing API, Google Ads API ou Amazon Ads API pour piloter des comptes pub en langage naturel."
+  - question: "Pourquoi Claude Code peut-il faire bannir mon compte Meta ?"
+    answer: "Pas Claude Code en tant que tel. Mais une automatisation agressive via Claude Code qui ne respecte pas les Marketing API Terms de Meta peut déclencher des protections anti-abus côté Meta. Cas documentés sur Reddit : des opérateurs qui ont demandé à Claude Code de modifier les budgets toutes les 2 heures, de relancer les créatifs pausés en boucle, ou de faire du day-trading sur leurs ad sets. Meta a banni ces comptes définitivement. La règle : utiliser Claude Code via le MCP officiel Meta (lancé 29 avril 2026) qui est explicitement autorisé, pas via des scripts d'automatisation aggressifs sur Ads Manager."
+  - question: "Quel est le system prompt minimal pour piloter Meta Ads en sécurité ?"
+    answer: "Un system prompt safe contient quatre blocs. (1) Contexte : 'tu es un assistant d'analyse Meta Ads, pas un agent autonome de pilotage'. (2) Permissions : 'tu peux lire, tu ne peux pas modifier sans confirmation explicite'. (3) Garde-fous : 'tu n'ajustes pas un ad set qui a été modifié il y a moins de 7 jours, tu n'augmentes pas un budget de plus de 20% sans confirmation, tu vérifies chaque insight contre la data brute'. (4) Style : 'tu cites toujours la metric et la période source de tes analyses'. Template complet dans la section dédiée de l'article."
+  - question: "Comment connecter Claude Code à mon compte Meta ?"
+    answer: "Deux chemins. (1) MCP officiel Meta : depuis Claude Code, ajoute le MCP server Meta avec la commande appropriée. Pas besoin de developer credentials Meta. La connexion est Meta-authentifiée. (2) MCP tiers (Composio, Adzviser, Coupler, etc.) : ajout d'un MCP server via URL ou package npm. Demande des credentials développeur. Le MCP officiel Meta est le chemin recommandé en 2026 (sortie 29 avril 2026), plus simple et conforme aux Marketing API Terms."
+  - question: "Quels workflows sont safe et lesquels sont risqués ?"
+    answer: "Safe : reporting, analyse de performance, diagnostic créatif, recherche d'audience, audit de structure de compte. Tous en mode lecture seule. Risqué : modification fréquente de budgets, pause/relance de créatifs en boucle, day-trading sur les ad sets, optimisation automatique sans validation humaine. La règle : démarre toujours en read-only pendant 2 à 4 semaines pour observer le comportement de Claude. Active l'écriture progressivement avec des garde-fous explicites."
+  - question: "Claude Code est-il payant ?"
+    answer: "Claude Code lui-même est gratuit à installer (curl -fsSL claude.ai/install.sh | bash). Mais il consomme des tokens via ton compte Anthropic. Il faut un palier Claude Pro, Max ou des crédits API actifs. Pour un Traffic Manager qui pilote 1 compte Meta significatif, le coût mensuel typique est de 20 à 80 dollars selon le volume d'usage. Le MCP officiel Meta est gratuit côté Meta."
+  - question: "Quelle différence entre Claude Code et Claude Desktop pour Meta Ads ?"
+    answer: "Claude Desktop est l'application chat (interface conversationnelle) qui supporte les connecteurs MCP. Claude Code est l'outil terminal qui peut écrire et exécuter du code en plus de converser. Pour le pilotage Meta Ads quotidien (analyse, reporting, brief de campagne), Claude Desktop suffit largement. Claude Code apporte un plus pour les workflows qui nécessitent du code custom (scripts récurrents, intégration dans un pipeline existant, manipulation de CSV avancée)."
+  - question: "Manus AI vs Claude Code : quel choisir pour quel usage ?"
+    answer: "Manus AI vit à l'intérieur de Meta Ads Manager (intégré depuis février 2026 suite à l'acquisition par Meta). Claude Code vit dans ton terminal et se branche à Meta via MCP. Manus = agent IA dans l'interface Meta, scope limité aux 3 capacités officielles (reporting, audience, campaign analysis). Claude Code = agent IA dans ton environnement, scope large (peut faire du multi-canal Meta + Google + Amazon + autres MCP). Pour une DNVB Meta-only, Manus suffit. Pour une DNVB multi-canal, Claude Code est plus puissant."
+  - question: "Comment encadrer la learning phase quand Claude Code modifie mes campagnes ?"
+    answer: "La learning phase Meta dure environ 50 événements d'optimisation après chaque modification substantielle d'un ad set (budget, audience, bid, créatif). Un agent qui modifie trop fréquemment déclenche des resets en cascade. Trois règles à inscrire dans ton system prompt : (1) pas de modification d'un ad set avant 7 jours depuis la dernière modification, sauf urgence critique documentée. (2) toute modification de budget > 20% ou de bid > 15% demande validation humaine explicite. (3) toute pause/relance d'un même créatif dans la même semaine est interdite sans validation."
+  - question: "Quelle est la fréquence d'intervention sûre pour un agent IA sur un compte Meta ?"
+    answer: "Pour les actions d'écriture : maximum une intervention par ad set par semaine, sauf cas critiques. Pour les actions de lecture (reporting, analyse) : aucune limite côté Meta, mais attention aux quotas API si tu fais tourner des scripts intensifs. La règle générale : un agent IA doit être un copilote stratégique, pas un autopilote tactique. Les décisions d'écriture restent à valider humainement même quand l'agent suggère. Cf. la règle des 7 jours documentée par Meta sur la learning phase."
+
+sources:
+  - title: "Prompting best practices (documentation officielle Anthropic Claude API)"
+    url: "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+  - title: "10 Claude Code Marketing Workflows for Google and Meta Ads (Ryze AI, mai 2026)"
+    url: "https://www.get-ryze.ai/blog/claude-code-marketing-workflows-google-meta-ads"
+  - title: "Meta opens its ad system to Claude and ChatGPT with new AI connectors (PPC Land, 1 mai 2026)"
+    url: "https://ppc.land/meta-opens-its-ad-system-to-claude-and-chatgpt-with-new-ai-connectors/"
+  - title: "Introducing Meta Ads AI Connectors (Meta for Business, 29 avril 2026)"
+    url: "https://www.facebook.com/business/news/meta-ads-ai-connectors"
+  - title: "How to integrate Metaads MCP with Claude Code (Composio)"
+    url: "https://composio.dev/toolkits/metaads/framework/claude-code"
+  - title: "Claude Skills : la nouvelle arme secrète pour automatiser Meta et Google Ads (Make Sense 4 Digital, janvier 2026)"
+    url: "https://make-sense.fr/blog/claude-skills-meta-google-ads"
+
+---
+
+import Callout from '@/components/Callout.astro';
+import KeyTakeaways from '@/components/KeyTakeaways.astro';
+import StatGrid from '@/components/StatGrid.astro';
+import DataTable from '@/components/DataTable.astro';
+import PullQuote from '@/components/PullQuote.astro';
+import SequenceFlow from '@/components/SequenceFlow.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+
+<KeyTakeaways
+  title="Ce que tu dois retenir avant de lire"
+  items={[
+    "Claude Code a explosé en France : <strong>60 500 vol/mois</strong> sur le KW principal, <strong>+1264% en glissement annuel</strong>. C'est devenu un outil mainstream pour les opérateurs growth.",
+    "Le piège n°1 : les <strong>bans de compte Meta</strong> liés à des automatisations Claude trop agressives. Cas documentés sur Reddit avec des comptes bannis définitivement.",
+    "La règle absolue : utiliser <strong>le MCP officiel Meta</strong> (lancé 29 avril 2026), pas des scripts qui automatisent Ads Manager. Le MCP est Meta-authentifié et conforme aux Marketing API Terms.",
+    "<strong>Six garde-fous critiques</strong> à coder dans ton system prompt : permissions lecture/écriture séparées, respect de la learning phase, validation humaine sur les changements budget significatifs, vérification anti-hallucination, fréquence d'intervention limitée, journal d'audit.",
+    "Pour les opérateurs DNVB Meta-only : Claude Desktop suffit largement. Claude Code apporte un plus pour les workflows multi-canal ou les scripts récurrents."
+  ]}
+/>
+
+<SectionHeader number="01" title="Pourquoi Claude Code pour Meta Ads est devenu une vraie question" />
+
+En 12 mois, **Claude Code est passé d'outil de dev à outil d'opérateur growth**. Les chiffres DataForSEO sont nets.
+
+<StatGrid
+  columns={3}
+  stats={[
+    { value: "60 500", label: "Volume mensuel de recherche FR sur 'claude code'", source: "DataForSEO, mai 2026" },
+    { value: "+1264%", label: "Croissance YoY du KW 'claude code' en FR", source: "DataForSEO, mai 2026" },
+    { value: "+524%", label: "Croissance YoY de 'claude desktop' en FR (5400 vol/mois)", source: "DataForSEO, mai 2026" },
+  ]}
+/>
+
+Trois facteurs convergent.
+
+Premièrement, **MCP a démocratisé la connexion ad tech**. Avant novembre 2024, brancher Claude à Meta Marketing API demandait un investissement développeur. Avec le MCP (créé par Anthropic puis transféré à la Linux Foundation), c'est devenu une commande simple. Le MCP officiel Meta lancé le 29 avril 2026 a définitivement levé la barrière d'entrée.
+
+Deuxièmement, **les workflows publiés se sont multipliés**. Ryze AI a documenté 10 workflows concrets pour Meta + Google Ads. Make Sense 4 Digital a publié un guide en FR sur les Claude Skills appliqués à Meta. Composio fournit un guide d'intégration step-by-step. La connaissance s'est diffusée vite.
+
+Troisièmement, **les bans de compte ont créé une peur réelle**. Des opérateurs ont rapporté sur Reddit r/FacebookAds des comptes Meta bannis définitivement après avoir utilisé Claude Code pour faire du day-trading sur leurs campagnes. Cette peur a poussé la communauté à demander un encadrement opérationnel clair.
+
+C'est précisément ce qu'on couvre dans cet article : **comment utiliser Claude Code pour Meta Ads en production sans casser tes campagnes ni risquer ton compte**.
+
+---
+
+<SectionHeader number="02" title="Le risque réel : ban de compte + learning phase cassée" eyebrow="Avant de toucher quoi que ce soit" />
+
+Avant d'entrer dans les system prompts et les workflows, il faut comprendre les deux risques concrets que portent un agent IA mal encadré sur Meta Ads.
+
+**Risque 1 : le ban de compte.**
+
+Meta applique ses Marketing API Terms strictement. Les automatisations qui contournent l'interface officielle ou qui sollicitent l'API à des rythmes anormaux peuvent déclencher des protections anti-abus. Plusieurs cas documentés sur Reddit r/FacebookAds montrent des comptes bannis **définitivement** suite à des usages aggressifs de Claude Code (modification de budgets toutes les 2 heures, pause/relance en boucle de créatifs, scripts qui interrogent l'API en continu).
+
+<PullQuote attribution="Thread Reddit r/FacebookAds, repris dans les SERP FR (mars 2026)">
+Si tu utilises Claude Code pour faire du day-trading avec les annonces Meta, tu vas être banni. Utilise Claude Code avec précaution.
+</PullQuote>
+
+**La règle absolue qui évite ce risque** : utiliser **le MCP officiel Meta** (lancé le 29 avril 2026) plutôt que des scripts qui automatisent l'interface Ads Manager ou qui passent par des proxys. Le MCP officiel est Meta-authentifié, autorisé par Meta, et explicitement conforme aux Marketing API Terms.
+
+Cf. [notre guide complet sur Meta Ads MCP](/blog/meta-ads-mcp-piloter-campagnes-claude-chatgpt/) pour le setup officiel.
+
+**Risque 2 : la learning phase cassée.**
+
+C'est le piège plus subtil mais tout aussi coûteux. Quand tu modifies substantiellement un ad set Meta (budget, audience, bid, créatif), Andromeda replace cet ad set en learning phase. La phase dure environ 50 événements d'optimisation. Pendant cette phase, le delivery est instable, le CPA fluctue, les performances sont imprévisibles.
+
+Un agent IA qui a accès en écriture et qui modifie trop fréquemment les ad sets (parce qu'il optimise sur un signal court terme) déclenche des **resets de learning phase en cascade**. Ton compte reste bloqué en apprentissage permanent. La performance s'effondre en 5 à 7 jours, sans signal d'alerte évident pour un Traffic Manager qui ne suivrait pas le compte au jour le jour.
+
+[Andromeda](/blog/andromeda-meta-algorithme-delivery/) est conçu pour optimiser sur des fenêtres stables. Un agent qui le perturbe sans le savoir détruit la valeur que l'algorithme apporte.
+
+**Le coût opérationnel cumulé.**
+
+Un ban de compte = restart from scratch sur un nouveau Business Manager. Plusieurs semaines pour récupérer le niveau de performance précédent. Une learning phase cassée = budget gaspillé pendant 1 à 3 semaines sur des delivery aléatoires. Les deux scénarios coûtent cher. Les deux sont évitables avec un encadrement explicite.
+
+---
+
+<SectionHeader number="03" title="Setup safe : connecter Claude Code à Meta sans risque" eyebrow="Installation" />
+
+Le setup officiel recommandé en mai 2026, sans dev credentials.
+
+<SequenceFlow
+  start="Étape 1. Installer Claude Code (terminal ou VS Code)"
+  steps={[
+    "Étape 2. Authentifier ton compte Anthropic (palier Pro, Max ou crédits API)",
+    "Étape 3. Ouvrir un dossier projet dédié 'meta-ads-claude'",
+    "Étape 4. Ajouter le MCP officiel Meta via la commande de connexion",
+    "Étape 5. Autoriser l'accès depuis ton compte Meta Business",
+    "Étape 6. Vérifier la connexion avec une requête de test en lecture seule",
+    "Étape 7. Activer le system prompt opérationnel (cf. section suivante)",
+  ]}
+  caption="Setup safe Claude Code pour Meta Ads. Aucune credential développeur, aucune automation aggressive. Le MCP officiel Meta gère l'authentification et garantit la conformité Marketing API Terms."
+/>
+
+**Conditions pratiques à vérifier avant :**
+
+- Compte Anthropic avec un palier qui débloque MCP (Pro, Max ou API avec crédits actifs)
+- Compte Meta Business actif, pas en restriction, pas en revue
+- Accès administrateur au compte publicitaire ciblé
+- Idéalement, un compte Meta de test (ou un compte avec budget limité) pour les premières semaines d'apprivoisement
+
+**Le test de validation post-setup :**
+
+Première requête à passer à Claude : "Donne-moi le ROAS, le CPA et le spend des 7 derniers jours pour mon compte Meta, sans modifier quoi que ce soit". Si Claude renvoie une valeur cohérente avec ce que tu vois dans Ads Manager, le setup fonctionne en lecture. Test suivant : "Liste mes 5 campagnes actives avec leur structure". Si la réponse est précise, tu peux passer aux workflows opérationnels.
+
+Important : **ne jamais demander d'action d'écriture avant d'avoir consolidé le system prompt** (section suivante). Une action d'écriture sans garde-fous, c'est l'erreur qui coûte cher.
+
+---
+
+<SectionHeader number="04" title="Le system prompt opérationnel pour piloter Meta Ads" eyebrow="Template prêt à copier" />
+
+Le system prompt est le contrat entre toi et Claude. Il définit ce que l'agent peut faire, ne peut pas faire, et comment il doit raisonner. Sans system prompt explicite, Claude utilise ses défauts génériques qui ne sont pas adaptés au contexte Meta Ads.
+
+**Template structuré en 4 blocs.**
+
+```
+[BLOC 1 · CONTEXTE]
+Tu es un assistant d'analyse Meta Ads pour une DNVB e-commerce. Tu n'es PAS un
+agent autonome de pilotage. Tu opères en mode copilote : tu analyses, tu
+suggères, tu exécutes uniquement après confirmation humaine explicite.
+
+[BLOC 2 · PERMISSIONS]
+- LECTURE : autorisée sans restriction (reporting, analyse, audit de structure,
+  diagnostic créatif)
+- ÉCRITURE : INTERDITE par défaut. Pour toute action en écriture (modification
+  de campagne, ad set, créatif, budget, audience), tu demandes confirmation
+  humaine explicite avant exécution et tu attends la réponse "OK" avant d'agir.
+
+[BLOC 3 · GARDE-FOUS]
+- Tu ne modifies pas un ad set qui a été modifié il y a moins de 7 jours, sauf
+  si la modification est explicitement marquée comme "urgence critique
+  documentée" par l'opérateur humain.
+- Tout changement de budget supérieur à 20% en absolu, ou de bid supérieur à
+  15%, demande confirmation humaine.
+- Toute pause ou relance d'un même créatif dans la même semaine est interdite
+  sans validation.
+- Tu ne fais jamais d'optimisation "autonome continue" (style day-trading sur
+  les ad sets). Tu rapportes, tu suggères, tu n'agis pas sans demande humaine.
+
+[BLOC 4 · STYLE & ANTI-HALLUCINATION]
+- Tu cites TOUJOURS la metric source et la période exacte de tes analyses.
+- Si tu n'as pas la donnée, tu le dis explicitement : "donnée non disponible".
+- Tu ne fabriques pas de chiffres plausibles : si l'API ne renvoie pas la
+  data, tu signales la limite.
+- Pour chaque insight, tu fournis le "show me the raw data" sur demande.
+- Tu utilises le tutoiement et un ton direct (style opérateur growth, pas
+  consultant).
+```
+
+**Pourquoi chaque bloc compte.**
+
+Le bloc 1 cadre Claude comme un copilote, pas un autopilote. C'est ce qui fait la différence entre un usage productif et un compte banni. Le bloc 2 sépare explicitement les permissions lecture (sans risque) et écriture (à valider). Le bloc 3 inscrit la règle Meta sur la learning phase et les seuils de changement substantiels. Le bloc 4 lutte contre les hallucinations qui ont fait perdre du temps à plusieurs opérateurs (cf. les retours communautaires sur Manus AI documentés par PPC Land).
+
+<Callout variant="tip" title="Où placer le system prompt">
+Dans Claude Desktop, le system prompt se met dans les Projects (un projet dédié "Meta Ads Pilotage" avec ce prompt en instructions persistantes). Dans Claude Code, place-le dans un fichier `CLAUDE.md` à la racine de ton dossier projet. Claude Code le lit automatiquement comme contexte persistant à chaque session.
+</Callout>
+
+---
+
+<SectionHeader number="05" title="Les 6 garde-fous critiques en production" />
+
+Au-delà du system prompt, six garde-fous opérationnels protègent ton compte au quotidien.
+
+<DataTable
+  headers={["#", "Garde-fou", "Pourquoi c'est critique"]}
+  highlight="none"
+  rows={[
+    ["1", "Démarrer en read-only pendant 2 à 4 semaines minimum", "Observer comment Claude raisonne sur ta data sans risque. Détecter les hallucinations avant qu'elles ne mènent à une décision écrite."],
+    ["2", "Séparer les permissions lecture et écriture techniquement", "Au niveau du MCP : configurer un compte avec scope lecture seule pour les workflows d'analyse, un autre compte avec scope écriture pour les actions ponctuelles encadrées."],
+    ["3", "Inscrire la règle des 7 jours sur la learning phase", "Toute modification d'un ad set qui a été touché il y a moins de 7 jours doit être validée humainement. Sans ça, l'agent déclenche des resets en cascade."],
+    ["4", "Valider humainement tout changement budget > 20% ou bid > 15%", "Les changements substantiels sont les plus risqués. Une validation humaine sur ces seuils évite 90% des accidents."],
+    ["5", "Demander 'show me the raw data' sur chaque insight critique", "Anti-hallucination. Si Claude ne peut pas pointer la metric Ads Manager exacte qui soutient son analyse, c'est probablement une fabrication."],
+    ["6", "Garder un journal d'audit des actions Claude (logs)", "Si quelque chose tourne mal, tu sais quoi a été modifié, quand, sur ordre de quel prompt. Sans logs, le debug est impossible."],
+  ]}
+/>
+
+**Le piège qui revient le plus souvent.**
+
+Les opérateurs qui se font avoir partagent un pattern : ils activent l'écriture trop tôt, avant d'avoir testé le comportement de Claude en read-only. Première semaine, tout semble fonctionner. Deuxième semaine, Claude commence à proposer des actions plausibles mais sous-optimales. Troisième semaine, l'opérateur valide ces actions par habitude. Quatrième semaine, le compte est en learning phase permanente et le CPA s'effondre.
+
+La règle du "2 à 4 semaines en read-only" n'est pas une précaution excessive. C'est la fenêtre nécessaire pour calibrer ton jugement sur ce que Claude fait bien et ce qu'il fait mal.
+
+---
+
+<SectionHeader number="06" title="Workflows safe vs workflows à éviter" />
+
+Tous les workflows Claude Code ne se valent pas en termes de risque. Voici la grille.
+
+<DataTable
+  headers={["Workflow", "Risque", "Valeur", "Verdict"]}
+  highlight="last"
+  rows={[
+    ["Reporting hebdomadaire automatisé", "Très bas (read-only)", "Très haute (30 min/semaine économisées)", "✅ Démarrer ici"],
+    ["Audit de structure de compte", "Très bas (read-only)", "Haute (détecte les inefficacités structurelles)", "✅ Safe"],
+    ["Diagnostic créatif par stage de funnel", "Bas (read-only)", "Haute (croise avec framework PDA)", "✅ Safe"],
+    ["Audience research et expansion", "Bas (read-only)", "Moyenne (Andromeda fait déjà beaucoup)", "✅ Safe mais valeur limitée"],
+    ["Détection d'anomalies de spend daily", "Bas (read-only)", "Haute (catch les bugs tracking avant qu'ils ne coûtent)", "✅ Safe"],
+    ["Création de campagne briefée en langage naturel", "Moyen (écriture, mais one-shot)", "Moyenne (utile pour setups répétitifs)", "⚠️ OK avec validation"],
+    ["Pause/relance créatifs sur seuil de performance", "Élevé (écriture répétitive)", "Variable", "⚠️ Risqué sans encadrement strict"],
+    ["Optimisation continue budget/bid via boucle automatique", "Très élevé (écriture en boucle)", "Difficile à mesurer", "❌ À éviter en production"],
+    ["Day-trading sur les ad sets (rebalance horaire)", "Critique (ban potentiel)", "Négatif (casse Andromeda)", "❌ INTERDIT"],
+  ]}
+/>
+
+**L'ordre recommandé pour démarrer.**
+
+<SequenceFlow
+  start="Semaine 1-2 : Reporting hebdo automatisé (read-only)"
+  steps={[
+    "Semaine 3-4 : Audit structure compte + diagnostic créatif (toujours read-only)",
+    "Semaine 5-6 : Détection d'anomalies daily (read-only avec alertes mail)",
+    "Semaine 7-8 : Activation écriture progressive sur 1 seul use case (création de campagne ponctuelle, par exemple)",
+    "Au-delà : élargir les use cases en écriture uniquement après avoir consolidé la confiance",
+  ]}
+  caption="Roadmap d'apprivoisement recommandée pour un Traffic Manager qui découvre Claude Code sur Meta Ads. La précipitation est l'ennemi principal."
+/>
+
+C'est plus lent que ce que beaucoup d'opérateurs souhaitent. C'est exactement ce qui les protège.
+
+---
+
+<SectionHeader number="07" title="Anthropic best practices appliquées au pilotage Meta Ads" eyebrow="Officiel" />
+
+Anthropic publie une documentation officielle sur les best practices de prompting Claude. Voici comment elles s'appliquent au contexte Meta Ads.
+
+**Principe 1 : être spécifique plutôt que général.**
+
+Mauvais prompt : "Analyse mon compte Meta et donne-moi des recommandations". Bon prompt : "Analyse les 30 derniers jours sur mes 3 campagnes TOFU broad, sors-moi le CPA par créatif et identifie les 3 créatifs avec le meilleur ratio commentaires/likes". Le second prompt donne 80% de chances de produire du code et de l'analyse utiles dès la première tentative.
+
+**Principe 2 : utiliser des exemples (few-shot).**
+
+Pour les analyses récurrentes, donne à Claude un exemple de format de sortie souhaité avant la requête. Exemple : "Voici comment je veux mon reporting hebdo formatté : [exemple JSON]. Génère le reporting de la semaine du X au Y dans ce format". Réduit drastiquement les itérations.
+
+**Principe 3 : structurer avec XML pour les prompts longs.**
+
+Anthropic recommande l'usage de balises XML pour structurer les prompts complexes. Exemple :
+
+```
+<contexte>
+DNVB beauté, scaling de 30k€ à 80k€/mois sur Meta, 6 campagnes actives.
+</contexte>
+
+<demande>
+Audit complet de structure + flagging des inefficacités.
+</demande>
+
+<output_attendu>
+Format JSON avec champs : campaign_id, issue_type, severity, recommendation.
+</output_attendu>
+```
+
+Claude lit les balises XML comme des sections nettes. La précision augmente.
+
+**Principe 4 : laisser Claude penser (extended thinking).**
+
+Pour les analyses complexes, demande à Claude de réfléchir avant de répondre. "Avant de proposer ta recommandation, raisonne étape par étape : (1) quels sont les patterns dans la data, (2) quelles hypothèses peuvent expliquer ces patterns, (3) quelle action serait la plus testable". L'output est plus solide et tu peux suivre le raisonnement.
+
+**Principe 5 : être explicite sur ce qui ne doit pas être fait.**
+
+Au-delà des permissions positives ("tu peux faire X"), inscris les interdictions explicites ("tu ne fais jamais Y"). Claude respecte mieux les interdictions formulées explicitement que les inférences depuis le contexte.
+
+<PullQuote attribution="Anthropic, Prompting best practices documentation">
+The most effective prompts are clear, specific, and provide enough context for Claude to understand both what you want and what you don't want.
+</PullQuote>
+
+---
+
+<SectionHeader number="08" title="Quand passer à Claude Code, quand rester sur Manus AI ou l'interface" eyebrow="Décisionnel" />
+
+Trois outils IA actifs sur Meta Ads en parallèle. Voici la grille de décision finale.
+
+<DataTable
+  headers={["Profil opérateur", "Outil recommandé", "Pourquoi"]}
+  highlight="none"
+  rows={[
+    ["Traffic Manager DNVB, 1 compte Meta significatif, pas d'autres canaux pub", "Claude Desktop + MCP Meta officiel", "Setup simple, accès aux capabilities Meta, pas besoin de l'overhead Claude Code"],
+    ["Traffic Manager multi-canal (Meta + Google + Amazon)", "Claude Code + MCPs multi-plateformes", "Pipeline cross-canal en langage naturel, scripts récurrents possibles, contrôle technique fin"],
+    ["Creative Strategist DNVB qui pilote 1 compte", "Manus AI dans Ads Manager (pour les analyses) + Claude Desktop (pour le brief créa)", "Manus pour le diagnostic in-platform, Claude pour la conception"],
+    ["CMO qui supervise plusieurs comptes", "Claude Desktop + MCP Meta (reporting exec)", "Vue synthétique cross-canal sans rentrer dans la technique"],
+    ["Équipe agence qui automatise sur 20+ comptes", "Claude Code + scripts récurrents + MCP officiel", "Industrialisation des reports clients, audits récurrents, alertes anomalies"],
+  ]}
+/>
+
+**Le piège commun à tous les profils.**
+
+Vouloir activer trop de capabilities trop vite. Le ROI temps de Claude Code arrive après 4 à 8 semaines d'apprivoisement. Les opérateurs qui veulent du résultat en 48h finissent souvent par planter leur compte.
+
+La règle Gang4 : Claude Code (ou Manus, ou MCP) ne fait pas baisser ton CPA. Il te fait gagner du temps de pilotage que tu peux réinvestir là où la performance se fait vraiment : [la production créative](/blog/framework-pda-creas-meta-2026/), [la diffusion via Partnership Ads whitelisting](/blog/meta-ads-mcp-piloter-campagnes-claude-chatgpt/), [la structure de funnel TOFU/MOFU/BOFU](/blog/funnel-meta-ads-tofu-mofu-bofu-dnvb/).
+
+Le pilotage automatisé sans pipeline créatif diversifié, c'est une Tesla autonome sans batterie. La batterie, ça reste les créatifs. Claude Code, c'est juste la conduite assistée.
