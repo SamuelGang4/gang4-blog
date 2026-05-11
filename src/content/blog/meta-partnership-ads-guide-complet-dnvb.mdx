@@ -1,6 +1,6 @@
 ---
 title: "Meta Partnership Ads pour DNVB : le guide complet 2026 (stratégie, setup, ROI)"
-description: "Le guide complet des Meta Partnership Ads pour DNVB en 2026 : définition, setup technique pas à pas, 8 erreurs terrain, brief creator, mesure ROI et cadre légal FR. Données issues de 86 352 publicités et 32M€ de spend Meta analysés."
+description: "Le guide complet des Meta Partnership Ads pour DNVB en 2026 : définition, setup technique pas à pas, 8 erreurs terrain, brief creator, mesure ROI et cadre légal FR."
 author: "samuel"
 publishedAt: 2026-05-10
 updatedAt: 2026-05-10
@@ -30,7 +30,7 @@ readingTimeMinutes: 18
 cta:
   label: "Recevoir 20 créas UGC prêtes pour tes Partnership Ads"
   href: "https://gang4.io/whitelisting#demo"
-  contextLabel: "Gang4 génère les créas et gère le setup Partnership Ads pour 50+ DNVB clientes"
+  contextLabel: "Gang4 génère les créas et gère le setup Partnership Ads pour les DNVB"
 
 leadMagnet:
   type: "template"
@@ -94,13 +94,6 @@ sources:
   - title: "Meta for Business — Branded Content and Partnership Ads Help"
     url: "https://www.facebook.com/business/help/116253155472526"
 
-gangsData:
-  enabled: true
-  tables:
-    - "MetaAd"
-    - "MetaAdCampaign"
-    - "MetaAdInsight"
-  description: "Analyse de 86 352 publicités Meta et 4 082 campagnes, représentant plus de 32 M€ de dépenses publicitaires analysées sur les 12 derniers mois à travers plus de 50 comptes DNVB accompagnés par Gang4."
 ---
 
 import Callout from '@/components/Callout.astro';
@@ -119,7 +112,7 @@ import SectionHeader from '@/components/SectionHeader.astro';
     "Il existe <strong>deux types de codes</strong> : LBC pour Instagram, CAA pour Facebook. Les confondre casse le setup.",
     "La <strong>validation créateur</strong> est une étape bloquante souvent oubliée. Prévoir 2 à 4 jours entre brief et lancement.",
     "En France, la <strong>Loi Billon (2023)</strong> impose des obligations de divulgation. Meta en couvre une partie automatiquement, pas tout.",
-    "Sur 32 M€ de spend analysés et 86 352 publicités indexées par Gang4 : les PA dans une <strong>ASC broad outperforment</strong> les PA en campagne isolée."
+    "Côté structure de compte : les PA injectées dans une <strong>ASC broad outperforment</strong> les PA isolées dans une campagne dédiée. Andromeda a besoin d'arbitrer entre tous les créatifs en compétition."
   ]}
 />
 
@@ -178,10 +171,9 @@ Pour une Partnership Ad, Andromeda reçoit deux couches de signal au lieu d'une.
 [Le combo Partnership Ads + Andromeda est détaillé dans cet article spoke.](/blog/partnership-ads-andromeda-combo-gagnant-2026/) Ici, on reste sur le guide opérationnel.
 
 <StatGrid
-  columns={3}
+  columns={2}
   stats={[
     { value: "33×", label: "Moins d'attention reçue par les zones pub vs leur surface", source: "Nielsen Norman Group" },
-    { value: "86 352", label: "Publicités Meta indexées dans la base Gang4", source: "Gang4 · 4 082 campagnes · 32M€ spend" },
     { value: "2", label: "Couches de signal envoyées à Andromeda par une Partnership Ad", source: "Créatif + historique profil créateur" },
   ]}
 />
@@ -275,7 +267,7 @@ Un détail important sur le texte dans l'image : Meta n'applique plus la règle 
 
 <SectionHeader number="04" title="Les 8 erreurs fréquentes en Partnership Ads (vues sur le terrain)" />
 
-Ces erreurs, je les ai vues sur des dizaines de comptes. Certaines font perdre du temps, d'autres font perdre de l'argent. Quelques-unes font les deux.
+Ces erreurs reviennent dans presque tous les comptes DNVB qui démarrent en Partnership Ads. Certaines font perdre du temps, d'autres font perdre de l'argent. Quelques-unes font les deux.
 
 **Erreur 1 : confondre le code LBC et le code CAA.**
 
@@ -309,8 +301,8 @@ Instinct naturel : créer une campagne "Partnership Ads" séparée pour mesurer 
 
 Si tu utilises des Shopping Ads ou des Dynamic Ads avec ta Partnership Ad, le catalogue produit doit être tagué depuis le Business Manager de la marque, pas depuis le compte créateur. Sinon le tag boutique ne s'affiche pas correctement dans la pub. Ce point devient critique pour les DNVB qui utilisent les PA en format Shopping.
 
-<Callout variant="data" title="Ce qu'on observe sur 50+ comptes DNVB Gang4">
-  Sur les 86 352 publicités Meta indexées dans notre base (32 M€ de spend, 12 mois), les Partnership Ads qui échouent au premier lancement partagent presque toutes les mêmes causes : erreur de code (LBC vs CAA) ou validation créateur manquée. Deux points de contrôle simples qui se configurent en 5 minutes de brief opérationnel.
+<Callout variant="insight" title="Les deux causes qui plantent le lancement">
+  Les Partnership Ads qui échouent au premier lancement partagent presque toutes les mêmes causes : erreur de code (LBC vs CAA) ou validation créateur manquée. Deux points de contrôle simples qui se configurent en 5 minutes de brief opérationnel.
 </Callout>
 
 ---
@@ -392,15 +384,15 @@ Le seul test valide pour mesurer l'impact réel des PA est le **test d'incrémen
 
 Ce test exige de ne rien changer d'autre pendant la période : ni budget, ni nouveaux créatifs, ni modifications de campagne. Un compte qui teste en mode chirurgical obtient une lecture propre.
 
-**Ce qu'on observe qualitativement sur le pool Gang4.**
+**Ce qu'on observe qualitativement sur le terrain.**
 
-Sur les 4 082 campagnes analysées dans notre base (32 M€ de spend cumulé sur 12 mois), un pattern ressort systématiquement sur les comptes qui activent les Partnership Ads dans leur structure ASC broad :
+Quelques patterns reviennent systématiquement sur les comptes DNVB qui activent les Partnership Ads dans leur structure ASC broad :
 
 - Les PA tendent à capter des bassins d'audience que les créatifs brandés du même compte ne touchent pas
 - Les commentaires sur les PA sont qualitativement différents des commentaires sur les pubs brandées : moins de "c'est quoi cette pub" et plus de "où acheter ça"
-- Les comptes qui maintiennent un flux de PA continu (pas ponctuel) preservent mieux leurs CPM sur le long terme
+- Les comptes qui maintiennent un flux de PA continu (pas ponctuel) préservent mieux leurs CPM sur le long terme
 
-On ne publie pas de pourcentage chiffré sur ces observations parce qu'on n'a pas encore de méthodologie suffisamment rigoureuse pour les isoler proprement. Ce qu'on sait avec certitude : les comptes sans aucune PA dans leur stack créative sont structurellement désavantagés sur Andromeda. Ce qu'on ne sait pas encore : combien exactement.
+Sans étude formelle isolant proprement la variable, impossible de chiffrer cet écart avec rigueur. Ce qu'on peut affirmer avec confiance : les comptes sans aucune PA dans leur stack créative sont structurellement désavantagés sur Andromeda.
 
 **Les pièges de mesure à éviter.**
 
@@ -412,8 +404,6 @@ L'attribution multi-touch sur Meta est notoirement imprécise. Si tu lances 5 PA
 
 *Piège 3 : se fier aux stats de la pub PA pour mesurer son impact sur les ventes.*
 Les PA génèrent souvent des conversions "indirectes" : quelqu'un voit la PA, visite le site sans acheter, revient 3 jours plus tard via une recherche Google. Cette conversion n'est pas créditée à la PA dans les stats Meta. Le test d'incrémentalité capture cet effet. La comparaison directe de ROAS ne le capture pas.
-
-J'ai mis du temps à comprendre ça. Sur un compte mode (budget 60k€/mois), on avait des PA avec un ROAS affiché de 1.8 quand le compte tournait à 3.2 en moyenne. On a failli les couper. On a fait un test d'incrémentalité à la place : -22% de performance globale du compte quand les PA étaient suspendues. Le ROAS affiché des PA ne racontait pas cette histoire.
 
 ---
 
@@ -472,10 +462,6 @@ Si tu es arrivé jusqu'ici, tu sais maintenant monter une Partnership Ad de A à
 
 La vérité sur les PA en 2026, c'est que le setup ne prend pas longtemps. Ce qui prend du temps, c'est tout ce qui autour : trouver les bons créateurs, les briefer, gérer les validations, produire 30 à 40 créatifs par mois avec suffisamment de diversité pour nourrir Andromeda, mesurer proprement, renouveler le pool.
 
-Chez une DNVB à 80k€/mois sur Meta, ce chantier représente facilement 2 à 3 jours de travail par mois pour un Traffic Manager ou un Creative Strategist. À 150k€/mois, c'est un poste à plein temps.
+Pour une DNVB à 80k€/mois sur Meta, ce chantier représente facilement 2 à 3 jours de travail par mois pour un Traffic Manager ou un Creative Strategist. À 150k€/mois, c'est un poste à plein temps.
 
-C'est exactement ce qu'on a construit chez Gang4. On génère les créas UGC avec notre IA, personnalisées pour ton produit et ton audience. On gère le whitelisting sur notre pool de créateurs. Tu charges, tu lances. 50+ DNVB clientes font ça aujourd'hui.
-
-<Callout variant="data" title="Sur 86 352 publicités Meta analysées par Gang4">
-  Les DNVB qui maintiennent un flux continu de Partnership Ads dans leur structure ASC broad (pas en campagne isolée, pas de façon ponctuelle) ont un profil de performance qualitativement différent des comptes qui n'en font pas. Pas de pourcentage à sortir sans méthodo solide. Mais l'écart est assez systématique pour être structurel.
-</Callout>
+C'est exactement ce qu'on a construit chez Gang4. On génère les créas UGC avec notre IA, personnalisées pour ton produit et ton audience. On gère le whitelisting sur notre pool de créateurs. Tu charges, tu lances.

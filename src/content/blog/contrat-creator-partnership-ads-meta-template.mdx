@@ -82,13 +82,6 @@ sources:
   - title: "DGCCRF — Pratiques commerciales trompeuses et influence commerciale"
     url: "https://www.dgccrf.bercy.gouv.fr/activites/pratiques-commerciales/pratiques-commerciales-deloyales"
 
-gangsData:
-  enabled: true
-  tables:
-    - "MetaAd"
-    - "MetaAdCampaign"
-    - "MetaAdInsight"
-  description: "Analyse de 86 352 publicités Meta et 4 082 campagnes, représentant plus de 32 M€ de dépenses publicitaires analysées sur les 12 derniers mois à travers plus de 50 comptes DNVB accompagnés par Gang4."
 ---
 
 import Callout from '@/components/Callout.astro';
@@ -110,7 +103,7 @@ import SectionHeader from '@/components/SectionHeader.astro';
     "Les modèles génériques (Modash, Influence4You, ARPP) ne couvrent pas les spécificités Partnership Ads. <strong>Tu risques un litige post-campagne</strong> si tu t'en contentes.",
     "La <strong>Loi Billon (9 juin 2023)</strong> impose des obligations de divulgation. Meta couvre une partie automatiquement, mais pas tout — notamment le contenu organique associé.",
     "6 erreurs de contrat coûtent cher. La plus fréquente : <strong>pas de clause de révocation du code</strong> quand la campagne tourne encore.",
-    "Sur <strong>86 352 publicités Meta analysées</strong> par Gang4, les litiges creator les plus fréquents arrivent après 12 mois — quand les droits d'usage ont expiré mais que la pub tourne encore.",
+    "Côté terrain : les litiges creator les plus fréquents arrivent après 12 mois — quand les droits d'usage ont expiré mais que la pub tourne encore.",
     "Le <strong>template Gang4 (3 versions)</strong> est téléchargeable à la fin de cet article. Gratuit, en .docx, avec guide d'utilisation."
   ]}
 />
@@ -290,13 +283,13 @@ La DGCCRF peut qualifier de pratique commerciale trompeuse tout contenu sponsori
 
 <SectionHeader number="04" title="Les 6 erreurs de contrat qui coûtent cher" />
 
-Ces erreurs, je les ai vues sur des dizaines de campagnes. Pas d'invention, pas de théorie. Du terrain.
+Ces 6 erreurs reviennent sur la majorité des campagnes PA mal contractualisées. Du terrain, pas de la théorie.
 
 **Erreur 1 : pas de clause de révocation du code de permission.**
 
-Un account manager d'une DNVB mode m'a raconté ça il y a quelques mois. Budget PA en cours : 8 000€/semaine. Le créateur avait un désaccord avec la marque sur le contenu d'une story organique (non lié à la PA). Il a révoqué son code LBC par représailles. Toutes les PA se sont arrêtées à 18h un vendredi soir. 3 jours à reconstruire la campagne avec un autre créateur, en urgence, avec un CPM 40% plus élevé parce que la période de chauffe était perdue.
+Scénario classique : budget PA en cours à 8 000€/semaine. Désaccord entre le créateur et la marque sur un contenu organique annexe. Le créateur révoque son code LBC par représailles. Toutes les PA s'arrêtent instantanément. Plusieurs jours à reconstruire la campagne avec un autre créateur, en urgence, avec un CPM significativement plus élevé parce que la période de chauffe est perdue.
 
-Un préavis contractuel de 30 jours avec clause d'indemnisation n'aurait pas évité la brouille. Mais il aurait probablement suffi à empêcher la révocation impulsive.
+Un préavis contractuel de 30 jours avec clause d'indemnisation n'évite pas la brouille. Mais il suffit en général à empêcher la révocation impulsive.
 
 **Erreur 2 : durée des droits non définie (ou mal définie).**
 
@@ -306,7 +299,7 @@ Définis toujours la durée en mois calendaires avec une date de début précise
 
 **Erreur 3 : rémunération ambiguë (TVA, statut du créateur).**
 
-"Nous te payons 800€ pour la collaboration." HT ou TTC ? Le créateur est en micro-entreprise sous le seuil de TVA, mais il vient de passer sous un autre statut en janvier ? Tu lui avais envoyé un virement sans facture, et 18 mois plus tard tu reçois une mise en demeure pour travail dissimulé ?
+"Nous te payons 800€ pour la collaboration." HT ou TTC ? Le créateur est en micro-entreprise sous le seuil de TVA, mais il a changé de statut en janvier ? Le virement a été envoyé sans facture, et 18 mois plus tard une mise en demeure pour travail dissimulé tombe ?
 
 Ces situations existent. Un contrat qui précise HT/TTC, qui demande une attestation de régime fiscal, et qui formalise l'obligation de facturer (même en micro-entreprise) protège les deux parties.
 
@@ -328,8 +321,8 @@ Le contrat arrive à terme. Les droits d'usage expirent. Mais la PA tourne toujo
 
 La procédure de fin de contrat doit inclure : qui est responsable d'arrêter les pubs actives, dans quel délai après l'expiration des droits, et quel est le process de vérification.
 
-<Callout variant="data" title="Ce qu'on observe sur 50+ comptes DNVB Gang4">
-  Sur les 86 352 publicités Meta analysées dans notre base (32 M€ de spend, 12 mois), les comptes qui maintiennent leurs PA en rotation longue (6 mois et plus) sans renouveler les accords creator sont systématiquement exposés à des risques contractuels post-campagne. La durée médiane d'une PA performante dans notre pool dépasse 8 mois. La durée médiane d'un contrat creator classique est de 3 à 6 mois. L'écart entre ces deux durées est l'angle mort le plus fréquent.
+<Callout variant="insight" title="L'angle mort le plus fréquent">
+  Les comptes qui maintiennent leurs PA en rotation longue (6 mois et plus) sans renouveler les accords creator sont systématiquement exposés à des risques contractuels post-campagne. Une PA performante peut tourner 8 à 12 mois. Un contrat creator classique couvre 3 à 6 mois. L'écart entre ces deux durées est l'angle mort opérationnel le plus courant.
 </Callout>
 
 ---
@@ -340,7 +333,7 @@ La négociation d'un contrat PA n'est pas une négociation d'influence classique
 
 **Les benchmarks de rémunération PA sur le marché FR (2025-2026).**
 
-Ces fourchettes sont issues des observations terrain sur le pool Gang4, pas d'une étude formelle. Elles varient selon la verticale, le niveau de notoriété du créateur, et la durée des droits demandés.
+Ces fourchettes sont indicatives, issues d'observations terrain et pas d'une étude formelle. Elles varient selon la verticale, le niveau de notoriété du créateur, et la durée des droits demandés.
 
 <DataTable
   headers={["Profil créateur", "Followers IG", "Fee PA standard (12 mois)", "Majoration droits illimités", "Majoration exclusivité"]}
@@ -352,7 +345,7 @@ Ces fourchettes sont issues des observations terrain sur le pool Gang4, pas d'un
     ["Macro-créateur", "200k–1M", "4 000€–15 000€", "+35–50%", "+30–50%"],
     ["Créateur UGC pur (compte privé)", "Non applicable", "150€–400€ / créatif", "Non standard", "Rare"],
   ]}
-  caption="Fourchettes indicatives — pool DNVB FR Gang4 (2025-2026). À titre de benchmark uniquement."
+  caption="Fourchettes indicatives DNVB FR (2025-2026). À titre de benchmark uniquement."
 />
 
 Le créateur UGC pur mérite une mention spéciale. De plus en plus de marques travaillent avec des profils qui produisent du contenu mais ne le publient pas organiquement. Le code de permission vient de leur compte, mais ils n'ont pas nécessairement d'audience. Le fee est alors indexé uniquement sur la qualité de production du créatif, pas sur la notoriété du profil.
@@ -371,8 +364,6 @@ Points négociables :
 - L'exclusivité. Elle se paie. Si tu ne l'actives pas, le créateur peut travailler avec un concurrent.
 - Le partage des insights. Certains créateurs valorisent d'avoir accès aux perfs pour améliorer leur contenu. C'est un levier de fidélisation gratuit.
 - La procédure de validation du créatif. Tu peux négocier 1 ou 2 allers-retours de corrections inclus dans le fee, au-delà desquels des frais s'appliquent.
-
-J'ai une anecdote là-dessus. Début 2025, on accompagnait une DNVB cosmétique sur un programme de 8 créateurs simultanés. Un seul contrat n'avait pas de clause d'exclusivité rédigée correctement. Le créateur a collaboré avec une marque directement concurrente trois semaines après le lancement de notre campagne. La PA continuait de tourner. Lui aussi. Le conflit de marque dans le fil d'actualité d'une même audience a brouillé le signal Andromeda pendant 6 semaines. On a perdu du temps à diagnostiquer avant de trouver la cause. Depuis, l'exclusivité est le premier point qu'on vérifie dans chaque contrat avant signature.
 
 **Le [framework PDA pour le brief creator](/blog/framework-pda-creas-meta-2026/) est un bon complément** : il t'aide à briefer le contenu une fois le contrat signé.
 
@@ -401,7 +392,7 @@ Pour les collaborations long terme (12 mois et plus) avec des créateurs qui dev
     "Fixer la rémunération HT/TTC et le délai de paiement",
     "Vérifier que le créateur est bien en compte Instagram Creator ou Business (pas un compte personnel)",
   ]}
-  caption="Ces 5 points à vérifier avant signature évitent 80% des litiges post-campagne observés sur le pool Gang4."
+  caption="Ces 5 points à vérifier avant signature évitent la majorité des litiges post-campagne observés sur le terrain."
 />
 
 **Les 3 points à toujours négocier.**
@@ -424,16 +415,12 @@ Remplis le formulaire ci-dessous avec ton email professionnel. Je t'envoie le fi
 
 <SectionHeader number="07" title="Ce que ce contrat ne remplace pas" eyebrow="Pour finir" />
 
-Un template de contrat, même bien fait, ne remplace pas une vraie relation opérationnelle avec tes créateurs. Les meilleurs programmes PA que j'ai vus fonctionnent parce que les créateurs comprennent ce qu'on cherche à faire, pas seulement parce qu'ils ont signé un document.
+Un template de contrat, même bien fait, ne remplace pas une vraie relation opérationnelle avec tes créateurs. Les meilleurs programmes PA fonctionnent parce que les créateurs comprennent ce que la marque cherche à faire, pas seulement parce qu'ils ont signé un document.
 
 Le contrat est le filet de sécurité. La relation est le moteur.
 
 Ce que le filet de sécurité ne peut pas faire pour toi : choisir les bons créateurs, les briefer correctement pour qu'Andromeda reçoive les bons signaux, maintenir un pool de 5 à 10 profils actifs simultanément pour éviter la concentration de risque, et renouveler les créatifs assez souvent pour que l'algorithme ne s'épuise pas sur les mêmes profils.
 
-Sur 50+ DNVB clientes accompagnées chez Gang4, ce qu'on voit le plus souvent comme frein à la performance PA n'est pas contractuel. C'est la pénurie de contenu. Un programme PA qui tourne bien a besoin de 8 à 15 créatifs nouveaux par mois. Peu de DNVB ont la bande passante pour produire ça avec des créateurs humains uniquement.
+Le frein le plus fréquent à la performance PA n'est pas contractuel. C'est la pénurie de contenu. Un programme PA qui tourne bien a besoin de 8 à 15 créatifs nouveaux par mois. Peu de DNVB ont la bande passante pour produire ça avec des créateurs humains uniquement.
 
 C'est exactement le problème qu'on a construit Gang4 pour résoudre. On génère les créas UGC avec notre IA, on gère le whitelisting sur notre pool de créateurs. Tu vérifies, tu charges, tu lances.
-
-<Callout variant="data" title="Sur 86 352 publicités Meta analysées par Gang4">
-  Les comptes DNVB qui maintiennent un flux continu de Partnership Ads dans une structure ASC broad, avec renouvellement créatif régulier et pool diversifié de 5 créateurs minimum, ont un profil de performance qualitativement différent des comptes qui lancent des PA de façon ponctuelle. Le contrat est une condition nécessaire. Ce n'est pas une condition suffisante.
-</Callout>
