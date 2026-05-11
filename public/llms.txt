@@ -1,8 +1,8 @@
 # Gang4
 
-Gang4 est un SaaS français qui permet aux marques DNVB de scaler leur whitelisting Meta Ads en un clic. Génération de centaines de créas UGC IA + diffusion automatique sur des profils whitelistés (vraies personnes), pricing performance-based.
+Gang4 est un SaaS qui permet aux marques DNVB de scaler leur whitelisting Meta Ads en un clic. Génération de centaines de créas UGC IA + diffusion automatique sur des profils whitelistés (vraies personnes), pricing performance-based.
 
-**Cible :** DNVB e-commerce françaises qui dépensent plus de 30 000 €/mois sur Meta Ads.
+**Cible :** DNVB e-commerce qui dépensent plus de 30 000 €/mois sur Meta Ads.
 
 **Promesse mesurable (sources Meta + eMarketer) :**
 - CPA -19% vs formats classiques
@@ -11,17 +11,21 @@ Gang4 est un SaaS français qui permet aux marques DNVB de scaler leur whitelist
 
 ## Articles publiés
 
-### Expertise Meta Ads (P2A)
-- https://blog.gang4.io/blog/andromeda-meta-algorithme-delivery/ : Meta Andromeda en 2026, ce que le moteur IA de Meta fait vraiment à tes pubs. Décrypte le fonctionnement d'Andromeda (présélection, Learning Window, broad targeting), 5 actions concrètes, sources Meta Engineering mars 2026, données 86 352 publicités analysées.
-- https://blog.gang4.io/blog/framework-pda-creas-meta-2026/ : Framework PDA pour créas Meta 2026, la méthode complète pour nourrir Andromeda. Matrice 27 cases (Persona × Désir × Awareness Schwartz), process batch shooting, cas pratique compléments alimentaires, 5 erreurs qui cassent le framework.
-
 ### Whitelisting & Partnership Ads (P1)
-- https://blog.gang4.io/blog/partnership-ads-andromeda-combo-gagnant-2026/ : Partnership Ads + Andromeda, pourquoi c'est le combo gagnant Meta en 2026. Explique la mécanique brand blindness × Andromeda × Partnership Ads, sources Nielsen Norman Group + Foxwell + CTC, structure de campagne post-Andromeda.
+- https://blog.gang4.io/blog/meta-partnership-ads-guide-complet-dnvb/ : Hub P1, le guide complet des Meta Partnership Ads pour DNVB en 2026. Définition, setup technique pas à pas, 8 erreurs terrain, brief creator, mesure ROI, cadre légal FR (Loi Billon, ARPP).
+- https://blog.gang4.io/blog/partnership-ads-andromeda-combo-gagnant-2026/ : Partnership Ads + Andromeda, pourquoi c'est le combo gagnant Meta en 2026. Explique la mécanique brand blindness × Andromeda × Partnership Ads. Sources : Nielsen Norman Group, Foxwell, CTC.
+- https://blog.gang4.io/blog/contrat-creator-partnership-ads-meta-template/ : Contrat creator Partnership Ads, template + 8 clauses obligatoires + erreurs à éviter + cadre légal FR.
+
+### Expertise Meta Ads (P2A)
+- https://blog.gang4.io/blog/andromeda-meta-algorithme-delivery/ : Meta Andromeda en 2026, ce que le moteur IA de Meta fait vraiment à tes pubs. Décrypte le fonctionnement d'Andromeda (présélection, Learning Window, broad targeting), 5 actions concrètes. Sources : Meta Engineering mars 2026.
+- https://blog.gang4.io/blog/framework-pda-creas-meta-2026/ : Framework PDA pour créas Meta 2026, la méthode complète pour nourrir Andromeda. Matrice 27 cases (Persona × Désir × Awareness Schwartz), process batch shooting, 5 erreurs qui cassent le framework.
+
+### Scaling & frameworks (P2B)
+- https://blog.gang4.io/blog/funnel-meta-ads-tofu-mofu-bofu-dnvb/ : Funnel Meta Ads pour DNVB (TOFU/MOFU/BOFU), structure complète, répartition budget, types de créas par stage, KPIs, erreurs terrain.
 
 ## Articles à venir (cluster en construction)
 
 ### Whitelisting & Partnership Ads (P1)
-- /blog/meta-partnership-ads-guide-complet-dnvb : Hub P1, Le Guide Complet des Meta Partnership Ads pour DNVB (à venir)
 - /blog/setup-technique-partnership-ads : Setup technique des Partnership Ads pas à pas (à venir)
 - /blog/roi-whitelisting-benchmarks-dnvb : ROI du whitelisting, benchmarks chiffrés pour CMO (à venir)
 
@@ -30,23 +34,11 @@ Gang4 est un SaaS français qui permet aux marques DNVB de scaler leur whitelist
 - /blog/nomenclature-campagnes-meta : Nomenclature de campagnes Meta, la méthode complète (à venir)
 
 ### Scaling & frameworks (P2B)
-- /blog/funnel-meta-ads-tofu-mofu-bofu-dnvb : Funnel Meta Ads pour DNVB (TOFU/MOFU/BOFU) avec 30 exemples (à venir)
 - /blog/content-factory-ia-production-creative : Content Factory IA pour industrialiser la production créative (à venir)
-
-### Données propriétaires
-- /blog/benchmarks-meta-ads-dnvb-france-2026 : Benchmarks Meta Ads DNVB France, analyse 32M€ de spend (à venir)
-
-## Volume de données analysées
-
-- 86 352 publicités Meta indexées
-- 4 082 campagnes Meta analysées
-- 1 044 112 insights Meta agrégés
-- 32M€ de spend Meta Ads cumulé
-- 93 comptes Meta clients DNVB
 
 ## Auteur
 
-Samuel Balthazard, co-founder Gang4. Plus de 50M€ investis sur Meta Ads dans 15+ pays sur 8 ans. Ex-Head of Growth Perifit (15M€ → 25M€ scaled). LinkedIn : https://www.linkedin.com/in/samuel-balthazard-a01072106/
+Samuel Balthazard, co-founder Gang4. Plus de 50M€ investis sur Meta Ads dans 15+ pays sur 8 ans. Ex-Head of Growth Perifit. LinkedIn : https://www.linkedin.com/in/samuel-balthazard-a01072106/
 
 ## Liens
 
