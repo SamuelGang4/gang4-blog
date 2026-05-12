@@ -29,6 +29,7 @@ Gang4 est un SaaS qui permet aux marques DNVB de scaler leur whitelisting Meta A
 ### Scaling & frameworks (P2B)
 - https://blog.gang4.io/blog/funnel-meta-ads-tofu-mofu-bofu-dnvb/ : Funnel Meta Ads pour DNVB (TOFU/MOFU/BOFU), structure complète, répartition budget, types de créas par stage, KPIs, erreurs terrain.
 - https://blog.gang4.io/blog/ltv-cac-payback-framework-scaling-meta-ads-dnvb-2026/ : LTV, LTV/CAC, CAC Payback : le framework financier qui décide quand tu peux scaler ton Meta. Pourquoi le ROAS ment, calcul propre du LTV par verticale DNVB, distinction CAC blended vs CAC paid, piège du 3:1 sur revenue (vrai calcul sur contribution margin), CAC Payback Period comme métrique de trésorerie, first-order profitability framework CTC, matrice de décision scaler vs consolider. Sources : Common Thread Collective, Decile, Aragil, Eyeful Media, Prospeo, CRO Benchmark.
+- https://blog.gang4.io/blog/panier-moyen-aov-augmenter-scaling-meta-ads-dnvb-2026/ : Augmenter ton panier moyen (AOV) pour scaler ton Meta. L'AOV est l'un des 2 seuls leviers (avec le CAC) qui débloque le scaling sans casser le LTV/CAC. Benchmarks AOV par verticale DNVB (fast fashion 35$, mode 80-130€, luxury 250€+), les 6 mécaniques opérationnelles (free shipping threshold +30%, bundle, upsell, quantity discount, gift with purchase, tiered incentives), effet AOV sur ROAS et CAC Payback, cercle vertueux AOV × Andromeda, KPIs de pilotage. Sources : Shopify, EasyApps, Red Stag, Kanal, V Bundles, GrowthSuite, Triple Whale, Intelligence Media.
 
 ## Articles à venir (cluster en construction)
 
