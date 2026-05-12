@@ -11,13 +11,13 @@
  */
 ---
 
-<div class="hero-orbits hidden lg:flex relative items-center justify-center w-full h-[480px]" aria-hidden="true">
+<div class="hero-orbits hidden lg:flex relative items-center justify-center w-full h-[640px]" aria-hidden="true">
   <!-- Particules d'arrière-plan (floating sparks) -->
   <div class="absolute inset-0 overflow-hidden">
-    {Array.from({ length: 18 }).map((_, i) => (
+    {Array.from({ length: 40 }).map((_, i) => (
       <span
         class="spark"
-        style={`--i:${i}; --x:${(i * 37) % 100}%; --d:${4 + (i % 5)}s; --delay:${(i * 0.4) % 6}s; --size:${1 + (i % 3)}px`}
+        style={`--i:${i}; --x:${(i * 23) % 100}%; --d:${4 + (i % 6)}s; --delay:${(i * 0.3) % 7}s; --size:${1 + (i % 3)}px`}
       />
     ))}
   </div>
@@ -33,6 +33,7 @@
     <div class="orbit-ring"></div>
     <span class="node node-a"></span>
     <span class="node node-b"></span>
+    <span class="node node-h"></span>
   </div>
 
   <!-- Anneau orbital 2 (medium, milieu) -->
@@ -41,26 +42,39 @@
     <span class="node node-c"></span>
     <span class="node node-d"></span>
     <span class="node node-e"></span>
+    <span class="node node-i"></span>
+    <span class="node node-j"></span>
   </div>
 
-  <!-- Anneau orbital 3 (lent, externe) -->
+  <!-- Anneau orbital 3 (medium-slow, large) -->
   <div class="orbit orbit-3">
     <div class="orbit-ring"></div>
     <span class="node node-f"></span>
     <span class="node node-g"></span>
+    <span class="node node-k"></span>
+    <span class="node node-l"></span>
+  </div>
+
+  <!-- Anneau orbital 4 (lent, le plus externe) -->
+  <div class="orbit orbit-4">
+    <div class="orbit-ring"></div>
+    <span class="node node-m"></span>
+    <span class="node node-n"></span>
+    <span class="node node-o"></span>
   </div>
 
   <!-- SVG connection lines (subtle web between nodes via the core) -->
-  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40" viewBox="0 0 480 480" fill="none">
+  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40" viewBox="0 0 640 640" fill="none">
     <defs>
       <radialGradient id="lineGrad" cx="50%" cy="50%" r="50%">
         <stop offset="0%" stop-color="hsl(231, 100%, 74%)" stop-opacity="0.8" />
         <stop offset="100%" stop-color="hsl(231, 100%, 74%)" stop-opacity="0" />
       </radialGradient>
     </defs>
-    <circle cx="240" cy="240" r="180" stroke="url(#lineGrad)" stroke-width="0.5" fill="none" class="ring-glow ring-glow-3" />
-    <circle cx="240" cy="240" r="130" stroke="url(#lineGrad)" stroke-width="0.5" fill="none" class="ring-glow ring-glow-2" />
-    <circle cx="240" cy="240" r="80" stroke="url(#lineGrad)" stroke-width="0.5" fill="none" class="ring-glow ring-glow-1" />
+    <circle cx="320" cy="320" r="280" stroke="url(#lineGrad)" stroke-width="0.5" fill="none" class="ring-glow ring-glow-4" />
+    <circle cx="320" cy="320" r="220" stroke="url(#lineGrad)" stroke-width="0.5" fill="none" class="ring-glow ring-glow-3" />
+    <circle cx="320" cy="320" r="155" stroke="url(#lineGrad)" stroke-width="0.5" fill="none" class="ring-glow ring-glow-2" />
+    <circle cx="320" cy="320" r="95" stroke="url(#lineGrad)" stroke-width="0.5" fill="none" class="ring-glow ring-glow-1" />
   </svg>
 </div>
 
@@ -73,8 +87,8 @@
 
   /* === NOYAU CENTRAL === */
   .core {
-    width: 36px;
-    height: 36px;
+    width: 52px;
+    height: 52px;
     animation: core-pulse 3.6s ease-in-out infinite;
   }
 
@@ -84,16 +98,16 @@
     border-radius: 50%;
     background: radial-gradient(circle, hsl(231, 100%, 84%) 0%, hsl(231, 100%, 74%) 60%, transparent 100%);
     box-shadow:
-      0 0 20px hsl(231, 100%, 74% / 0.6),
-      0 0 40px hsl(231, 100%, 74% / 0.4),
-      0 0 80px hsl(231, 100%, 74% / 0.3);
+      0 0 28px hsl(231, 100%, 74% / 0.7),
+      0 0 60px hsl(231, 100%, 74% / 0.5),
+      0 0 120px hsl(231, 100%, 74% / 0.35);
   }
 
   .core-halo {
     position: absolute;
-    inset: -16px;
+    inset: -24px;
     border-radius: 50%;
-    background: radial-gradient(circle, hsl(231, 100%, 74% / 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, hsl(231, 100%, 74% / 0.18) 0%, transparent 70%);
     animation: halo-breathe 4s ease-in-out infinite;
   }
 
@@ -116,41 +130,36 @@
   }
 
   .orbit-1 {
-    width: 160px;
-    height: 160px;
-    margin-top: -80px;
-    margin-left: -80px;
-    transform: rotateX(72deg);
-    animation: orbit-spin 14s linear infinite;
+    width: 190px;
+    height: 190px;
+    margin-top: -95px;
+    margin-left: -95px;
+    animation: orbit-1-spin 14s linear infinite;
   }
 
   .orbit-2 {
-    width: 260px;
-    height: 260px;
-    margin-top: -130px;
-    margin-left: -130px;
-    transform: rotateX(64deg) rotateZ(30deg);
-    animation: orbit-spin 22s linear infinite reverse;
+    width: 310px;
+    height: 310px;
+    margin-top: -155px;
+    margin-left: -155px;
+    animation: orbit-2-spin 22s linear infinite;
   }
 
   .orbit-3 {
-    width: 360px;
-    height: 360px;
-    margin-top: -180px;
-    margin-left: -180px;
-    transform: rotateX(70deg) rotateZ(-15deg);
-    animation: orbit-spin 32s linear infinite;
+    width: 440px;
+    height: 440px;
+    margin-top: -220px;
+    margin-left: -220px;
+    animation: orbit-3-spin 32s linear infinite;
   }
 
-  @keyframes orbit-spin {
-    from { transform: rotateX(var(--rx, 70deg)) rotateZ(var(--rz, 0deg)) rotateY(0deg); }
-    to   { transform: rotateX(var(--rx, 70deg)) rotateZ(var(--rz, 0deg)) rotateY(360deg); }
+  .orbit-4 {
+    width: 560px;
+    height: 560px;
+    margin-top: -280px;
+    margin-left: -280px;
+    animation: orbit-4-spin 48s linear infinite;
   }
-
-  /* Override avec les transformations spécifiques par orbite */
-  .orbit-1 { animation-name: orbit-1-spin; }
-  .orbit-2 { animation-name: orbit-2-spin; }
-  .orbit-3 { animation-name: orbit-3-spin; }
 
   @keyframes orbit-1-spin {
     from { transform: rotateX(72deg) rotateY(0deg); }
@@ -164,6 +173,10 @@
     from { transform: rotateX(70deg) rotateZ(-15deg) rotateY(0deg); }
     to   { transform: rotateX(70deg) rotateZ(-15deg) rotateY(360deg); }
   }
+  @keyframes orbit-4-spin {
+    from { transform: rotateX(68deg) rotateZ(45deg) rotateY(0deg); }
+    to   { transform: rotateX(68deg) rotateZ(45deg) rotateY(-360deg); }
+  }
 
   .orbit-ring {
     position: absolute;
@@ -176,35 +189,61 @@
   /* === NOEUDS LUMINEUX === */
   .node {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: hsl(231, 100%, 84%);
     box-shadow:
-      0 0 8px hsl(231, 100%, 74% / 0.9),
-      0 0 16px hsl(231, 100%, 74% / 0.6),
-      0 0 24px hsl(231, 100%, 74% / 0.3);
+      0 0 10px hsl(231, 100%, 74% / 0.95),
+      0 0 22px hsl(231, 100%, 74% / 0.65),
+      0 0 36px hsl(231, 100%, 74% / 0.35);
     top: 50%;
     left: 50%;
-    margin-top: -4px;
-    margin-left: -4px;
+    margin-top: -5px;
+    margin-left: -5px;
   }
 
-  /* Positionnement des nodes sur leurs orbites */
-  .node-a { transform: translate(80px, 0); }
-  .node-b { transform: translate(-80px, 0); }
+  /* Variation de taille pour certains nodes (donne du rythme visuel) */
+  .node-a, .node-c, .node-g, .node-k, .node-n {
+    width: 7px;
+    height: 7px;
+    margin-top: -3.5px;
+    margin-left: -3.5px;
+  }
 
-  .node-c { transform: translate(130px, 0); }
-  .node-d { transform: translate(-65px, 112px); }
-  .node-e { transform: translate(-65px, -112px); }
+  /* Orbite 1 (rayon 95px) — 3 nodes répartis à 120° */
+  .node-a { transform: translate(95px, 0); }
+  .node-b { transform: translate(-47.5px, 82.3px); }
+  .node-h { transform: translate(-47.5px, -82.3px); }
 
-  .node-f { transform: translate(180px, 0); }
-  .node-g { transform: translate(-180px, 0); }
+  /* Orbite 2 (rayon 155px) — 5 nodes répartis à 72° */
+  .node-c { transform: translate(155px, 0); }
+  .node-d { transform: translate(47.9px, 147.4px); }
+  .node-e { transform: translate(-125.4px, 91.1px); }
+  .node-i { transform: translate(-125.4px, -91.1px); }
+  .node-j { transform: translate(47.9px, -147.4px); }
 
-  /* Pulse subtil sur certains nodes pour donner de la vie */
-  .node-a, .node-d, .node-f { animation: node-pulse 2.4s ease-in-out infinite; }
-  .node-b, .node-e, .node-g { animation: node-pulse 2.4s ease-in-out infinite 1.2s; }
-  .node-c { animation: node-pulse 3s ease-in-out infinite 0.6s; }
+  /* Orbite 3 (rayon 220px) — 4 nodes répartis à 90° */
+  .node-f { transform: translate(220px, 0); }
+  .node-g { transform: translate(0, 220px); }
+  .node-k { transform: translate(-220px, 0); }
+  .node-l { transform: translate(0, -220px); }
+
+  /* Orbite 4 (rayon 280px) — 3 nodes répartis à 120° */
+  .node-m { transform: translate(280px, 0); }
+  .node-n { transform: translate(-140px, 242.5px); }
+  .node-o { transform: translate(-140px, -242.5px); }
+
+  /* Pulse subtil sur les nodes (alternance pour donner de la vie) */
+  .node-a, .node-d, .node-f, .node-i, .node-l, .node-m {
+    animation: node-pulse 2.4s ease-in-out infinite;
+  }
+  .node-b, .node-e, .node-g, .node-h, .node-j, .node-n {
+    animation: node-pulse 2.4s ease-in-out infinite 1.2s;
+  }
+  .node-c, .node-k, .node-o {
+    animation: node-pulse 3s ease-in-out infinite 0.6s;
+  }
 
   @keyframes node-pulse {
     0%, 100% {
@@ -225,6 +264,7 @@
   .ring-glow-1 { animation-duration: 25s; }
   .ring-glow-2 { animation-duration: 45s; animation-direction: reverse; }
   .ring-glow-3 { animation-duration: 60s; }
+  .ring-glow-4 { animation-duration: 80s; animation-direction: reverse; }
 
   @keyframes ring-rotate {
     from { transform: rotate(0deg); }
@@ -250,14 +290,14 @@
       transform: translateY(0) translateX(0);
       opacity: 0;
     }
-    10%  { opacity: 0.6; }
+    10%  { opacity: 0.7; }
     50%  {
       opacity: 1;
-      transform: translateY(-240px) translateX(8px);
+      transform: translateY(-320px) translateX(10px);
     }
     90%  { opacity: 0.4; }
     100% {
-      transform: translateY(-480px) translateX(-4px);
+      transform: translateY(-660px) translateX(-6px);
       opacity: 0;
     }
   }
@@ -266,10 +306,9 @@
   @media (prefers-reduced-motion: reduce) {
     .core,
     .core-halo,
-    .orbit-1,
-    .orbit-2,
-    .orbit-3,
+    .orbit-1, .orbit-2, .orbit-3, .orbit-4,
     .node-a, .node-b, .node-c, .node-d, .node-e, .node-f, .node-g,
+    .node-h, .node-i, .node-j, .node-k, .node-l, .node-m, .node-n, .node-o,
     .ring-glow,
     .spark {
       animation: none;
