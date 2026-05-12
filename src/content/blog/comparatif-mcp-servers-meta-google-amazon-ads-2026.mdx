@@ -22,7 +22,7 @@ volumeFR: 70
 keywordDifficulty: 5
 intent: "informational"
 
-directAnswer: "Trois MCP servers ad tech sont actifs en mai 2026. Google Ads, open source depuis le 7 octobre 2025, reste read-only avec 3 tools. Amazon Ads, open beta depuis le 2 février 2026, supporte la lecture et l'écriture avec des Skills pré-cuits. Meta Ads, open beta depuis le 29 avril 2026, offre 4 capabilities macro plus un CLI. Pour une DNVB Meta-first, le MCP Meta est la priorité 1, complété par Google Analytics pour la mesure cross-canal."
+directAnswer: "Trois MCP servers ad tech sont actifs en mai 2026. Google Ads, open source depuis le 7 octobre 2025, reste read-only avec 3 tools. Amazon Ads, open beta depuis le 2 février 2026, supporte la lecture et l'écriture avec des Skills pré-cuits. Meta Ads, open beta depuis le 29 avril 2026, offre 5 capabilities macro plus un CLI. Pour une DNVB Meta-first, le MCP Meta est la priorité 1, complété par Google Analytics pour la mesure cross-canal."
 
 readingTimeMinutes: 12
 
@@ -58,9 +58,9 @@ faq:
   - question: "C'est quoi un serveur MCP pour une plateforme publicitaire ?"
     answer: "Un serveur MCP (Model Context Protocol) est un pont standardisé entre un agent IA (Claude, ChatGPT, Gemini) et une plateforme publicitaire (Meta, Google Ads, Amazon Ads). Il traduit les requêtes en langage naturel en appels API structurés vers la plateforme, sans que le développeur ait à écrire le code d'intégration. Le standard MCP a été créé par Anthropic en novembre 2024 puis transféré à la Linux Foundation."
   - question: "Quelle plateforme a sorti son MCP en premier ?"
-    answer: "Google a ouvert la voie. Google Analytics a lancé son MCP server le 22 juillet 2025, puis Google Ads en open source le 7 octobre 2025. Amazon Ads a suivi en closed beta le 13 novembre 2025 (passé en open beta le 2 février 2026). Meta Ads est arrivé en dernier, le 29 avril 2026, mais avec la fonctionnalité la plus complète (lecture + écriture + CLI + 4 capabilities)."
+    answer: "Google a ouvert la voie. Google Analytics a lancé son MCP server le 22 juillet 2025, puis Google Ads en open source le 7 octobre 2025. Amazon Ads a suivi en closed beta le 13 novembre 2025 (passé en open beta le 2 février 2026). Meta Ads est arrivé en dernier, le 29 avril 2026, mais avec la fonctionnalité la plus complète (lecture + écriture + CLI + 5 capabilities)."
   - question: "Quelle différence entre Google Ads MCP, Amazon Ads MCP et Meta Ads MCP ?"
-    answer: "Trois différences principales. (1) Le mode d'accès : Google Ads est read-only à ce jour, Amazon Ads et Meta Ads supportent la lecture et l'écriture (création/modification de campagnes). (2) Le niveau d'abstraction : Amazon a ajouté des Skills (workflows pré-cuits comme 'expand campaign to UK with £10 budget'), Meta a 4 capabilities macro (reporting, campagne, catalogue, signaux), Google reste plus bas niveau avec 3 tools dont une requête GAQL native. (3) Le packaging : Meta inclut un CLI complémentaire pour les usages scriptés, Google ne fournit que le serveur MCP open source."
+    answer: "Trois différences principales. (1) Le mode d'accès : Google Ads est read-only à ce jour, Amazon Ads et Meta Ads supportent la lecture et l'écriture (création/modification de campagnes). (2) Le niveau d'abstraction : Amazon a ajouté des Skills (workflows pré-cuits comme 'expand campaign to UK with £10 budget'), Meta a 5 capabilities macro (reporting, campagne, catalogue, signaux, recherche dans le Help Center), Google reste plus bas niveau avec 3 tools dont une requête GAQL native. (3) Le packaging : Meta inclut un CLI complémentaire pour les usages scriptés, Google ne fournit que le serveur MCP open source."
   - question: "Le Google Ads MCP est-il read-only à jamais ?"
     answer: "La documentation officielle Google Developers précise 'Mode: Read-only (current release)' au 28 avril 2026, ce qui suggère que l'écriture pourrait arriver dans des versions futures. Aucune date officielle n'a été communiquée. Pour les workflows en écriture sur Google Ads, l'option actuelle reste la Marketing API directe ou des MCP tiers (Coupler, Markifact, Porter Metrics, GoMarble) qui implémentent leur propre couche."
   - question: "Lequel choisir en premier si je pilote du Meta + Google Ads + Amazon ?"
@@ -109,7 +109,7 @@ import SectionHeader from '@/components/SectionHeader.astro';
   items={[
     "<strong>Google Ads</strong> a ouvert la voie le 7 octobre 2025 (open source, read-only, 3 tools). <strong>Amazon Ads</strong> a suivi le 2 février 2026 (open beta, lecture + écriture, Tools + Skills). <strong>Meta Ads</strong> est arrivé le 29 avril 2026 (open beta, le plus complet à date).",
     "Google reste <strong>read-only</strong> à ce jour. Amazon et Meta supportent <strong>la lecture et l'écriture</strong> dès le démarrage.",
-    "Amazon a misé sur les <strong>Skills</strong> (workflows pré-cuits genre 'expand campaign to UK with £10 budget'). Meta a misé sur les <strong>4 capabilities macro</strong> + un CLI. Google reste bas niveau avec une requête GAQL native.",
+    "Amazon a misé sur les <strong>Skills</strong> (workflows pré-cuits genre 'expand campaign to UK with £10 budget'). Meta a misé sur les <strong>5 capabilities macro</strong> + un CLI. Google reste bas niveau avec une requête GAQL native.",
     "Pour une DNVB Meta-first : <strong>Meta MCP en priorité 1</strong>, complété par <strong>Google Analytics MCP</strong> pour la mesure cross-canal.",
     "La couche connecteur devient une commodité. <strong>La valeur ajoutée se déplace</strong> vers les modèles de décision, la production créative et l'expertise verticale."
   ]}
@@ -142,7 +142,7 @@ Ce comparatif fait le tri sur trois questions concrètes :
   rows={[
     ["Date lancement", "7 oct. 2025 (open source)", "2 fév. 2026 (open beta, après closed beta 13 nov. 2025)", "29 avr. 2026 (open beta)"],
     ["Mode d'accès", "Read-only (current release)", "Read + Write", "Read + Write"],
-    ["Modèle de tools", "3 tools bas niveau (list, search GAQL, metadata)", "Tools + Skills (workflows pré-cuits)", "4 capabilities macro + CLI complémentaire"],
+    ["Modèle de tools", "3 tools bas niveau (list, search GAQL, metadata)", "Tools + Skills (workflows pré-cuits)", "5 capabilities macro + CLI complémentaire"],
     ["Clients IA supportés", "Claude, Gemini (+ tout client MCP)", "Claude, ChatGPT, Gemini, Kiro, Bedrock, AgentCore", "Claude, ChatGPT (+ tout client MCP-compatible)"],
     ["Authentification", "OAuth 2.0 ou service account (developer token requis)", "Authentifiée Amazon Ads (compte partenaire API actif)", "Authentifiée Meta (pas de credential dev requise)"],
     ["Setup", "Configuration JSON dans le client + déploiement local ou Cloud Run", "Connexion via le client MCP, autorisation Amazon", "Connexion via le client MCP, autorisation Meta"],
@@ -259,7 +259,7 @@ Pas de developer token, pas de configuration JSON manuelle, pas de validation d'
 
 Toute DNVB où Meta représente une part significative du spend. C'est le MCP avec la friction de setup la plus basse et le scope fonctionnel le plus large. Si tu choisis un seul MCP ad tech à brancher, c'est lui pour 80% des opérateurs DNVB.
 
-[Notre guide dédié au Meta Ads MCP](/blog/meta-ads-mcp-piloter-campagnes-claude-chatgpt/) couvre l'installation pas à pas, les 4 capabilities en détail, et le piège de la learning phase qui demande un encadrement explicite côté agent.
+[Notre guide dédié au Meta Ads MCP](/blog/meta-ads-mcp-piloter-campagnes-claude-chatgpt/) couvre l'installation pas à pas, les 5 capabilities en détail, et le piège de la learning phase qui demande un encadrement explicite côté agent.
 
 ---
 

@@ -23,7 +23,7 @@ volumeFR: 10
 keywordDifficulty: 0
 intent: "informational"
 
-directAnswer: "Le 29 avril 2026, Meta a lancé en open beta ses Meta Ads AI Connectors : un serveur MCP (Model Context Protocol) officiel et un CLI qui donnent à Claude, ChatGPT et autres agents IA compatibles un accès sécurisé et authentifié à ton compte Meta Ads. Tu peux créer, modifier et analyser tes campagnes en langage naturel, sans dev credentials ni setup d'API. Le MCP couvre 4 fonctions : reporting, gestion de campagne, gestion de catalogue, diagnostic des signaux."
+directAnswer: "Le 29 avril 2026, Meta a lancé en open beta ses Meta Ads AI Connectors : un serveur MCP (Model Context Protocol) officiel et un CLI qui donnent à Claude, ChatGPT et autres agents IA compatibles un accès sécurisé et authentifié à ton compte Meta Ads. Tu peux créer, modifier et analyser tes campagnes en langage naturel, sans dev credentials. Le MCP couvre 5 fonctions : reporting, gestion de campagne, catalogue, diagnostic des signaux, recherche dans le Help Center Meta."
 
 readingTimeMinutes: 11
 
@@ -65,7 +65,7 @@ faq:
   - question: "Quelle différence entre le serveur MCP et le CLI Meta ?"
     answer: "Le MCP server vise les workflows conversationnels et ad-hoc : tu parles à Claude ou ChatGPT en langage naturel, l'agent traduit en appels API. Le CLI (command line interface) vise les usages techniques : pipelines automatisés, scripts de reporting programmé, intégrations dans des outils internes. Les deux chemins se complètent. La plupart des opérateurs growth utiliseront le MCP au quotidien, les équipes data ou eng se serviront du CLI pour les jobs récurrents."
   - question: "Quelles tâches Meta Ads MCP peut-il exécuter ?"
-    answer: "Quatre familles de fonctions selon Meta : (1) Reporting complet, lecture des performances de campagne avec extraction de rapports détaillés. (2) Gestion de campagne, création et édition de campaigns, ad sets et ads en langage naturel. (3) Gestion de catalogue, création de catalogue produit, ajout de produits, debug de feeds. (4) Diagnostic des signaux, lecture de la santé du Pixel et de la Conversions API pour prioriser le setup mesure. Notamment, Meta MCP a un accès en écriture, ce qui le distingue des MCP Google Ads et Amazon Ads lancés en read-only."
+    answer: "Cinq familles de fonctions selon Meta : (1) Reporting complet, lecture des performances de campagne avec extraction de rapports détaillés. (2) Gestion de campagne, création et édition de campaigns, ad sets et ads en langage naturel. (3) Gestion de catalogue, création de catalogue produit, ajout de produits, debug de feeds. (4) Diagnostic des signaux, lecture de la santé du Pixel et de la Conversions API pour prioriser le setup mesure. (5) Recherche Help & Troubleshooting, l'agent peut interroger les articles du Help Center Meta directement depuis Claude pour résoudre une question opérationnelle. Notamment, Meta MCP a un accès en écriture, ce qui le distingue des MCP Google Ads et Amazon Ads lancés en read-only."
   - question: "Est-ce que Claude ou ChatGPT peut faire bannir mon compte Meta ?"
     answer: "C'est une crainte légitime exprimée par la communauté : avant le MCP officiel, certains opérateurs qui automatisaient leurs comptes via des scripts non autorisés (incluant des extensions navigateur agentiques) ont eu des comptes restreints. Le MCP officiel a un statut policy différent : la connexion est Meta-authentifiée, autorisée par Meta, et conforme aux Marketing API Terms. C'est précisément pour ça que Meta recommande d'utiliser l'MCP officiel plutôt que des extensions ou scripts tiers qui automatisent l'interface Ads Manager."
   - question: "Quel est le piège principal à connaître avec Meta Ads MCP ?"
@@ -106,7 +106,7 @@ import SectionHeader from '@/components/SectionHeader.astro';
   items={[
     "Meta a lancé son <strong>MCP officiel le 29 avril 2026</strong> en open beta. Claude et ChatGPT peuvent maintenant piloter ton compte Meta en langage naturel.",
     "Deux produits dans le pack : <strong>le MCP server</strong> (workflows conversationnels) et <strong>le CLI</strong> (scripts et automatisations techniques).",
-    "Quatre familles de fonctions : <strong>reporting, gestion de campagne, gestion de catalogue, diagnostic des signaux</strong>. Accès en écriture inclus, ce qui distingue Meta de Google et Amazon.",
+    "Cinq familles de fonctions : <strong>reporting, gestion de campagne, gestion de catalogue, diagnostic des signaux, recherche Help Center Meta</strong>. Accès en écriture inclus, ce qui distingue Meta de Google et Amazon.",
     "Setup en quelques minutes, sans dev credentials ni code, via un client MCP compatible (Claude, ChatGPT). C'est une rupture vs la Marketing API qui demande un app review.",
     "<strong>Le piège</strong> : la learning phase. Un agent qui modifie trop fréquemment tes ad sets peut planter ton compte en apprentissage permanent. Brief explicite obligatoire."
   ]}
@@ -138,9 +138,9 @@ C'est la première fois que Meta ouvre son infrastructure publicitaire à des ag
 
 ---
 
-<SectionHeader number="02" title="Les 4 capacités officielles : ce que le MCP fait vraiment" />
+<SectionHeader number="02" title="Les 5 capacités officielles : ce que le MCP fait vraiment" />
 
-L'annonce officielle Meta liste quatre familles de fonctions. Voici ce que ça veut dire opérationnellement.
+L'annonce officielle Meta et le Help Center Meta Business listent cinq familles de fonctions. Voici ce que ça veut dire opérationnellement.
 
 <DataTable
   headers={["Capacité", "Ce que ça fait", "Pour qui c'est utile en priorité"]}
@@ -150,6 +150,7 @@ L'annonce officielle Meta liste quatre familles de fonctions. Voici ce que ça v
     ["Campaign Management", "Créer et éditer campaigns, ad sets et ads en langage naturel", "Traffic Managers, Creative Strategists"],
     ["Catalog Management", "Créer un catalogue produit, ajouter des données produit, debug des feeds", "Équipes e-commerce, Traffic Managers Shopping"],
     ["Signal Diagnostics", "Lire la santé du Pixel et de la Conversions API, prioriser le setup mesure", "Équipes data, CMO, agences"],
+    ["Help & Troubleshooting", "Rechercher dans les articles du Help Center Meta directement depuis Claude, pour répondre à une question opérationnelle sans quitter l'agent", "Tous les opérateurs MCP, particulièrement utile pour les débutants"],
   ]}
 />
 
