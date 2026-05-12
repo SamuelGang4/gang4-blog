@@ -23,7 +23,7 @@ volumeFR: 60500
 keywordDifficulty: 27
 intent: "informational"
 
-directAnswer: "Claude Code d'Anthropic est devenu un standard de fait pour piloter Meta Ads via MCP. Le volume FR a explosé de plus de 1200% en glissement annuel. Le risque concret : plusieurs opérateurs ont rapporté des bans de compte Meta liés à des automatisations Claude trop agressives. La règle pour utiliser Claude Code en production : un system prompt structuré, séparation des permissions lecture/écriture, respect de la learning phase Meta, vérification humaine de chaque output avant action."
+directAnswer: "Claude Code d'Anthropic est devenu un standard pour piloter Meta Ads via MCP. Le risque concret : plusieurs opérateurs ont rapporté des bans de compte Meta liés à des automatisations trop agressives (scripts modifiant les ad sets toutes les 2h). La règle : passer par le MCP officiel Meta, un system prompt structuré, séparation lecture/écriture, respect de la learning phase, validation humaine avant écriture."
 
 readingTimeMinutes: 12
 
@@ -104,7 +104,7 @@ import SectionHeader from '@/components/SectionHeader.astro';
 <KeyTakeaways
   title="Ce que tu dois retenir avant de lire"
   items={[
-    "Claude Code a explosé en France : <strong>60 500 vol/mois</strong> sur le KW principal, <strong>+1264% en glissement annuel</strong>. C'est devenu un outil mainstream pour les opérateurs growth.",
+    "Claude Code est passé en 12 mois d'<strong>outil de dev confidentiel à outil mainstream</strong> pour les opérateurs growth qui veulent piloter leur compte Meta en langage naturel.",
     "Le piège n°1 : les <strong>bans de compte Meta</strong> liés à des automatisations Claude trop agressives. Cas documentés sur Reddit avec des comptes bannis définitivement.",
     "La règle absolue : utiliser <strong>le MCP officiel Meta</strong> (lancé 29 avril 2026), pas des scripts qui automatisent Ads Manager. Le MCP est Meta-authentifié et conforme aux Marketing API Terms.",
     "<strong>Six garde-fous critiques</strong> à coder dans ton system prompt : permissions lecture/écriture séparées, respect de la learning phase, validation humaine sur les changements budget significatifs, vérification anti-hallucination, fréquence d'intervention limitée, journal d'audit.",
@@ -114,18 +114,7 @@ import SectionHeader from '@/components/SectionHeader.astro';
 
 <SectionHeader number="01" title="Pourquoi Claude Code pour Meta Ads est devenu une vraie question" />
 
-En 12 mois, **Claude Code est passé d'outil de dev à outil d'opérateur growth**. Les chiffres DataForSEO sont nets.
-
-<StatGrid
-  columns={3}
-  stats={[
-    { value: "60 500", label: "Volume mensuel de recherche FR sur 'claude code'", source: "DataForSEO, mai 2026" },
-    { value: "+1264%", label: "Croissance YoY du KW 'claude code' en FR", source: "DataForSEO, mai 2026" },
-    { value: "+524%", label: "Croissance YoY de 'claude desktop' en FR (5400 vol/mois)", source: "DataForSEO, mai 2026" },
-  ]}
-/>
-
-Trois facteurs convergent.
+En 12 mois, **Claude Code est passé d'outil de dev confidentiel à outil mainstream** chez les opérateurs growth. Trois facteurs convergent pour expliquer cette adoption rapide.
 
 Premièrement, **MCP a démocratisé la connexion ad tech**. Avant novembre 2024, brancher Claude à Meta Marketing API demandait un investissement développeur. Avec le MCP (créé par Anthropic puis transféré à la Linux Foundation), c'est devenu une commande simple. Le MCP officiel Meta lancé le 29 avril 2026 a définitivement levé la barrière d'entrée.
 

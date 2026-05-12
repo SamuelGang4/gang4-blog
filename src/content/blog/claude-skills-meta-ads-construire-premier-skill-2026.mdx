@@ -1,6 +1,6 @@
 ---
 title: "Claude Skills pour Meta Ads : créer ton premier module agentic en 2026 (avec MCP officiel)"
-description: "Claude Skills explose en 2026 : +98 900% YoY, 2 400 vol/mois FR. C'est l'outil qui transforme un long system prompt en module réutilisable. Voici comment construire ton premier Skill pour Meta Ads, le partager en équipe, et le brancher au MCP officiel Meta."
+description: "Claude Skills est l'outil Anthropic qui transforme un long system prompt en module réutilisable et partageable. Lancé en octobre 2025, l'écosystème explose. Voici comment construire ton premier Skill pour Meta Ads, le partager en équipe, et le brancher au MCP officiel Meta."
 author: "samuel"
 publishedAt: 2026-05-12
 updatedAt: 2026-05-12
@@ -23,7 +23,7 @@ volumeFR: 2400
 keywordDifficulty: 0
 intent: "informational"
 
-directAnswer: "Claude Skills est une fonctionnalité Anthropic lancée le 16 octobre 2025 qui permet de créer des modules réutilisables (instructions + scripts + ressources) que Claude charge à la demande. Le KW a explosé en France : 2 400 vol/mois et plus de 98 000% de croissance en glissement annuel. Pour Meta Ads, un Skill encapsule un workflow complet (reporting, audit, brief créa) en un module nommé que tu réutilises et partages en équipe, en combinaison avec le MCP officiel Meta."
+directAnswer: "Claude Skills est une fonctionnalité Anthropic lancée le 16 octobre 2025 qui permet de créer des modules réutilisables (instructions + scripts + ressources) que Claude charge à la demande. Pour Meta Ads, un Skill encapsule un workflow complet (reporting, audit, brief créa) en un module nommé que tu réutilises et partages en équipe, en combinaison avec le MCP officiel Meta. C'est l'outil qui remplace les longs system prompts par une bibliothèque versionnable et activable à la voix."
 
 readingTimeMinutes: 12
 
@@ -61,7 +61,7 @@ faq:
   - question: "Quelle différence entre Claude Skills, Projects et Custom Instructions ?"
     answer: "Trois mécanismes différents. Les Custom Instructions sont des préférences générales appliquées à toutes tes conversations Claude (style, langue, etc.). Les Projects sont des espaces de travail avec un contexte persistant pour un sujet donné. Les Skills sont des modules spécialisés que Claude charge uniquement quand la tâche les demande. Tu peux avoir 50 Skills installés, Claude active celui pertinent à la requête. C'est conçu pour scaler sans surcharger le contexte."
   - question: "Pourquoi Claude Skills cartonne en 2026 ?"
-    answer: "Trois facteurs. (1) DataForSEO live mai 2026 : KW 'claude skills' = 2 400 vol/mois FR, KD 0, plus de 98 000% en glissement annuel. (2) L'écosystème a explosé : SkillsMP marketplace agrège plus de 26 000 Skills depuis GitHub, des repos open source comme alirezarezvani/claude-skills proposent 245+ Skills prêts à l'emploi. (3) Pour les usages pros (marketing, dev, finance), c'est l'outil qui transforme un long system prompt complexe en module nommé réutilisable et partageable en équipe."
+    answer: "Trois facteurs. (1) Les Skills résolvent un problème opérationnel concret : avant Skills, il fallait copier-coller un long system prompt à chaque session, désormais Claude charge le module nommé automatiquement. (2) L'écosystème a explosé en 6 mois : SkillsMP marketplace agrège plus de 26 000 Skills depuis GitHub, des repos open source comme alirezarezvani/claude-skills proposent 245+ Skills prêts à l'emploi. (3) Pour les usages pros (marketing, dev, finance), c'est l'outil qui transforme un workflow complexe en module nommé réutilisable et partageable en équipe."
   - question: "Comment créer un Skill Claude pour Meta Ads ?"
     answer: "Six étapes. (1) Définir le scope du Skill (une tâche précise : reporting hebdo, audit structure, diagnostic créa). (2) Créer un dossier nommé avec un nom court. (3) Rédiger le fichier SKILL.md avec frontmatter (name, description, when_to_use) + instructions structurées. (4) Ajouter les ressources si besoin (templates de sortie, exemples). (5) Tester en mode lecture seule via Claude Desktop ou Claude Code. (6) Versionner dans Git et partager via dépôt interne ou marketplace. Le détail complet est dans la section dédiée de l'article."
   - question: "Quelle différence entre Claude Skills et le MCP ?"
@@ -106,7 +106,7 @@ import SectionHeader from '@/components/SectionHeader.astro';
 <KeyTakeaways
   title="Ce que tu dois retenir avant de lire"
   items={[
-    "Claude Skills, lancé par Anthropic <strong>le 16 octobre 2025</strong>, est en explosion : <strong>2 400 vol/mois FR, +98 900% YoY</strong> selon DataForSEO. KD = 0. Terrain quasi vide en FR sur l'angle Meta Ads.",
+    "Claude Skills, lancé par Anthropic <strong>le 16 octobre 2025</strong>, est devenu en 6 mois <strong>l'outil de productivité IA central</strong> pour les opérateurs marketing. Encore quasi absent de l'éditorial FR sur l'angle Meta Ads.",
     "<strong>Un Skill = un dossier nommé</strong> contenant un fichier SKILL.md (instructions + when_to_use) + ressources optionnelles. Claude charge le Skill automatiquement quand la tâche correspond.",
     "Skills ≠ Projects ≠ Custom Instructions. Skills sont <strong>spécialisés et chargés à la demande</strong>, ce qui permet d'en empiler 50+ sans surcharger le contexte.",
     "Pour Meta Ads, un Skill <strong>encapsule un workflow complet</strong> (reporting, audit, brief créa) en un module nommé, réutilisable et partageable en équipe.",
@@ -149,20 +149,18 @@ Concrètement pour un Traffic Manager DNVB : tu écris un Skill "Reporting hebdo
 
 ---
 
-<SectionHeader number="02" title="Pourquoi Claude Skills explose en 2026" eyebrow="Data" />
-
-Les chiffres DataForSEO sont sans équivoque.
+<SectionHeader number="02" title="Pourquoi Claude Skills s'est imposé en 6 mois" eyebrow="Le contexte" />
 
 <StatGrid
   columns={3}
   stats={[
-    { value: "2 400", label: "Volume mensuel de recherche FR sur 'claude skills'", source: "DataForSEO, mai 2026" },
-    { value: "+98 900%", label: "Croissance YoY du KW (de quasi 0 en août 2025 à 9 900 en mars 2026)", source: "DataForSEO, mai 2026" },
-    { value: "KD 0", label: "Keyword difficulty (compétition quasi nulle)", source: "DataForSEO, mai 2026" },
+    { value: "16 oct 2025", label: "Date d'annonce officielle Anthropic", source: "Annonce Anthropic" },
+    { value: "26 000+", label: "Skills agrégés sur SkillsMP marketplace depuis GitHub", source: "Korben, décembre 2025" },
+    { value: "245+", label: "Skills prêts à l'emploi sur le repo de référence", source: "GitHub alirezarezvani/claude-skills" },
   ]}
 />
 
-**Les 3 raisons structurelles.**
+**Les 3 raisons structurelles de l'adoption massive.**
 
 Premièrement, **les Skills résolvent un problème réel des opérateurs IA**. Avant Skills, tu devais réécrire ou copier-coller un long system prompt à chaque session. Avec Skills, tu nommes le Skill, Claude le charge. La friction disparaît.
 
@@ -170,7 +168,7 @@ Deuxièmement, **l'écosystème a explosé en 6 mois**. SkillsMP (lancé décemb
 
 Troisièmement, **Anthropic a investi sur la facilité de création**. Le Skill Creator intégré dans Claude pose des questions sur ton workflow, génère la structure de dossiers, formate le SKILL.md, regroupe les ressources. Tu n'as pas besoin d'être développeur pour créer ton premier Skill.
 
-<Callout variant="data" title="L'opportunité éditoriale Gang4">
+<Callout variant="insight" title="L'angle qui n'existe pas encore">
 La majorité des Skills publics couvrent la bureautique (PDF, Word, Excel), le code (debugging, refactoring) ou des verticales B2B classiques. Les Skills Meta Ads opérationnels (reporting hebdo, audit structure, diagnostic créa par stage de funnel) restent rares. C'est exactement le gap que ce guide aide à combler.
 </Callout>
 
