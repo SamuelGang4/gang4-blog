@@ -28,6 +28,7 @@ Gang4 est un SaaS qui permet aux marques DNVB de scaler leur whitelisting Meta A
 
 ### Scaling & frameworks (P2B)
 - https://blog.gang4.io/blog/funnel-meta-ads-tofu-mofu-bofu-dnvb/ : Funnel Meta Ads pour DNVB (TOFU/MOFU/BOFU), structure complète, répartition budget, types de créas par stage, KPIs, erreurs terrain.
+- https://blog.gang4.io/blog/ltv-cac-payback-framework-scaling-meta-ads-dnvb-2026/ : LTV, LTV/CAC, CAC Payback : le framework financier qui décide quand tu peux scaler ton Meta. Pourquoi le ROAS ment, calcul propre du LTV par verticale DNVB, distinction CAC blended vs CAC paid, piège du 3:1 sur revenue (vrai calcul sur contribution margin), CAC Payback Period comme métrique de trésorerie, first-order profitability framework CTC, matrice de décision scaler vs consolider. Sources : Common Thread Collective, Decile, Aragil, Eyeful Media, Prospeo, CRO Benchmark.
 
 ## Articles à venir (cluster en construction)
 
