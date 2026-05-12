@@ -2,10 +2,15 @@
 /**
  * SidebarLeadMagnet · Lead magnet sticky en sidebar (style Ben & Vic)
  *
- * Capture email côté client via fetch() vers /api/submit-lead-magnet
- * (Netlify Function qui envoie depuis samuel@gang4.io via SMTP).
+ * Capture email côté client via fetch() vers un webhook n8n.
+ * Le webhook n8n se charge d'envoyer l'email de confirmation
+ * (3 noeuds : Webhook → validation → Gmail Send) avec les credentials
+ * Gmail OAuth déjà configurés dans n8n.
  *
  * UX : 3 états (idle / loading / success / error) gérés en JS pur.
+ *
+ * Configuration : variable d'env Astro PUBLIC_N8N_LEAD_MAGNET_WEBHOOK
+ * (préfixe PUBLIC_ pour exposition côté client, sans secret sensible).
  */
 
 interface Props {
@@ -24,6 +29,10 @@ interface Props {
 }
 
 const { leadMagnet, ctaLabel, ctaHref } = Astro.props;
+
+// URL du webhook n8n configurée via env (cf. .env / Netlify env vars).
+// Fallback sur une chaîne vide : le formulaire affichera une erreur claire si la var n'est pas définie.
+const webhookUrl = import.meta.env.PUBLIC_N8N_LEAD_MAGNET_WEBHOOK || '';
 ---
 
 <aside class="sidebar-sticky">
@@ -52,6 +61,7 @@ const { leadMagnet, ctaLabel, ctaHref } = Astro.props;
         <form
           class="lead-magnet-form space-y-2"
           data-lead-magnet={leadMagnet.title}
+          data-webhook={webhookUrl}
           data-fallback-url={leadMagnet.url}
         >
           <input
@@ -61,6 +71,16 @@ const { leadMagnet, ctaLabel, ctaHref } = Astro.props;
             placeholder="ton@email.pro"
             autocomplete="email"
             class="lm-email w-full px-4 py-2.5 rounded-full bg-white/[0.08] border border-white/15 text-white placeholder:text-white/40 focus:outline-none focus:border-gang4-vivid focus:bg-white/[0.12] transition-all text-sm"
+          />
+
+          <!-- Honeypot anti-bot : champ caché, si rempli on bloque côté client -->
+          <input
+            type="text"
+            name="website"
+            tabindex="-1"
+            autocomplete="off"
+            class="lm-honeypot"
+            aria-hidden="true"
           />
 
           <button
@@ -94,15 +114,26 @@ const { leadMagnet, ctaLabel, ctaHref } = Astro.props;
     top: 100px; /* Compense le header sticky */
     align-self: start;
   }
+  /* Honeypot vraiment invisible (sans display:none, sinon les bots intelligents skip) */
+  .lm-honeypot {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
 </style>
 
 <script>
-  // Capture côté client + envoi async vers la Netlify Function
+  // Capture côté client + POST async vers webhook n8n
   document.querySelectorAll<HTMLFormElement>('.lead-magnet-form').forEach((form) => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const emailInput = form.querySelector<HTMLInputElement>('.lm-email');
+      const honeypotInput = form.querySelector<HTMLInputElement>('.lm-honeypot');
       const submitBtn = form.querySelector<HTMLButtonElement>('.lm-submit');
       const labelEl = form.querySelector<HTMLElement>('.lm-label');
       const loadingEl = form.querySelector<HTMLElement>('.lm-loading');
@@ -111,9 +142,26 @@ const { leadMagnet, ctaLabel, ctaHref } = Astro.props;
 
       if (!emailInput || !submitBtn) return;
 
+      // Honeypot : si rempli, c'est un bot. On simule success sans rien envoyer.
+      if (honeypotInput && honeypotInput.value.trim() !== '') {
+        emailInput.classList.add('hidden');
+        submitBtn.classList.add('hidden');
+        successEl?.classList.remove('hidden');
+        return;
+      }
+
       const email = emailInput.value.trim();
       const leadMagnet = form.getAttribute('data-lead-magnet') || '20 créas UGC';
+      const webhookUrl = form.getAttribute('data-webhook') || '';
       const fallbackUrl = form.getAttribute('data-fallback-url') || '';
+
+      if (!webhookUrl) {
+        if (errorEl) {
+          errorEl.textContent = 'Configuration manquante. Écris-nous à samuel@gang4.io';
+          errorEl.classList.remove('hidden');
+        }
+        return;
+      }
 
       // UX : passer en loading
       submitBtn.disabled = true;
@@ -123,23 +171,19 @@ const { leadMagnet, ctaLabel, ctaHref } = Astro.props;
       errorEl?.classList.add('hidden');
 
       try {
-        const res = await fetch('/api/submit-lead-magnet', {
+        const res = await fetch(webhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             email,
             lead_magnet: leadMagnet,
             source_url: window.location.href,
+            submitted_at: new Date().toISOString(),
           }),
         });
 
         if (!res.ok) {
-          let msg = 'Erreur lors de l\'envoi. Réessaie ou écris à samuel@gang4.io';
-          try {
-            const data = await res.json();
-            if (data?.error) msg = data.error;
-          } catch {}
-          throw new Error(msg);
+          throw new Error(`Erreur ${res.status}`);
         }
 
         // SUCCESS : cacher le form, afficher le message
@@ -158,11 +202,11 @@ const { leadMagnet, ctaLabel, ctaHref } = Astro.props;
         loadingEl?.classList.add('hidden');
 
         if (errorEl) {
-          errorEl.textContent = err?.message || 'Erreur. Réessaie ou écris à samuel@gang4.io';
+          errorEl.textContent = 'Erreur lors de l\'envoi. Réessaie ou écris à samuel@gang4.io';
           errorEl.classList.remove('hidden');
         }
 
-        // Fallback ultime : si après 2 erreurs l'utilisateur clique encore, on le redirige
+        // Fallback : si 2e échec, on redirige vers la page démo
         if (fallbackUrl && form.dataset.failCount === '1') {
           window.location.href = fallbackUrl;
         }
