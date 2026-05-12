@@ -1,10 +1,11 @@
 ---
 /**
- * SidebarLeadMagnet — Lead magnet sticky en sidebar (style Ben & Vic)
+ * SidebarLeadMagnet · Lead magnet sticky en sidebar (style Ben & Vic)
  *
- * Affiche le lead magnet contextuel de l'article + bio auteur compacte +
- * CTA démo. Apparaît dans la sidebar droite sur desktop, en pleine largeur
- * sur mobile.
+ * Capture email côté client via fetch() vers /api/submit-lead-magnet
+ * (Netlify Function qui envoie depuis samuel@gang4.io via SMTP).
+ *
+ * UX : 3 états (idle / loading / success / error) gérés en JS pur.
  */
 
 interface Props {
@@ -23,16 +24,6 @@ interface Props {
 }
 
 const { leadMagnet, ctaLabel, ctaHref } = Astro.props;
-
-const typeIcons: Record<string, string> = {
-  'pdf-gated': '📄',
-  'tool': '🛠️',
-  'newsletter': '📬',
-  'template': '📋',
-  'database': '📊',
-  'audit': '🔍',
-  'webinar': '🎥',
-};
 ---
 
 <aside class="sidebar-sticky">
@@ -59,32 +50,36 @@ const typeIcons: Record<string, string> = {
         <h3 class="font-bold text-base leading-tight mb-4">{leadMagnet.title}</h3>
 
         <form
-          action={leadMagnet.url}
-          method="POST"
-          name="lead-magnet-sidebar"
-          data-netlify="true"
-          class="space-y-2"
+          class="lead-magnet-form space-y-2"
+          data-lead-magnet={leadMagnet.title}
+          data-fallback-url={leadMagnet.url}
         >
-          <input type="hidden" name="form-name" value="lead-magnet-sidebar" />
-          <input type="hidden" name="lead_magnet" value={leadMagnet.title} />
-
           <input
             type="email"
             name="email"
             required
             placeholder="ton@email.pro"
-            class="w-full px-4 py-2.5 rounded-full bg-white/[0.08] border border-white/15 text-white placeholder:text-white/40 focus:outline-none focus:border-gang4-vivid focus:bg-white/[0.12] transition-all text-sm"
+            autocomplete="email"
+            class="lm-email w-full px-4 py-2.5 rounded-full bg-white/[0.08] border border-white/15 text-white placeholder:text-white/40 focus:outline-none focus:border-gang4-vivid focus:bg-white/[0.12] transition-all text-sm"
           />
 
           <button
             type="submit"
-            class="block w-full text-center px-4 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full text-sm font-bold glow-button transition-all"
+            class="lm-submit block w-full text-center px-4 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full text-sm font-bold glow-button transition-all"
           >
-            {leadMagnet.ctaLabel}
+            <span class="lm-label">{leadMagnet.ctaLabel}</span>
+            <span class="lm-loading hidden">Envoi en cours…</span>
           </button>
+
+          <p class="lm-success hidden text-center text-sm text-gang4-glow mt-3 leading-snug">
+            ✓ C'est noté. Tu reçois un email de confirmation tout de suite,<br />
+            et tes 20 créas dans les 72h.
+          </p>
+
+          <p class="lm-error hidden text-center text-xs text-red-300 mt-2"></p>
         </form>
 
-        <p class="text-[10px] text-white/40 text-center mt-2">
+        <p class="lm-disclaimer text-[10px] text-white/40 text-center mt-2">
           🔒 100% gratuit · Pas de spam
         </p>
       </div>
@@ -100,3 +95,79 @@ const typeIcons: Record<string, string> = {
     align-self: start;
   }
 </style>
+
+<script>
+  // Capture côté client + envoi async vers la Netlify Function
+  document.querySelectorAll<HTMLFormElement>('.lead-magnet-form').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const emailInput = form.querySelector<HTMLInputElement>('.lm-email');
+      const submitBtn = form.querySelector<HTMLButtonElement>('.lm-submit');
+      const labelEl = form.querySelector<HTMLElement>('.lm-label');
+      const loadingEl = form.querySelector<HTMLElement>('.lm-loading');
+      const successEl = form.querySelector<HTMLElement>('.lm-success');
+      const errorEl = form.querySelector<HTMLElement>('.lm-error');
+
+      if (!emailInput || !submitBtn) return;
+
+      const email = emailInput.value.trim();
+      const leadMagnet = form.getAttribute('data-lead-magnet') || '20 créas UGC';
+      const fallbackUrl = form.getAttribute('data-fallback-url') || '';
+
+      // UX : passer en loading
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-75', 'cursor-wait');
+      labelEl?.classList.add('hidden');
+      loadingEl?.classList.remove('hidden');
+      errorEl?.classList.add('hidden');
+
+      try {
+        const res = await fetch('/api/submit-lead-magnet', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            lead_magnet: leadMagnet,
+            source_url: window.location.href,
+          }),
+        });
+
+        if (!res.ok) {
+          let msg = 'Erreur lors de l\'envoi. Réessaie ou écris à samuel@gang4.io';
+          try {
+            const data = await res.json();
+            if (data?.error) msg = data.error;
+          } catch {}
+          throw new Error(msg);
+        }
+
+        // SUCCESS : cacher le form, afficher le message
+        emailInput.classList.add('hidden');
+        submitBtn.classList.add('hidden');
+        successEl?.classList.remove('hidden');
+
+        // Cacher la disclaimer "100% gratuit" qui devient redondante
+        const disclaimer = form.parentElement?.querySelector<HTMLElement>('.lm-disclaimer');
+        disclaimer?.classList.add('hidden');
+      } catch (err: any) {
+        // ERROR : restaurer le form et afficher le message
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-75', 'cursor-wait');
+        labelEl?.classList.remove('hidden');
+        loadingEl?.classList.add('hidden');
+
+        if (errorEl) {
+          errorEl.textContent = err?.message || 'Erreur. Réessaie ou écris à samuel@gang4.io';
+          errorEl.classList.remove('hidden');
+        }
+
+        // Fallback ultime : si après 2 erreurs l'utilisateur clique encore, on le redirige
+        if (fallbackUrl && form.dataset.failCount === '1') {
+          window.location.href = fallbackUrl;
+        }
+        form.dataset.failCount = '1';
+      }
+    });
+  });
+</script>
