@@ -23,7 +23,7 @@ volumeFR: 20
 keywordDifficulty: 3
 intent: "informational"
 
-directAnswer: "Installe Claude Desktop (gratuit, Mac ou Windows), télécharge et active le connecteur Meta Ads MCP depuis les Paramètres puis Developer, colle le bloc JSON de configuration, redémarre Claude, autorise ton compte Meta depuis le flow OAuth. Zéro code, zéro credential développeur. Temps de setup réel : 12 à 18 minutes. Tu peux ensuite demander à Claude ton ROAS des 7 derniers jours en langage naturel."
+directAnswer: "Installe Claude Desktop, ouvre Paramètres puis Developer puis Edit Config, et colle l'URL officielle du serveur MCP Meta (https://mcp.facebook.com/ads) dans ta config JSON. Redémarre Claude, autorise ton compte Meta via OAuth, c'est fini. Zéro code, zéro Node.js : le MCP Meta est HTTP-based, pas un package npm à installer. Setup réel : 10 à 15 minutes. Tu peux ensuite demander à Claude ton ROAS des 7 derniers jours en langage naturel."
 
 readingTimeMinutes: 13
 
@@ -67,15 +67,17 @@ faq:
   - question: "Sur quel palier Claude fonctionne le MCP Meta ?"
     answer: "L'accès aux connecteurs MCP sur Claude Desktop est disponible à partir du palier Pro (20$/mois). Le palier Free peut avoir un accès limité ou absent selon les évolutions d'Anthropic. Pour un usage professionnel (Traffic Manager DNVB qui pilote un compte), Pro est le minimum recommandé. Max (100$/mois) offre un volume de tokens plus élevé, utile si tu fais du reporting intensif sur de grands comptes."
   - question: "Que faire si le marteau MCP n'apparaît pas après l'installation ?"
-    answer: "Trois causes les plus fréquentes : (1) Tu n'as pas complètement redémarré Claude Desktop (forcer la fermeture via Activity Monitor sur Mac ou Gestionnaire des tâches sur Windows, puis relancer). (2) Le fichier JSON de configuration contient une erreur de syntaxe (virgule manquante, accolade non fermée). Utilise un validateur JSON en ligne pour vérifier. (3) Le chemin du fichier de config est incorrect selon ton OS. Vérifier que tu modifies bien le bon fichier : macOS c'est ~/Library/Application Support/Claude/claude_desktop_config.json."
+    answer: "Trois causes les plus fréquentes : (1) Tu n'as pas complètement redémarré Claude Desktop (forcer la fermeture via Activity Monitor sur Mac ou Gestionnaire des tâches sur Windows, puis relancer). (2) Le fichier JSON de configuration contient une erreur de syntaxe (virgule manquante, accolade non fermée, guillemets non échappés). Utilise un validateur JSON en ligne comme jsonlint.com pour vérifier. (3) Le chemin du fichier de config est incorrect selon ton OS. Vérifier que tu modifies bien le bon fichier : macOS c'est ~/Library/Application Support/Claude/claude_desktop_config.json, Windows c'est %APPDATA%/Claude/claude_desktop_config.json. (4) Ta version de Claude Desktop est trop ancienne pour supporter les connecteurs MCP remote : fais Check for Updates depuis le menu Claude."
   - question: "Puis-je connecter plusieurs comptes publicitaires Meta ?"
     answer: "Oui. Lors de l'étape d'autorisation OAuth Meta, tu choisis le Business Manager et les comptes publicitaires que tu veux autoriser. Si tu gères plusieurs comptes (une agence par exemple), tu peux en autoriser plusieurs. Dans tes requêtes à Claude, précise simplement l'ID du compte publicitaire concerné ou son nom pour qu'il interroge le bon."
   - question: "Le MCP Meta fonctionne-t-il avec ChatGPT ?"
     answer: "Oui, sous conditions. ChatGPT supporte les connecteurs MCP sur les paliers Plus, Team et Enterprise selon les annonces OpenAI 2026. La procédure d'installation diffère légèrement de Claude Desktop : dans ChatGPT, tu passes par les Paramètres puis la section Connecteurs ou Plugins selon l'interface. Mais le connecteur Meta Ads lui-même est identique. Ce tutoriel couvre Claude Desktop, mais l'autorisation Meta côté OAuth est la même quelle que soit la plateforme IA."
+  - question: "Faut-il installer Node.js ou un environnement de dev pour le MCP officiel Meta ?"
+    answer: "Non. C'est la différence-clé avec les MCP servers traditionnels (filesystem, GitHub, etc.) qui s'installent comme des packages npm locaux et nécessitent Node.js. Le MCP officiel Meta est un serveur HTTP hosted par Meta à l'adresse https://mcp.facebook.com/ads. Tu n'installes rien sur ta machine côté MCP : tu colles juste l'URL dans ta config Claude Desktop, Claude se connecte au serveur Meta via HTTPS. Aucun package npm, aucun runtime, aucun build."
   - question: "Quelle est la différence entre le MCP Meta et le CLI Meta ?"
     answer: "Le MCP server est fait pour les opérateurs growth qui veulent piloter leur compte en conversation naturelle depuis Claude ou ChatGPT. Le CLI (Command Line Interface) est un outil pour développeurs et équipes data qui veulent des scripts automatisés, des jobs récurrents et des pipelines de reporting programmés. Pour un Traffic Manager DNVB débutant, le MCP est le bon point d'entrée. Le CLI est l'étape suivante si tu veux automatiser des rapports hebdomadaires via des scripts shell."
   - question: "Combien de temps faut-il vraiment pour tout installer ?"
-    answer: "En suivant ce tutoriel, compte 12 à 18 minutes pour quelqu'un qui n'a jamais installé Claude Desktop. Détail : 3 min pour télécharger et installer Claude Desktop, 5 min pour modifier le fichier JSON de configuration (la partie la plus délicate pour un débutant), 2 min pour le flow OAuth Meta, 3 min pour le premier test de vérification. Si ton JSON est mal formaté au premier essai, ajouter 5 min de debug. Le MCP officiel Meta ne demande ni dev token ni app review : c'est volontairement conçu pour être rapide."
+    answer: "En suivant ce tutoriel, compte 10 à 15 minutes pour quelqu'un qui n'a jamais installé Claude Desktop. Détail : 3 min pour télécharger et installer Claude Desktop, 3 min pour modifier le fichier JSON de configuration (la partie la plus délicate pour un débutant), 2 min pour le flow OAuth Meta, 2 min pour le premier test de vérification. Si ton JSON est mal formaté au premier essai, ajouter 5 min de debug. Le MCP officiel Meta est HTTP-based (juste une URL hosted à coller) : ni dev token, ni app review, ni Node.js. C'est volontairement conçu pour être rapide."
 
 sources:
   - title: "Introducing Meta Ads AI Connectors (Meta for Business, 29 avril 2026)"
@@ -129,7 +131,7 @@ MCP signifie Model Context Protocol. C'est un standard ouvert créé par Anthrop
 Tu es Traffic Manager DNVB. Tu passes une partie non négligeable de ta journée à naviguer entre onglets Ads Manager, à faire des exports, à compiler du reporting. Le MCP ne change pas ta stratégie. Il change le temps que tu passes à faire le reporting et les analyses de surface, pour que tu investisses ce temps sur les décisions qui comptent : le créatif, l'audience, le budget.
 
 <Callout variant="insight" title="Ce tutoriel vs les autres articles sur le MCP Meta">
-Si tu veux comprendre CE QUE fait le MCP Meta (les 4 capabilities, la différence avec le CLI, le piège de la learning phase) : l'article de référence c'est <a href="/blog/meta-ads-mcp-piloter-campagnes-claude-chatgpt/">Meta Ads MCP : piloter tes campagnes Meta depuis Claude</a>. Si tu veux comparer Meta vs Google vs Amazon MCP : c'est <a href="/blog/comparatif-mcp-servers-meta-google-amazon-ads-2026/">le comparatif des MCP servers ad tech</a>. Ce tutoriel fait UNE chose : t'installer le MCP de zéro, pas à pas, en 15 minutes.
+Si tu veux comprendre CE QUE fait le MCP Meta (les 5 capabilities officielles : reporting, gestion de campagne, catalogue, diagnostic signaux, recherche dans le Help Center, ainsi que le piège de la learning phase) : l'article de référence c'est <a href="/blog/meta-ads-mcp-piloter-campagnes-claude-chatgpt/">Meta Ads MCP : piloter tes campagnes Meta depuis Claude</a>. Si tu veux comparer Meta vs Google vs Amazon MCP : c'est <a href="/blog/comparatif-mcp-servers-meta-google-amazon-ads-2026/">le comparatif des MCP servers ad tech</a>. Ce tutoriel fait UNE chose : t'installer le MCP de zéro, pas à pas, en 15 minutes.
 </Callout>
 
 ---
@@ -146,12 +148,11 @@ Deux minutes de checklist. Si tu coches tout, tu peux démarrer l'installation m
     ["Un abonnement Claude Pro ou Max", "L'accès aux connecteurs MCP sur Claude Desktop est disponible sur Pro (20$/mois) et Max (100$/mois). Le palier Free peut être limité.", "claude.ai/settings/billing"],
     ["Accès administrateur à ton Business Manager Meta", "Ton compte Facebook doit avoir le rôle Admin sur le Business Manager qui contient le compte publicitaire à connecter.", "business.facebook.com → Paramètres"],
     ["Ton compte publicitaire Meta actif", "Le compte pub doit être en bon standing (pas en restriction, pas en revue). Les comptes désactivés ou limités ne peuvent pas être autorisés.", "Ads Manager → statut du compte"],
-    ["Node.js installé sur ton ordinateur", "Requis pour faire tourner les serveurs MCP localement. Version LTS recommandée. Vérification : `node --version` dans le terminal.", "nodejs.org"],
   ]}
 />
 
-<Callout variant="tip" title="Vérifier Node.js en 10 secondes">
-Sur Mac : ouvre Terminal (CMD + Espace, tape "Terminal"). Sur Windows : ouvre l'Invite de commandes ou PowerShell. Tape `node --version` et appuie sur Entrée. Si tu vois un numéro de version (exemple : `v22.3.0`), tu as Node.js. Si tu vois "command not found" ou une erreur, rends-toi sur nodejs.org et télécharge la version LTS avant de continuer.
+<Callout variant="insight" title="Pas besoin de Node.js (et c'est volontaire)">
+Si tu as déjà lu d'autres tutos MCP, tu as peut-être vu mentionner Node.js et `npx` comme prérequis. Ce n'est PAS le cas pour le MCP officiel Meta. Pourquoi : Meta a fait le choix d'héberger son serveur MCP en ligne (`https://mcp.facebook.com/ads`) plutôt que sous forme de package à installer en local. Tu n'as donc rien à installer côté serveur : juste à coller l'URL dans ta config Claude. C'est la différence avec les MCPs communautaires (filesystem, GitHub, etc.) qui tournent en local via npx.
 </Callout>
 
 ---
@@ -217,23 +218,25 @@ Si tu ne trouves pas le chemin via le menu Claude, tu peux ouvrir le fichier dir
 
 Tu as maintenant le fichier de configuration ouvert. C'est ici que tu ajoutes le serveur MCP Meta.
 
+Selon la documentation officielle Meta Business Help Center, **l'URL du serveur MCP est universelle pour tous les agents IA supportés** (Claude, ChatGPT, Perplexity) :
+
+> `https://mcp.facebook.com/ads`
+
+C'est cette URL hosted que tu ajoutes dans ta config. Pas de package npm à installer, pas de chemin local à renseigner.
+
 **Si le fichier est vide**, colle ce bloc complet :
 
 ```json
 {
   "mcpServers": {
     "meta-ads": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@fbmcp/meta-ads-mcp"
-      ]
+      "url": "https://mcp.facebook.com/ads"
     }
   }
 }
 ```
 
-**Si le fichier contient déjà d'autres MCP servers** (par exemple un filesystem server), tu dois ajouter Meta Ads à l'intérieur de l'objet `mcpServers` existant, séparé par une virgule :
+**Si le fichier contient déjà d'autres MCP servers** (par exemple un filesystem server installé en local via npx), tu dois ajouter Meta Ads à l'intérieur de l'objet `mcpServers` existant, séparé par une virgule :
 
 ```json
 {
@@ -243,17 +246,13 @@ Tu as maintenant le fichier de configuration ouvert. C'est ici que tu ajoutes le
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/ton-nom/Desktop"]
     },
     "meta-ads": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@fbmcp/meta-ads-mcp"
-      ]
+      "url": "https://mcp.facebook.com/ads"
     }
   }
 }
 ```
 
-Remplace `ton-nom` par ton nom d'utilisateur si tu gardes le filesystem server. Pour le Meta Ads MCP, ne modifie rien : le bloc est identique sur Mac et Windows.
+Remplace `ton-nom` par ton nom d'utilisateur si tu gardes le filesystem server. Pour le Meta Ads MCP, le bloc est identique sur Mac et Windows et l'URL ne contient aucun ID de Business : c'est le flow OAuth qui se chargera de router vers le bon compte au moment de la connexion.
 
 **Sauvegarde le fichier.** Sur Mac : CMD + S. Sur Windows : CTRL + S.
 
@@ -287,15 +286,20 @@ Si l'icône n'apparaît pas, passe à la section dépannage plus bas.
 
 <SectionHeader number="07" title="Étape 5 : autoriser ton compte Meta" eyebrow="Authentification" />
 
-Le MCP Meta est actif, mais il n'a pas encore accès à ton compte. Tu dois lui donner les permissions.
+Le MCP Meta est actif, mais il n'a pas encore accès à ton compte. Tu dois lui donner les permissions via un flow OAuth — un système d'autorisation standard utilisé partout sur internet (le même bouton qu'utilise "Se connecter avec Google" ou "Se connecter avec Facebook" sur les sites tiers). Tu ne fournis aucun mot de passe à Claude : tu autorises Meta à laisser Claude consulter ton compte, et tu peux révoquer cet accès à tout moment depuis tes paramètres Meta Business.
 
-**Comment déclencher l'autorisation :**
+**Comment déclencher l'autorisation — la voie la plus simple :**
 
-Dans la zone de chat Claude, tape simplement : "Connecte mon compte Meta Ads". Claude va répondre qu'il a besoin d'une autorisation et te proposer un bouton ou un lien pour initier le flow OAuth Meta.
+1. Clique sur l'icône **marteau** en bas à droite de la zone de chat Claude.
+2. Tu vois la liste des MCP connectés, dont `meta-ads`. À côté, un bouton ou une mention "Non connecté" / "Connecter".
+3. Clique sur **Connecter** (ou "Sign in", selon ta version Claude).
+4. Une fenêtre Meta s'ouvre dans ton navigateur → tu suis le flow décrit ci-dessous.
 
-Tu peux aussi le déclencher directement via les outils MCP : clique sur l'icône marteau, sélectionne un tool Meta (par exemple `get_ad_accounts`) et Claude va automatiquement te demander de vous authentifier.
+**Voie alternative — par requête à Claude :**
 
-**Le flow OAuth en 4 clics :**
+Si tu ne vois pas le bouton de connexion dans l'interface marteau, tape dans la zone de chat : *"Connecte mon compte Meta Ads, je veux interroger mes campagnes."* Claude va te répondre qu'il a besoin d'une autorisation et te proposer un lien cliquable qui ouvre la fenêtre Meta.
+
+**Le flow OAuth dans la fenêtre Meta — étape par étape :**
 
 <SequenceFlow
   start="Claude affiche une demande de connexion Meta"
@@ -371,7 +375,7 @@ Cause la plus probable : le JSON est mal formaté. Solution :
 3. Corrige l'erreur identifiée (virgule en trop, guillemets mal échappés, accolade non fermée)
 4. Sauvegarde et redémarre
 
-Si le JSON est valide et l'icône toujours absente : vérifier que Node.js est installé (`node --version` dans le terminal). Sans Node.js, le serveur npx ne peut pas tourner.
+Si le JSON est valide et l'icône toujours absente : ta version de Claude Desktop est peut-être trop ancienne pour gérer les connecteurs MCP remote. Clique sur le menu **Claude** puis **Check for Updates...**. Une fois sur la dernière version, relance Claude.
 
 **Problème 2 : Claude dit qu'il n'a pas accès à Meta.**
 
@@ -394,7 +398,7 @@ Causes possibles : ton compte publicitaire est en restriction, ou les permission
 Le MCP doit faire des appels API à Meta à chaque requête. Sur un compte avec beaucoup de campagnes et d'historique, une requête type "analyse mes 30 derniers jours" peut prendre 15 à 30 secondes. C'est normal. Pour accélérer, restreins la plage de dates et le nombre de campagnes dans ta requête.
 
 <Callout variant="tip" title="Consulter les logs pour debugger">
-Si Claude Desktop charge ton MCP sans succès et que tu ne comprends pas pourquoi, les logs sont tes meilleurs alliés. Sur Mac : ouvre le Terminal et tape `tail -n 20 -f ~/Library/Logs/Claude/mcp*.log`. Sur Windows : ouvre `%APPDATA%\Claude\logs\mcp*.log` dans le Bloc-notes. Les erreurs sont souvent explicites : "Module not found" = Node.js absent ou package npm introuvable. "Auth error" = problème d'authentification Meta.
+Si Claude Desktop charge ton MCP sans succès et que tu ne comprends pas pourquoi, les logs sont tes meilleurs alliés. Sur Mac : ouvre le Terminal et tape `tail -n 20 -f ~/Library/Logs/Claude/mcp*.log`. Sur Windows : ouvre `%APPDATA%\Claude\logs\mcp*.log` dans le Bloc-notes. Les erreurs sont souvent explicites : "Connection failed" = serveur Meta injoignable ou URL mal recopiée. "Auth error" ou "Unauthorized" = l'OAuth Meta n'a pas abouti ou la session a expiré, relance le flow de connexion depuis Claude.
 </Callout>
 
 ---
