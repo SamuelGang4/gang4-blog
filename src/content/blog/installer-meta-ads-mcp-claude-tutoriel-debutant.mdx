@@ -23,7 +23,7 @@ volumeFR: 20
 keywordDifficulty: 3
 intent: "informational"
 
-directAnswer: "Installe Claude Desktop, ouvre Paramètres puis Developer puis Edit Config, et colle l'URL officielle du serveur MCP Meta (https://mcp.facebook.com/ads) dans ta config JSON. Redémarre Claude, autorise ton compte Meta via OAuth, c'est fini. Zéro code, zéro Node.js : le MCP Meta est HTTP-based, pas un package npm à installer. Setup réel : 10 à 15 minutes. Tu peux ensuite demander à Claude ton ROAS des 7 derniers jours en langage naturel."
+directAnswer: "Installe Claude Desktop, ouvre Paramètres > Developer > Edit Config, et colle l'URL Meta (https://mcp.facebook.com/ads) dans ton fichier de config. Redémarre Claude, connecte ton compte Meta en un clic, c'est fini. Rien à coder, rien à installer côté serveur. Setup : 10 à 15 minutes."
 
 readingTimeMinutes: 13
 
@@ -130,6 +130,8 @@ MCP signifie Model Context Protocol. C'est un standard ouvert créé par Anthrop
 
 Tu es Traffic Manager DNVB. Tu passes une partie non négligeable de ta journée à naviguer entre onglets Ads Manager, à faire des exports, à compiler du reporting. Le MCP ne change pas ta stratégie. Il change le temps que tu passes à faire le reporting et les analyses de surface, pour que tu investisses ce temps sur les décisions qui comptent : le créatif, l'audience, le budget.
 
+Et si tu bloques sur une étape technique pendant l'installation, tu peux demander à Claude (sur claude.ai, gratuit, sans compte payant) de t'expliquer ou de te corriger. Le copilote arrive avant d'être installé.
+
 <Callout variant="insight" title="Ce tutoriel vs les autres articles sur le MCP Meta">
 Si tu veux comprendre CE QUE fait le MCP Meta (les 5 capabilities officielles : reporting, gestion de campagne, catalogue, diagnostic signaux, recherche dans le Help Center, ainsi que le piège de la learning phase) : l'article de référence c'est <a href="/blog/meta-ads-mcp-piloter-campagnes-claude-chatgpt/">Meta Ads MCP : piloter tes campagnes Meta depuis Claude</a>. Si tu veux comparer Meta vs Google vs Amazon MCP : c'est <a href="/blog/comparatif-mcp-servers-meta-google-amazon-ads-2026/">le comparatif des MCP servers ad tech</a>. Ce tutoriel fait UNE chose : t'installer le MCP de zéro, pas à pas, en 15 minutes.
 </Callout>
@@ -193,6 +195,8 @@ Pour que les connecteurs MCP fonctionnent correctement, tu dois être sur la der
 
 C'est la partie qui fait peur aux débutants. En réalité, tu vas juste modifier un fichier texte avec un format précis.
 
+Si tu n'as jamais ouvert un fichier `.json` de ta vie, demande à Claude (sur claude.ai web, gratuit) de te montrer comment trouver le tien et ce que tu vas y voir. Il t'expliquera mieux que n'importe quel tuto écrit.
+
 **Comment accéder aux paramètres Developer :**
 
 Sur Mac, clique sur le menu **Claude** dans la barre de menus système en haut (pas la roue crantée dans la fenêtre Claude). Sélectionne **Settings**. Dans la fenêtre Paramètres qui s'ouvre, clique sur l'onglet **Developer** dans le menu de gauche. Tu verras un bouton **Edit Config**.
@@ -222,7 +226,7 @@ Selon la documentation officielle Meta Business Help Center, **l'URL du serveur 
 
 > `https://mcp.facebook.com/ads`
 
-C'est cette URL hosted que tu ajoutes dans ta config. Pas de package npm à installer, pas de chemin local à renseigner.
+C'est cette URL, hébergée par Meta, que tu ajoutes dans ta config. Rien à installer sur ton ordinateur côté serveur, pas de chemin local à renseigner.
 
 **Si le fichier est vide**, colle ce bloc complet :
 
@@ -258,6 +262,8 @@ Remplace `ton-nom` par ton nom d'utilisateur si tu gardes le filesystem server. 
 
 <Callout variant="tip" title="Erreur classique : le JSON mal formaté">
 Le piège numéro 1 des débutants : une virgule en trop (ou manquante) dans le JSON. Un JSON invalide fait planter le chargement du serveur MCP sans message d'erreur clair. Si le marteau n'apparaît pas après redémarrage, copie ton JSON dans jsonlint.com (outil de validation JSON en ligne gratuit). Il te dira exactement où est l'erreur.
+
+Si la syntaxe te stresse : copie ton fichier actuel et le bloc à ajouter dans Claude web (claude.ai, gratuit), et demande-lui "Fusionne ces deux JSON proprement, garde tout valide." Il te ressort le bloc fini. Tu colles, tu sauvegardes.
 </Callout>
 
 ---
@@ -286,20 +292,20 @@ Si l'icône n'apparaît pas, passe à la section dépannage plus bas.
 
 <SectionHeader number="07" title="Étape 5 : autoriser ton compte Meta" eyebrow="Authentification" />
 
-Le MCP Meta est actif, mais il n'a pas encore accès à ton compte. Tu dois lui donner les permissions via un flow OAuth — un système d'autorisation standard utilisé partout sur internet (le même bouton qu'utilise "Se connecter avec Google" ou "Se connecter avec Facebook" sur les sites tiers). Tu ne fournis aucun mot de passe à Claude : tu autorises Meta à laisser Claude consulter ton compte, et tu peux révoquer cet accès à tout moment depuis tes paramètres Meta Business.
+Le MCP Meta est actif, mais il n'a pas encore accès à ton compte. Tu dois lui donner les permissions via un flow OAuth, c'est-à-dire un système d'autorisation standard utilisé partout sur internet (le même bouton qu'utilise "Se connecter avec Google" ou "Se connecter avec Facebook" sur les sites tiers). Tu ne fournis aucun mot de passe à Claude : tu autorises Meta à laisser Claude consulter ton compte, et tu peux révoquer cet accès à tout moment depuis tes paramètres Meta Business.
 
-**Comment déclencher l'autorisation — la voie la plus simple :**
+**Comment déclencher l'autorisation, la voie la plus simple :**
 
 1. Clique sur l'icône **marteau** en bas à droite de la zone de chat Claude.
 2. Tu vois la liste des MCP connectés, dont `meta-ads`. À côté, un bouton ou une mention "Non connecté" / "Connecter".
 3. Clique sur **Connecter** (ou "Sign in", selon ta version Claude).
 4. Une fenêtre Meta s'ouvre dans ton navigateur → tu suis le flow décrit ci-dessous.
 
-**Voie alternative — par requête à Claude :**
+**Voie alternative, par requête à Claude :**
 
 Si tu ne vois pas le bouton de connexion dans l'interface marteau, tape dans la zone de chat : *"Connecte mon compte Meta Ads, je veux interroger mes campagnes."* Claude va te répondre qu'il a besoin d'une autorisation et te proposer un lien cliquable qui ouvre la fenêtre Meta.
 
-**Le flow OAuth dans la fenêtre Meta — étape par étape :**
+**Le flow OAuth dans la fenêtre Meta, étape par étape :**
 
 <SequenceFlow
   start="Claude affiche une demande de connexion Meta"
@@ -349,7 +355,7 @@ Tape :
 
 > "Quels sont les 3 créatifs avec le meilleur CTR sur mon compte Meta ces 14 derniers jours ?"
 
-Ce test vérifie que le MCP sait aller chercher des données granulaires (niveau ad), pas seulement du reporting de haut niveau.
+Ce test vérifie que le MCP sait aller chercher le détail par créatif, pas seulement du reporting de haut niveau.
 
 <DataTable
   headers={["Test", "Ce que tu demandes", "Résultat attendu", "Si ça ne marche pas"]}
@@ -375,6 +381,8 @@ Cause la plus probable : le JSON est mal formaté. Solution :
 3. Corrige l'erreur identifiée (virgule en trop, guillemets mal échappés, accolade non fermée)
 4. Sauvegarde et redémarre
 
+Si jsonlint.com te sort une erreur que tu ne comprends pas, copie-la dans Claude web (claude.ai) avec ton fichier de config et demande "Pourquoi ce JSON est cassé ?". Il te ressort la ligne fautive en 5 secondes.
+
 Si le JSON est valide et l'icône toujours absente : ta version de Claude Desktop est peut-être trop ancienne pour gérer les connecteurs MCP remote. Clique sur le menu **Claude** puis **Check for Updates...**. Une fois sur la dernière version, relance Claude.
 
 **Problème 2 : Claude dit qu'il n'a pas accès à Meta.**
@@ -393,12 +401,16 @@ Exemple : "Donne-moi le ROAS du compte act_123456789 du 1er au 10 mai 2026."
 
 Causes possibles : ton compte publicitaire est en restriction, ou les permissions accordées au MCP sont insuffisantes. Vérifie l'état de ton compte dans Ads Manager. Si le compte est actif, essaie de révoquer et réaccorder les permissions depuis les Paramètres de l'application Business.
 
+Si le message d'erreur exact te semble obscur, copie-le dans Claude web (claude.ai) et demande "Qu'est-ce que ça veut dire et comment je corrige ?" Il traduit en clair en quelques secondes.
+
 **Problème 5 : tout fonctionne mais les réponses de Claude sont lentes.**
 
 Le MCP doit faire des appels API à Meta à chaque requête. Sur un compte avec beaucoup de campagnes et d'historique, une requête type "analyse mes 30 derniers jours" peut prendre 15 à 30 secondes. C'est normal. Pour accélérer, restreins la plage de dates et le nombre de campagnes dans ta requête.
 
 <Callout variant="tip" title="Consulter les logs pour debugger">
 Si Claude Desktop charge ton MCP sans succès et que tu ne comprends pas pourquoi, les logs sont tes meilleurs alliés. Sur Mac : ouvre le Terminal et tape `tail -n 20 -f ~/Library/Logs/Claude/mcp*.log`. Sur Windows : ouvre `%APPDATA%\Claude\logs\mcp*.log` dans le Bloc-notes. Les erreurs sont souvent explicites : "Connection failed" = serveur Meta injoignable ou URL mal recopiée. "Auth error" ou "Unauthorized" = l'OAuth Meta n'a pas abouti ou la session a expiré, relance le flow de connexion depuis Claude.
+
+Et si les logs te semblent illisibles, copie-les dans Claude web (claude.ai) et demande "Traduis-moi ce que ces logs MCP racontent." C'est moins intimidant que de déchiffrer du texte technique brut seul.
 </Callout>
 
 ---
@@ -440,7 +452,7 @@ L'agent compare automatiquement et te ressort les deltas. C'est la base du repor
 Le MCP couvre les signal diagnostics. C'est utile si tu doutes de la qualité de ta mesure.
 
 <Callout variant="tip" title="Règle d'or pour débuter : lecture uniquement pendant 2 semaines">
-Les actions en écriture du MCP Meta (créer une campagne, modifier un budget, pause un créatif) sont puissantes mais demandent un encadrement précis de l'agent pour éviter les resets de learning phase. Pour tes 2 premières semaines, limite-toi aux requêtes de lecture comme celles ci-dessus. Tu construis ta confiance dans l'outil et ta compréhension de ses réponses avant d'autoriser des actions. Pour les garde-fous avancés et les system prompts sécurisés, c'est l'objet de l'article dédié aux guardrails Claude Code + Meta.
+Les actions en écriture du MCP Meta (créer une campagne, modifier un budget, pause un créatif) sont puissantes mais demandent un encadrement précis de l'agent pour éviter les resets de learning phase. Pour tes 2 premières semaines, limite-toi aux requêtes de lecture comme celles ci-dessus. Tu construis ta confiance dans l'outil et ta compréhension de ses réponses avant d'autoriser des actions. Pour les règles de sécurité avancées et les system prompts, c'est l'objet de l'article dédié aux guardrails Claude Code + Meta.
 </Callout>
 
 ---
@@ -457,7 +469,7 @@ Pour que tu ne te retrouves pas avec des attentes mal calibrées, voici ce que l
     ["Générer des créatifs ou les uploader automatiquement", "Le MCP gère la structure de campagne et les références créatives, pas la production des fichiers image/vidéo", "Gang4 pour les créas UGC, puis upload manuel ou via API"],
     ["Modifier les paramètres avancés Advantage+", "Les réglages algorithmiques Advantage+ (audience, placements) ont des contraintes d'écriture spécifiques que le MCP couvre partiellement", "Rester sur Ads Manager pour ces réglages fins"],
     ["Se connecter à Google Ads ou Amazon Ads", "Chaque plateforme a son propre MCP server. Ce connecteur ne couvre que Meta.", "Installer Google Ads MCP et Amazon Ads MCP séparément"],
-    ["Lancer des scripts automatisés récurrents", "Le MCP est conversationnel et ad-hoc. Pour du reporting automatisé, il faut le CLI Meta ou un agent autonome.", "Le CLI Meta Ads pour les jobs schedulés"],
+    ["Lancer des scripts automatisés récurrents", "Le MCP fonctionne à la demande, en lui parlant. Pour du reporting automatisé, il faut le CLI Meta ou un agent autonome.", "Le CLI Meta Ads pour les jobs schedulés"],
   ]}
 />
 
@@ -473,18 +485,18 @@ Tu as maintenant le MCP Meta opérationnel. Voici les 3 prochaines étapes logiq
 
 Utilise le MCP uniquement pour du reporting. Construis tes 3-4 requêtes quotidiennes habituelles (dashboard matin, analyse créatifs, vérification learning phase, brief hebdo). L'objectif : comprendre ce que l'agent retourne, calibrer tes formulations, gagner en confiance.
 
-**Niveau 2 : activer les actions en écriture avec garde-fous (semaine 3+).**
+**Niveau 2 : activer les actions en écriture avec des règles de sécurité (semaine 3+).**
 
-Une fois que tu fais confiance aux réponses en lecture, tu peux activer des actions d'écriture simples (créer une campagne depuis un brief, ajouter un créatif, dupliquer un ad set). Avec un system prompt structuré qui lui interdit de modifier des ad sets actifs sans confirmation humaine. Le guide complet des guardrails est dans l'article dédié sur <a href="/blog/claude-code-meta-ads-system-prompts-guardrails-2026/">les system prompts et garde-fous pour piloter Meta sans risque</a>.
+Une fois que tu fais confiance aux réponses en lecture, tu peux activer des actions d'écriture simples (créer une campagne depuis un brief, ajouter un créatif, dupliquer un ad set). Avec un system prompt structuré qui lui interdit de modifier des ad sets actifs sans confirmation humaine. Le guide complet est dans l'article dédié sur <a href="/blog/claude-code-meta-ads-system-prompts-guardrails-2026/">les system prompts et règles de sécurité pour piloter Meta sans risque</a>.
 
-**Niveau 3 : stack multi-MCP (progressif).**
+**Niveau 3 : brancher plusieurs MCP en même temps (progressif).**
 
-Si tu pilotes aussi du Google Ads ou du Amazon Ads, tu peux brancher leurs MCP servers dans le même Claude Desktop. Un seul agent, plusieurs plateformes. La requête type devient : "Compare mon CPA Meta vs Google Ads cette semaine." L'article comparatif des MCP servers ad tech couvre l'ordre de priorité selon ton profil DNVB.
+Si tu pilotes aussi du Google Ads ou du Amazon Ads, tu peux ajouter leurs MCP servers dans le même Claude Desktop. Un seul agent, plusieurs plateformes. La requête type devient : "Compare mon CPA Meta vs Google Ads cette semaine." L'article comparatif des MCP servers ad tech couvre l'ordre de priorité selon ton profil DNVB.
 
 <PullQuote attribution="Brody K., Client Partner chez Meta (relayé par PPC Land, mai 2026)">
 Just be sure to remind your agent about the learning phase.
 </PullQuote>
 
-Ce conseil d'un Client Partner Meta résume le seul vrai garde-fou à avoir en tête. Le MCP officiel est Meta-authentifié, conforme aux Marketing API Terms. Le risque n'est pas le bannissement du compte. Le risque est un agent trop zélé qui modifie trop souvent tes ad sets et te met en learning phase permanente. Briefer l'agent sur cette contrainte dès que tu passes aux actions en écriture. C'est la différence entre un copilote utile et un pilote automatique qui casse ton compte.
+Ce conseil d'un Client Partner Meta résume la seule vraie règle de sécurité à avoir en tête. Le MCP officiel est Meta-authentifié, conforme aux Marketing API Terms. Le risque n'est pas le bannissement du compte. Le risque est un agent trop zélé qui modifie trop souvent tes ad sets et te met en learning phase permanente. Briefer l'agent sur cette contrainte dès que tu passes aux actions en écriture. C'est la différence entre un copilote utile et un pilote automatique qui casse ton compte.
 
 Le MCP, c'est une télécommande pour ton compte Meta. Meilleure que naviguer dans Ads Manager. Pas un substitut à la stratégie, au créatif et à la décision humaine. Pour l'essentiel de ce qui fait scaler un compte DNVB sur Meta, c'est [Andromeda](/blog/andromeda-meta-algorithme-delivery/) qui décide, et ce sont les créas qui alimentent le moteur.
