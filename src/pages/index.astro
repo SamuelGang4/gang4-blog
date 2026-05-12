@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroOrbits from '../components/HeroOrbits.astro';
 import { getCollection, getEntry } from 'astro:content';
 import { BLOG_THEMES, PILLAR_LABEL } from '../lib/themes';
 
@@ -27,42 +28,48 @@ const themedSections = BLOG_THEMES.map((theme) => ({
     <div class="glow-orb glow-orb-glow w-[500px] h-[500px] top-20 -right-40 opacity-30"></div>
 
     <div class="container-wide relative z-10">
-      <div class="max-w-3xl">
-        <div class="pill pill-vivid mb-6">
-          <span class="w-1.5 h-1.5 rounded-full bg-gang4-vivid mr-2 animate-pulse"></span>
-          Le hub éditorial Meta Ads pour DNVB
+      <div class="grid lg:grid-cols-[1fr_minmax(0,520px)] gap-8 lg:gap-12 items-center">
+        <!-- LEFT — Pitch éditorial -->
+        <div class="max-w-2xl">
+          <div class="pill pill-vivid mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-gang4-vivid mr-2 animate-pulse"></span>
+            Le hub éditorial Meta Ads pour DNVB
+          </div>
+
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-6 tracking-tight">
+            L'expertise <span class="text-gradient">Meta Ads</span><br />
+            pour les <span class="text-gradient">DNVB</span>
+          </h1>
+
+          <p class="text-lg md:text-xl text-white/70 leading-relaxed">
+            Par <strong class="text-white">Samuel Balthazard</strong>,
+            <strong class="text-gang4-vivid">plus de 50M€ investis sur Meta Ads dans plus de 15 pays</strong>
+            au cours des 8 dernières années. Un blog pensé pour les
+            <strong class="text-white">Creative Strategists, Media Buyers et Traffic Managers</strong>
+            qui veulent comprendre ce qui fonctionne réellement sur Meta en 2026 : analyses terrain,
+            frameworks, décryptages algorithmiques et retours d'expérience concrets.
+            Sans bullshit.
+          </p>
+
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a
+              href="/blog"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full font-semibold glow-button"
+            >
+              Lire les articles
+              <span>→</span>
+            </a>
+            <a
+              href="https://gang4.io/whitelisting"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 text-white rounded-full font-semibold transition-all"
+            >
+              Découvrir Gang4
+            </a>
+          </div>
         </div>
 
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-6 tracking-tight">
-          L'expertise <span class="text-gradient">Meta Ads</span><br />
-          pour les <span class="text-gradient">DNVB</span>
-        </h1>
-
-        <p class="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
-          Par <strong class="text-white">Samuel Balthazard</strong>,
-          <strong class="text-gang4-vivid">plus de 50M€ investis sur Meta Ads dans plus de 15 pays</strong>
-          au cours des 8 dernières années. Un blog pensé pour les
-          <strong class="text-white">Creative Strategists, Media Buyers et Traffic Managers</strong>
-          qui veulent comprendre ce qui fonctionne réellement sur Meta en 2026 : analyses terrain,
-          frameworks, décryptages algorithmiques et retours d'expérience concrets.
-          Sans bullshit.
-        </p>
-
-        <div class="flex flex-wrap gap-4 mt-8">
-          <a
-            href="/blog"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-gang4-vivid hover:bg-gang4-glow text-white rounded-full font-semibold glow-button"
-          >
-            Lire les articles
-            <span>→</span>
-          </a>
-          <a
-            href="https://gang4.io/whitelisting"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 text-white rounded-full font-semibold transition-all"
-          >
-            Découvrir Gang4
-          </a>
-        </div>
+        <!-- RIGHT — Animation futuriste constellation Meta -->
+        <HeroOrbits />
       </div>
     </div>
   </section>
